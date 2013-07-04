@@ -1,0 +1,8 @@
+=form_for @friend do |f|
+	=f.text_field :first_name, placeholder: 'First name'
+	=f.text_field :last_name, placeholder: 'Last name'
+	=f.text_field :street_address, placeholder: 'Street address'
+	=f.text_field :city, placeholder: 'City'
+	=f.text_field :state, placeholder: 'State'
+	=f.text_field :zipcode, placeholder: 'Zipcode'
+	=f.submit 'Add Friend!'

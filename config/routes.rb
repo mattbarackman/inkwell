@@ -1,11 +1,15 @@
 Inkwell::Application.routes.draw do
   devise_for :admins
-
   devise_for :users
 
+  # This is the default place devise directs user after login
+  match '/profile' => 'users#profile', as: :user_root
+
+  resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'cards#index'
+
 
   resources :cards, :only => [:show]
   # Sample of regular route:
