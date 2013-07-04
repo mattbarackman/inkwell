@@ -9,7 +9,7 @@ gem 'pg'
 gem 'heroku'
 gem 'awesome_print'
 gem 'haml-rails'
-
+gem 'html2haml'
 
 
 # Gems used only for assets and not required
