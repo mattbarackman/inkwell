@@ -1,9 +1,17 @@
 Inkwell::Application.routes.draw do
   devise_for :admins
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
+  # devise_for :users
+
+  # devise_scope :user do
+  #   get '/users/auth/:provider' => 'devise/omniauth_callbacks#passthru'
+  # end
 
   # This is the default place devise directs user after login
   match '/profile' => 'users#profile', as: :user_root
+
 
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
   resources :occasions
