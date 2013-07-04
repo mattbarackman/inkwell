@@ -25,6 +25,7 @@ group :assets do
 end
 
 group :test, :development do 
+  gem 'debugger'
   gem 'faker'
   gem 'rspec-rails'
   gem 'capybara'
