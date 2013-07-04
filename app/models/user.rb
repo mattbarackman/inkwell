@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
-  :omniauthable, :omniauth_providers => [:facebook]
+  :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
   has_many :occasions, :through => :friends
   has_many :orders  
 
-  validates_presence_of :first_name, :last_name, :email, :encrypted_password
+  # please do not uncomment line below, devise validates appropriate fields
+  # and having the below validations makes omniauth fb/twitter logins not work
+  # validates_presence_of :first_name, :last_name, :email, :encrypted_password
 
 
 
@@ -25,6 +27,9 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      # user.password = 'password'
     end
   end
 
