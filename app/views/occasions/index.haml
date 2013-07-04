@@ -1,0 +1,7 @@
+%h3 Occasions
+
+-current_user.occasions.each do |occasion|
+	%ul.occasion-list
+		%li= occasion.name
+		%li= occasion.date
+		%li= occasion.friend.first_name

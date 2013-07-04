@@ -6,6 +6,7 @@ Inkwell::Application.routes.draw do
   match '/profile' => 'users#profile', as: :user_root
 
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
+  resources :occasions
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'cards#index'
