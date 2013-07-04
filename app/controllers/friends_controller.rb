@@ -20,12 +20,12 @@ class FriendsController < ApplicationController
 
   def edit
     @friend = Friend.find(params[:id])
-    redirect_to user_root_path unless @friend.user == current_user
+    redirect_to user_root_path unless @friend && @friend.user == current_user
   end
 
   def update
     friend = Friend.find(params[:id])
-    if friend.user == current_user && friend.update_attributes(params[:friend])
+    if friend && friend.user == current_user && friend.update_attributes(params[:friend])
       redirect_to friends_path
     else
       redirect_to user_root_path
