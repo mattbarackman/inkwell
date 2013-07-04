@@ -25,12 +25,13 @@ group :assets do
 end
 
 group :test, :development do 
+  gem 'debugger'
   gem 'faker'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl'
   gem 'database_cleaner'
-
+  gem 'sextant'
 end
 
 
