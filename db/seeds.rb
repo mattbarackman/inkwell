@@ -70,3 +70,9 @@ users.each do |user|
     friend.occasions << Occasion.create(date: datetime_rand, name:"#{name.titleize}'s Birthday", event_type_name: "birthday")
   end
 end
+
+half_of_occasions = Occasion.all.select {|occasion| occasion.id.odd?}
+
+half_of_occasions.each do |occasion|
+  Card.all.sample.orders << Order.create(user_id: occasion.friend.user.id, occasion_id: occasion.id)
+end

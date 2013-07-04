@@ -32,6 +32,7 @@ group :test, :development do
   gem 'factory_girl'
   gem 'database_cleaner'
   gem 'sextant'
+  gem 'shoulda'
 end
 
 
