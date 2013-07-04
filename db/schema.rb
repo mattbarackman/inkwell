@@ -55,4 +55,20 @@ ActiveRecord::Schema.define(:version => 20130704001642) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
+  ActiveRecord::Schema.define(:version => 20130704000624) do
+
+    create_table "cards", :force => true do |t|
+      t.integer  "price"
+      t.string   "company_name"
+      t.string   "company_city"
+      t.string   "company_url"
+      t.datetime "created_at",   :null => false
+      t.datetime "updated_at",   :null => false
+      t.string   "title"
+      t.text     "description"
+      t.integer  "inventory"
+    end
+
+  end
+
 end

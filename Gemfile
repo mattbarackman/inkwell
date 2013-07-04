@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'heroku'
 gem 'awesome_print'
+gem 'haml-rails'
 
 
 
@@ -24,7 +25,7 @@ group :assets do
 end
 
 group :test, :development do 
-
+  gem 'faker'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl'
