@@ -29,4 +29,9 @@ class OccasionsController < ApplicationController
     end
   end
 
+  def destroy
+    Occasion.delete(params[:id])
+    redirect_to occasions_path
+  end
+
 end
