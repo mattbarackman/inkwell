@@ -31,7 +31,7 @@ group :test, :development do
   gem 'capybara'
   gem 'factory_girl'
   gem 'database_cleaner'
-
+  gem 'sextant'
 end
 
 
