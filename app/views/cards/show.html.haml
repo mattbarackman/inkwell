@@ -1,0 +1,15 @@
+
+%h1 
+  =@card.title
+
+%p
+  Description:
+  =@card.description
+
+%p
+  Price: 
+  ="$"+"#{@card.price / 100}"+"."+"#{@card.price % 100}"
+
+%p
+  =pluralize(@card.inventory, "card")
+  remaining
