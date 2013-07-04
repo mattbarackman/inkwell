@@ -4,8 +4,9 @@ describe Occasion do
 
   let(:occasion) {create(:occasion)}
 
-  it "should have a date" do
-    expect{occasion.date}.to_not be_nil
-  end
+  it {should validate_presence_of(:name)}
+  it {should validate_presence_of(:date)}
+  it {should have_many(:orders)}
+  it {should belong_to(:friend)}
 
 end

@@ -42,5 +42,13 @@ FactoryGirl.define do
     name "Birthday"
     event_type_name ["birthday","anniversary"].sample
   end
+
+  factory :order do
+    sequence(:user_id) { |n| n }
+    sequence(:occasion_id) { |n| n }
+    sequence(:card_id) { |n| n }
+    lead_time 604800
+    status "in_cart"
+  end
     
 end

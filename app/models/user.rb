@@ -9,11 +9,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-  :first_name, :last_name, :street_address, :city, :state,
-  :zipcode, :provider, :uid, :name
+                  :first_name, :last_name, :street_address, :city, :state,
+                  :zipcode, :provider, :uid, :name
 
   has_many :friends
   has_many :occasions, :through => :friends
+  has_many :orders  
+
+  validates_presence_of :first_name, :last_name, :email, :encrypted_password
+
 
 
   def self.from_omniauth(auth)

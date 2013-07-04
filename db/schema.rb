@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704193647) do
+ActiveRecord::Schema.define(:version => 20130704211838) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(:version => 20130704193647) do
   end
 
   add_index "occasions", ["friend_id"], :name => "index_occasions_on_friend_id"
+
+  create_table "orders", :force => true do |t|
+    t.integer "user_id",                            :null => false
+    t.integer "occasion_id",                        :null => false
+    t.integer "card_id"
+    t.integer "lead_time",   :default => 604800
+    t.string  "status",      :default => "in_cart"
+  end
+
+  add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -4,5 +4,6 @@ class Friend < ActiveRecord::Base
 
   attr_accessible :city, :first_name, :last_name, :state, :street_address, :zipcode
 
-  validates :first_name, :presence => true
+  validates_presence_of :first_name, :last_name
+
 end
