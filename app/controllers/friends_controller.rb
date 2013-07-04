@@ -32,4 +32,9 @@ class FriendsController < ApplicationController
     end
   end
 
+  def destroy
+    Friend.delete(params[:id])
+    redirect_to friends_path
+  end
+
 end

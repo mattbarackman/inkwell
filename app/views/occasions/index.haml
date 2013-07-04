@@ -8,4 +8,4 @@
       = occasion.friend.first_name
       = occasion.friend.last_name
       = link_to "Edit", edit_occasion_path(occasion)
-      = link_to "Delete", '#'
+      = link_to "Delete", occasion, :confirm => "Are you sure?", :method => :delete
