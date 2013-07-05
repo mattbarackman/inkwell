@@ -1,3 +1,4 @@
 %ul.login-links
+  = render :partial => "layouts/nav/category_buttons", :locals => {birthday: Tag.find_by_name("birthday"), anniversary: Tag.find_by_name("anniversary")}
   = render :partial => "layouts/nav/register_edit"
   = render :partial => "layouts/nav/login_logout"
