@@ -7,5 +7,6 @@ describe Card do
   it { should validate_presence_of(:price)}
   it { should validate_presence_of(:inventory)}
   it { should have_many(:orders) }
+  it { should have_and_belong_to_many(:tags) }
 
 end

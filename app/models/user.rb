@@ -55,6 +55,11 @@ class User < ActiveRecord::Base
   #   super && provider.blank?
   # end
 
+  def name
+    first_name + " " + last_name
+  end
+
+
   def update_with_password(params, *options)
     if encrypted_password.blank?
       update_attributes(params, *options)
