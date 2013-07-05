@@ -11,6 +11,9 @@ Inkwell::Application.routes.draw do
   
 
   match '/profile' => 'users#profile', as: :user_root
+  # match '/orders/associate_card' => 'orders#new_card', as: :associate_card
+  match '/orders/associate_card' => 'orders#create_card', as: :associate_card, via: :post
+
   resources :authentications
 
 

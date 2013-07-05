@@ -34,6 +34,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def create_card
+    @order = Order.find_by_occasion_id(params[:occasion][:id])
+    @card = Card.find(params[:card_id])
+    @order.card = card
+    if @order.save
+      flash[:success] = "Thanks for picking a card!"
+      redirect_to root_path
+    else
+      render :show
+    end    
+  end
+
   def destroy
     Order.find(params[:id]).destroy
     redirect_to :back

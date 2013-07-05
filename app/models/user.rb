@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     first_name + " " + last_name
   end
 
+  def occasions_without_cards
+    orders.select{|order| order.card == nil}.map{|order| order.occasion}
+  end
+
 
   def update_with_password(params, *options)
     if encrypted_password.blank?

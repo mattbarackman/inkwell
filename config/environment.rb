@@ -6,7 +6,7 @@ Inkwell::Application.initialize!
 
 require 'yaml'
 
-if ENV['RAILS_ENV'] == "development"
+if Rails.env.development?
   config = YAML.load_file("#{Rails.root}/config/web_app_api.yaml")
 end
 

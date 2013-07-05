@@ -13,3 +13,6 @@
 %p
   =pluralize(@card.inventory, "card")
   remaining
+
+-unless current_user.occasions_without_cards.empty?
+  =render partial: 'associate_card_form', locals: {card: @card, order: @order}
