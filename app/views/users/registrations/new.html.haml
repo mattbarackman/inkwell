@@ -7,6 +7,7 @@
     -if f.object.password_required?
       = f.password_field :password, placeholder: 'Password'
       = f.password_field :password_confirmation, placeholder: 'Confirm password'
+<<<<<<< HEAD
   = field_set_tag "Personal" do
     = f.text_field :first_name, placeholder: 'First Name'
     = f.text_field :last_name, placeholder: 'Last Name'
@@ -14,6 +15,8 @@
     = f.text_field :city, placeholder: 'City'
     = f.select :state, options_for_select(us_states)
     = f.text_field :zipcode, placeholder: 'ZIP Code'
+=======
+>>>>>>> 58968e2bae0303ad106d6ee2f8fd752431ea659d
   = f.submit 'Sign up'
 
 = render "users/shared/links"

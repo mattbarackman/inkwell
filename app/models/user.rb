@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable,:omniauthable, :omniauth_providers => [:facebook, :twitter]
+  :recoverable, :rememberable, :trackable, :validatable,
+  :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -29,6 +30,7 @@ class User < ActiveRecord::Base
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end
+
 
   # def self.from_omniauth(auth)
   #   where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -51,9 +53,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def password_required?
-  #   super && provider.blank?
-  # end
+
 
   def name
     first_name + " " + last_name

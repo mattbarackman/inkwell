@@ -10,6 +10,7 @@ gem 'heroku'
 gem 'awesome_print'
 gem 'haml-rails'
 gem 'html2haml'
+gem 'etsy', "~> 0.2.2"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,6 +43,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
