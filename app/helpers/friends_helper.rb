@@ -1,5 +1,4 @@
 module FriendsHelper
 
-  def 
 
 end

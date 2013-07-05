@@ -107,11 +107,15 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.23)
     mini_portile (0.5.0)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     multi_json (1.7.7)
     multipart-post (1.2.0)
     netrc (0.7.7)
+    nifty-generators (0.4.6)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -228,6 +232,8 @@ DEPENDENCIES
   heroku
   html2haml
   jquery-rails
+  mocha
+  nifty-generators
   omniauth
   omniauth-facebook
   omniauth-twitter

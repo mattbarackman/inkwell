@@ -11,7 +11,6 @@ gem 'awesome_print'
 gem 'haml-rails'
 gem 'html2haml'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -33,6 +32,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'sextant'
   gem 'shoulda'
+	gem "nifty-generators"
 end
 
 
@@ -57,3 +57,5 @@ gem 'omniauth-twitter'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test
