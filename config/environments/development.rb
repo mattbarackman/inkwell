@@ -34,4 +34,20 @@ Inkwell::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  gmail_config = YAML.load_file("#{Rails.root}/config/gmail_env_variables.yaml")
+
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => gmail_config['INKWELL_GMAIL_ADDRESS'],
+    :password             => gmail_config['INKWELL_GMAIL_PASSWORD'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
+
 end

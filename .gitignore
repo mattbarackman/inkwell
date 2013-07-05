@@ -14,3 +14,4 @@
 /log/*.log
 /tmp
 config/web_app_api.yaml
+config/gmail_env_variables.yaml
