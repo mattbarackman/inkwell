@@ -1,0 +1,24 @@
+%h2 Sign up
+
+= form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
+  = devise_error_messages!
+  = field_set_tag "Authentication details" do
+    = f.email_field :email, placeholder: 'Email', :autofocus => true
+    %br
+    -if f.object.password_required?
+      = f.password_field :password, placeholder: 'Password'
+      %br
+      = f.password_field :password_confirmation, placeholder: 'Confirm password'
+  = field_set_tag "Personal" do
+    = f.text_field :first_name, placeholder: 'First Name'
+    %br
+    = f.text_field :last_name, placeholder: 'Last Name'
+    %br
+    = f.text_field :street_address, placeholder: 'Street Address'
+    %br
+    = f.text_field :city, placeholder: 'City'
+    = f.text_field :state, placeholder: 'State'
+    = f.text_field :zipcode, placeholder: 'ZIP Code'
+  = f.submit 'Sign up'
+
+= render "users/shared/links"
