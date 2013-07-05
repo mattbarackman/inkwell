@@ -9,8 +9,8 @@
 
 10.times do 
 
-  title = Faker::Lorem.words(5)
-  description = Faker::Lorem.sentences(4)
+  title = Faker::Lorem.words(5).join(" ").titleize
+  description = Faker::Lorem.sentences(4).join(" ")
   price = rand(400..600)
   inventory = rand(0..10)
 
