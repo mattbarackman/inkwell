@@ -6,4 +6,8 @@ class Occasion < ActiveRecord::Base
   has_many :orders
   belongs_to :friend
 
+  def user
+    self.friend.user
+  end
+
 end

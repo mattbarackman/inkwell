@@ -11,11 +11,7 @@ class FriendsController < ApplicationController
 
   def create
     friend = current_user.friends.build
-    if friend.update_attributes(params[:friend])
-      redirect_to friends_path
-    else
-      redirect_to user_root_path
-    end
+    try_to_update(friend, authorize_user: true)
   end
 
   def edit
@@ -25,16 +21,24 @@ class FriendsController < ApplicationController
 
   def update
     friend = Friend.find(params[:id])
-    if friend && friend.user == current_user && friend.update_attributes(params[:friend])
-      redirect_to friends_path
-    else
-      redirect_to user_root_path
-    end
+    try_to_update(friend, authorize_user: true)
   end
 
   def destroy
     Friend.delete(params[:id])
     redirect_to friends_path
   end
+
+  private
+
+  # See try_to_update in ApplicationController
+
+#    def try_to_update(friend)
+#      if friend && friend.user == current_user && friend.update_attributes(params[:friend])
+#        redirect_to friends_path
+#      else
+#        redirect_to user_root_path
+#      end
+#    end
 
 end
