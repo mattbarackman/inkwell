@@ -25,17 +25,19 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test, :development, :production do 
+group :test, :development do 
   gem 'debugger'
-  gem 'faker'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'factory_girl'
-  gem 'database_cleaner'
-  gem 'sextant'
-  gem 'shoulda'
-	gem "nifty-generators"
 end
+
+#move these back into :test, :development before demo
+gem 'faker'
+gem 'rspec-rails'
+gem 'capybara'
+gem 'factory_girl'
+gem 'database_cleaner'
+gem 'sextant'
+gem 'shoulda'
+gem "nifty-generators"
 
 
 gem 'jquery-rails'
