@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
@@ -23,7 +25,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test, :development do 
+group :test, :development, :production do 
   gem 'debugger'
   gem 'faker'
   gem 'rspec-rails'
