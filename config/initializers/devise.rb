@@ -9,8 +9,6 @@ Devise.setup do |config|
 	OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?	
   config.omniauth :facebook, '185220694978236', '99946ed9ee406b1a85396294ea25c4df'
 	# config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET']
-  config.omniauth :twitter, 'ypN7Cvb0J7FcqjXgJAWQiw', 'dGEZSrVyt4DmW0WpKa8Nnh0MjkDv78nv2JbX91kY'
-  # config.omniauth :linked_in, 'CONSUMER_KEY', 'CONSUMER_SECRET'
   config.omniauth :google_oauth2, "206882459863.apps.googleusercontent.com", "wh5Q8gMce9SKzy6oRUbsA96J", { access_type: "offline", approval_prompt: "" }
 
 
