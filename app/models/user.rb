@@ -21,8 +21,9 @@ class User < ActiveRecord::Base
   # and having the below validations makes omniauth fb/twitter logins not work
   # validates_presence_of :first_name, :last_name, :email, :encrypted_password
 
+
   def password_required?
-    (authentications.empty? || !password.blank?) && super
+    (authentications.empty? || password.blank?) && super
   end
 
   def name

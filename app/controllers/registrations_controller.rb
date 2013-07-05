@@ -1,17 +1,26 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  def create
-    super
-    session[:omniauth] = nil unless @user.new_record?
-  end
+
+  # def create
+  #   super
+  #   session[:omniauth] = nil unless @user.new_record?
+  # end
   
-  private
+  # private
   
-  def build_resource(*args)
-    super
-    if session[:omniauth]
-      @user.apply_omniauth(session[:omniauth])
-      @user.valid?
-    end
+  # def build_resource(*args)
+  #   super
+  #   if session[:omniauth]
+  #     @user.apply_omniauth(session[:omniauth])
+  #     @user.valid?
+  #   end
+  # end
+
+  protected
+
+  def after_sign_in_path_for(resource)
+    user_path(resource)
   end
+
+
 end
