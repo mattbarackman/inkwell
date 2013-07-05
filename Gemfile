@@ -26,17 +26,23 @@ group :assets do
 end
 
 group :test, :development do 
+  gem 'debugger'
   gem 'faker'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl'
   gem 'database_cleaner'
-
+  gem 'sextant'
+  gem 'shoulda'
 end
 
 
 gem 'jquery-rails'
 gem 'devise'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

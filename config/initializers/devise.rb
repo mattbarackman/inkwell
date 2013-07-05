@@ -1,6 +1,15 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+
+	# Facebook Omniauth
+	require "omniauth-facebook"
+	OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?	
+  config.omniauth :facebook, '185220694978236', '99946ed9ee406b1a85396294ea25c4df'
+	# config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET']
+  config.omniauth :twitter, 'ypN7Cvb0J7FcqjXgJAWQiw', 'dGEZSrVyt4DmW0WpKa8Nnh0MjkDv78nv2JbX91kY'
+  # config.omniauth :linked_in, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.

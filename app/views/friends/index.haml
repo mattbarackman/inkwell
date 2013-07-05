@@ -2,4 +2,10 @@
 
 %ul.friends-list
 -current_user.friends.each do |friend|
-	%li= friend.first_name
+  %li
+    = friend.first_name
+    = friend.last_name + " -"
+    = friend.city + ","
+    = friend.state
+    = link_to "edit", edit_friend_path(friend)
+    = link_to "delete", friend, :confirm => "Are you sure?", :method => :delete

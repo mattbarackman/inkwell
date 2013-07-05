@@ -5,6 +5,7 @@ class Card < ActiveRecord::Base
  # has_many_and_belongs_to :tags
 
  validates_presence_of :price, :title, :description, :inventory
- 
+ has_many :orders
+ has_and_belongs_to_many :tags
 
 end

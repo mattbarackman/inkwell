@@ -1,6 +1,13 @@
 class Occasion < ActiveRecord::Base
-  belongs_to :friend
   attr_accessible :date, :event_type_name, :name, :friend_id
 
-  validates :name, :date, :presence => true
+  validates_presence_of :name, :date
+  
+  has_many :orders
+  belongs_to :friend
+
+  def user
+    self.friend.user
+  end
+
 end

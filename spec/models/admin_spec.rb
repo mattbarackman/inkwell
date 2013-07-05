@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Admin do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  let!(:admin) {create(:admin)}
+
+  it {should validate_presence_of(:email)}
+  it {should validate_presence_of(:encrypted_password)}
+
 end

@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Occasion do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:occasion) {create(:occasion)}
+
+  it {should validate_presence_of(:name)}
+  it {should validate_presence_of(:date)}
+  it {should have_many(:orders)}
+  it {should belong_to(:friend)}
+
 end

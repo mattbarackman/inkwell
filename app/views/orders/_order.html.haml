@@ -1,0 +1,20 @@
+%p
+  User:
+  = order.user.name
+
+%p
+  Friend:
+  = order.occasion.friend.name
+
+%p
+  Occasion:
+  = order.occasion.name
+
+%p
+  Card:
+  = order.card.title
+
+%p
+  Price:
+  = format_price(order.card.price)
+
