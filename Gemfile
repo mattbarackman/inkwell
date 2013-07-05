@@ -10,6 +10,7 @@ gem 'heroku'
 gem 'awesome_print'
 gem 'haml-rails'
 gem 'html2haml'
+gem 'etsy', "~> 0.2.2"
 
 
 # Gems used only for assets and not required
