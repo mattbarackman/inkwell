@@ -9,6 +9,7 @@ Inkwell::Application.routes.draw do
 
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
   resources :occasions
+  resources :orders
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'cards#index'

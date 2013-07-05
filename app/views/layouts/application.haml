@@ -1,13 +1,13 @@
 !!!
 
 %html
-	%head
-		%title InkWell
-		= stylesheet_link_tag "application", :media => "all"
-		= javascript_include_tag "application"
-		= csrf_meta_tags
+  %head
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
 
-	%body
-		#header
-			= render :partial => "layouts/nav/nav"
-		= yield
+  %body
+    #header
+      %h2{class: "title"}= link_to "InkWell", root_path
+      = render :partial => "layouts/nav/nav"
+    = yield
