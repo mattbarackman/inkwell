@@ -7,19 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-10.times do 
 
-  title = Faker::Lorem.words(5).join(" ").titleize
-  description = Faker::Lorem.sentences(4).join(" ")
-  price = rand(400..600)
-  inventory = rand(0..10)
+#   Card.create(title:       title, 
+#               description: description, 
+#               price:       price, 
+#               inventory:   inventory)
 
-  Card.create(title:       title, 
-              description: description, 
-              price:       price, 
-              inventory:   inventory)
-
-end
+# end
 
 Admin.create(email: "admin@inkwell.com", password: "cardmaster")
 

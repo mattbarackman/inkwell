@@ -14,4 +14,3 @@
 /log/*.log
 /tmp
 config/web_app_api.yaml
-assets/images/*

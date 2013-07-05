@@ -1,12 +1,9 @@
 %h1 Cards
-- image_files_array = Dir["app/assets/card_images/*"]
 - @cards.each do |card|
   %p= card.title
-  card.images.each do |image|
-    =image_tag "card_images/card_#{id}/image_#{image.id}"
-  end
-  / - image_tag("app/assets/card_images/home_sweet_home.jpg")  
-
+  =image_tag "card_images/card_#{card.id}/image_1/img_fullxfull.jpg", width: "200"
+  =image_tag "card_images/card_#{card.id}/image_2/img_fullxfull.jpg", width: "200"
+  =image_tag "card_images/card_#{card.id}/image_3/img_fullxfull.jpg", width: "200" 
 
 
 

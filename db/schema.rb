@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705005507) do
+ActiveRecord::Schema.define(:version => 20130705024112) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20130705005507) do
     t.string   "title"
     t.text     "description"
     t.integer  "inventory"
+    t.integer  "listing_id"
   end
 
   create_table "cards_tags", :force => true do |t|
@@ -93,6 +94,13 @@ ActiveRecord::Schema.define(:version => 20130705005507) do
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
+
+  create_table "photos", :force => true do |t|
+    t.integer  "card_id"
+    t.string   "file_location"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "tags", :force => true do |t|
     t.string   "name",       :null => false

@@ -11,27 +11,36 @@ namespace :etsy do
   task :read_image => :environment do
     user = Etsy.user("jdeluce")
     shop = user.shop
-    card_image_urls = []
     shop.listings.each do |listing|
 
       company_name = shop.title
+      company_url = shop.url
       title = listing.title
+      inventory = listing.quantity
       description = listing.description
       price = ((listing.price.to_f)*100).round
 
-      card = Card.create(title: title, description: description, inventory: inventory)
+      card = Card.create(title: title, description: description, 
+        inventory: inventory, company_url: company_url,
+        company_name: company_name, price: price)
+
+      image_num = 1
 
       listing.images.each do |image|
-
-        full_size = image.result["url_fullxfull"]
-        card.images << Image.create(full_size: full_size, )
-
+        # full_size = image.result["url_fullxfull"]
+        # pic_170x135 = image.result["url_170x135"] 
+        card.photos << Photo.create(file_location: "/card_images/card_#{card.id}/image_#{image_num}/img_fullxfull.jpg")
+        card.photos << Photo.create(file_location: "/card_images/card_#{card.id}/image_#{image_num}/img_75x75.jpg")
+        # system( "wget #{image.result["url_fullxfull"]} -O  ./app/assets/images/card_#{card.id}/image_full_#{image_num}")
+        sleep(0.5)
+        system("curl -o ./app/assets/images/card_images/card_#{card.id}/image_#{image_num}/img_fullxfull.jpg  #{image.result["url_fullxfull"]} --create-dirs")
+        sleep(0.5)
+        system("curl -o ./app/assets/images/card_images/card_#{card.id}/image_#{image_num}/img_75x75.jpg  #{image.result["url_75x75"]} --create-dirs")
+        # system( "wget #{image.result["url_170x135"]} -O  ./app/assets/images/card_#{card.id}/image_#{image_num}_jpg")
+        image_num += 1
       end
-
-      system( "wget #{listing.image.result["url_170x135"]} -O  ./app/assets/card_images/card_#{card.id}/image_#{image.id}")
-      card_image_urls << listing.image.result["url_170x135"]
+      card.save
     end
-    File.open('testfile', "w") {|f| f.write(card_image_urls)}
   end
 end
 
