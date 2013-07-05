@@ -1,14 +1,23 @@
 Inkwell::Application.routes.draw do
+  # match '/auth/:provider/callback' => 'authentications#create'
   devise_for :admins
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => {:omniauth_callbacks => 'registrations'} do
+    match "/users/auth/:provider/callback" => 'authentications#create'
+  end
 
+  # devise_scope :user do 
+  #   get "/users/auth/:provider/callback" => 'devise/authentications#create'
+  # end
+  
 
-  # This is the default place devise directs user after login
   match '/profile' => 'users#profile', as: :user_root
+  resources :authentications
 
 
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
   resources :occasions
+  resources :orders
+  resources :tags
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'cards#index'
