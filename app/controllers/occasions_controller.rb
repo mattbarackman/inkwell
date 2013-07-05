@@ -13,7 +13,7 @@ class OccasionsController < ApplicationController
 
   def edit
     @occasion = Occasion.find(params[:id])
-    redirect_to user_root_path unless @occasion && @occasion.friend.user == current_user
+    redirect_to user_root_path unless @occasion && @occasion.user == current_user
   end
 
   def update
