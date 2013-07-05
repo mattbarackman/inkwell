@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   :first_name, :last_name, :street_address, :city, :state,
   :zipcode, :provider, :uid, :name
 
-
+  after_create :send_welcome_email
 
   # please do not uncomment line below, devise validates appropriate fields
   # and having the below validations makes omniauth fb/twitter logins not work
@@ -70,5 +70,9 @@ class User < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
   end
 end
