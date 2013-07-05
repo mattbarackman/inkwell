@@ -4,11 +4,18 @@
   = devise_error_messages!
   = field_set_tag "Authentication details" do
     = f.email_field :email, placeholder: 'Email', :autofocus => true
-    %br
     -if f.object.password_required?
       = f.password_field :password, placeholder: 'Password'
-      %br
       = f.password_field :password_confirmation, placeholder: 'Confirm password'
+
+  = field_set_tag "Personal" do
+    = f.text_field :first_name, placeholder: 'First Name'
+    = f.text_field :last_name, placeholder: 'Last Name'
+    = f.text_field :street_address, placeholder: 'Street Address'
+    = f.text_field :city, placeholder: 'City'
+    = f.select :state, options_for_select(us_states)
+    = f.text_field :zipcode, placeholder: 'ZIP Code'
+
   = f.submit 'Sign up'
 
 = render "users/shared/links"

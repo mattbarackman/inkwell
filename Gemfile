@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'heroku'
 gem 'awesome_print'
 gem 'haml-rails'
 gem 'html2haml'
@@ -26,15 +27,17 @@ end
 
 group :test, :development do 
   gem 'debugger'
-  gem 'faker'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'factory_girl'
-  gem 'database_cleaner'
-  gem 'sextant'
-  gem 'shoulda'
-	gem "nifty-generators"
 end
+
+#move these back into :test, :development before demo
+gem 'faker'
+gem 'rspec-rails'
+gem 'capybara'
+gem 'factory_girl'
+gem 'database_cleaner'
+gem 'sextant'
+gem 'shoulda'
+gem "nifty-generators"
 
 
 gem 'jquery-rails'

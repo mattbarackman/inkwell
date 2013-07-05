@@ -6,20 +6,16 @@
   = field_set_tag "Personal" do
     = f.label :first_name
     = f.text_field :first_name, placeholder: 'First Name'
-    %br
     = f.label :last_name
     = f.text_field :last_name, placeholder: 'Last Name'
-    %br
     = f.label :street_address
     = f.text_field :street_address, placeholder: 'Street Address'
-    %br
     = f.label :city_state_zip, "City, State & ZIP Code"
     = f.text_field :city, placeholder: 'City'
-    = f.text_field :state, placeholder: 'State'
+    = f.select :state, options_for_select(us_states)
     = f.text_field :zipcode, placeholder: 'ZIP Code'
   %div
     = f.label :email
-    %br/
     = f.email_field :email, :autofocus => true
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     %div
@@ -27,17 +23,14 @@
   %div
     = f.label :password
     %i (leave blank if you don't want to change it)
-    %br/ 
     = f.password_field :password, :autocomplete => "off"
   %div
     = f.label :password_confirmation
-    %br/
     = f.password_field :password_confirmation
   -if f.object.encrypted_password.present?
     %div
       = f.label :current_password
       %i (we need your current password to confirm your changes)
-      %br/
       = f.password_field :current_password
   %div= f.submit "Update"
 %h3 Cancel my account

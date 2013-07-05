@@ -1,0 +1,9 @@
+/ - if @order.errors
+/   - @order.errors.full_messages.each do |error|
+/   %p= error
+
+
+= form_tag associate_card_path, method: :post do
+  = collection_select :occasion, :id, current_user.occasions_without_cards, :id, :name
+  = hidden_field_tag :card_id, card.id
+  = submit_tag "Save"

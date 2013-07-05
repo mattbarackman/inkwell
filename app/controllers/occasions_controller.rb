@@ -2,6 +2,10 @@ class OccasionsController < ApplicationController
 
   before_filter :authenticate_user!
   
+  def index
+    @occasions = current_user.occasions
+  end
+
   def new
     @occasion = Occasion.new
   end
