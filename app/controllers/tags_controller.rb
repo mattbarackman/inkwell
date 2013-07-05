@@ -6,6 +6,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
+    @cards = @tag.cards
   end
 
 end
