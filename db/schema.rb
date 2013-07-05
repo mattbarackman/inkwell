@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705024112) do
+ActiveRecord::Schema.define(:version => 20130705215143) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -97,9 +97,12 @@ ActiveRecord::Schema.define(:version => 20130705024112) do
 
   create_table "photos", :force => true do |t|
     t.integer  "card_id"
-    t.string   "file_location"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
   end
 
   create_table "tags", :force => true do |t|

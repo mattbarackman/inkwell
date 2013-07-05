@@ -19,25 +19,24 @@ namespace :etsy do
       inventory = listing.quantity
       description = listing.description
       price = ((listing.price.to_f)*100).round
+      listing_id = listing.result["listing_id"]
 
       card = Card.create(title: title, description: description, 
         inventory: inventory, company_url: company_url,
-        company_name: company_name, price: price)
-
-      image_num = 1
+        company_name: company_name, price: price, listing_id: listing_id)
 
       listing.images.each do |image|
-        # full_size = image.result["url_fullxfull"]
-        # pic_170x135 = image.result["url_170x135"] 
-        card.photos << Photo.create(file_location: "/card_images/card_#{card.id}/image_#{image_num}/img_fullxfull.jpg")
-        card.photos << Photo.create(file_location: "/card_images/card_#{card.id}/image_#{image_num}/img_75x75.jpg")
-        # system( "wget #{image.result["url_fullxfull"]} -O  ./app/assets/images/card_#{card.id}/image_full_#{image_num}")
+        photo1 = Photo.new
+        photo1.picture_from_url image.result["url_fullxfull"]
+        photo1.save
+        puts photo1.errors.full_messages
+        card.photos << photo1
         sleep(0.5)
-        system("curl -o ./app/assets/images/card_images/card_#{card.id}/image_#{image_num}/img_fullxfull.jpg  #{image.result["url_fullxfull"]} --create-dirs")
+        photo2 = Photo.new
+        photo2.picture_from_url image.result["url_75x75"]
+        photo2.save
+        card.photos << photo2
         sleep(0.5)
-        system("curl -o ./app/assets/images/card_images/card_#{card.id}/image_#{image_num}/img_75x75.jpg  #{image.result["url_75x75"]} --create-dirs")
-        # system( "wget #{image.result["url_170x135"]} -O  ./app/assets/images/card_#{card.id}/image_#{image_num}_jpg")
-        image_num += 1
       end
       card.save
     end
