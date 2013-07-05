@@ -22,6 +22,7 @@
 end
 
 Admin.create(email: "admin@inkwell.com", password: "cardmaster")
+User.create(email: "user@inkwell.com", password: "password")
 
 10.times do 
 

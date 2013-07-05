@@ -1,0 +1,12 @@
+.occasion
+
+  %h4
+    = occasion.name
+    on
+    = occasion.date
+  %p 
+    For:
+    =occasion.friend.name
+  %p
+    = link_to "Edit", edit_occasion_path(occasion)
+    =link_to "Delete", occasion, :confirm => "Are you sure?", :method => :delete

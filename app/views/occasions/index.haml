@@ -1,11 +1,4 @@
-%h3 Occasions
+%h1 Occasions
 
--current_user.occasions.each do |occasion|
-  %ul.occasion-list
-    %li
-      = occasion.name
-      = occasion.date
-      = occasion.friend.first_name
-      = occasion.friend.last_name
-      = link_to "Edit", edit_occasion_path(occasion)
-      = link_to "Delete", occasion, :confirm => "Are you sure?", :method => :delete
+.occassions
+ =render @occasions

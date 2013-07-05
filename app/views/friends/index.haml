@@ -9,3 +9,5 @@
     = friend.state
     = link_to "edit", edit_friend_path(friend)
     = link_to "delete", friend, :confirm => "Are you sure?", :method => :delete
+
+%p= link_to "Add a friend", new_friend_path
