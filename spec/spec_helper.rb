@@ -41,3 +41,5 @@ RSpec.configure do |config|
   config.order = "random"
 
 end
+
+FactoryGirl.find_definitions
