@@ -10,8 +10,9 @@ Inkwell::Application.routes.draw do
   # devise_scope :user do 
   #   get "/users/auth/:provider/callback" => 'devise/authentications#create'
   # end
-  
-  match '/friends/facebook' => 'friends#facebook', as: :add_facebook_friends
+  get '/friends/facebook' => 'friends#show_fb_friends'
+  post '/friends/facebook' => 'friends#add_fb_friend', as: :add_fb_friend
+
   match '/profile' => 'users#profile', as: :user_root
   # match '/orders/associate_card' => 'orders#new_card', as: :associate_card
   match '/orders/associate_card' => 'orders#create_card', as: :associate_card, via: :post
@@ -20,6 +21,7 @@ Inkwell::Application.routes.draw do
 
 
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
+
   resources :occasions
   resources :orders
   resources :cards

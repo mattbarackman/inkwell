@@ -29,12 +29,19 @@ class FriendsController < ApplicationController
     redirect_to friends_path
   end
 
-  def facebook
+  def show_fb_friends
+    friend = Friend.new()
+    render 'facebook'
   end
 
-  def add_facebook_friends
+  def add_fb_friend
+    Friend.add_fb_friend(current_user, params)
 
+    render :json => "hi there".to_json
   end
+
+
+
 
   private
 

@@ -1,7 +1,7 @@
 %h1= current_user.email
 
 -if current_user.logged_in_with_facebook?
-	=link_to 'Add friends from Facebook', add_facebook_friends_path
+	=link_to 'Add friends from Facebook', '/friends/facebook'
 
 =link_to 'View Friends', friends_path
 %br
