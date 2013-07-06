@@ -35,7 +35,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.1.0)
     builder (3.0.4)
     capybara (2.1.0)
       mime-types (>= 1.16)

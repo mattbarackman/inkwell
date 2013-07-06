@@ -10,6 +10,13 @@
           = occasion.friend.name
           = occasion.date
 
+  .add_occasion
+    - unless current_user.friends.empty?
+      %button Add occasion
+      = form_for :occasion, remote: true do |f|
+        = render partial: "occasions/form", locals: {f: f}
+        = f.submit 'Add!'
+
   .div{class: "shopping_cart"}
     %h3 Shopping Cart
     - current_user.occasions_with_cards.each do |occasion|

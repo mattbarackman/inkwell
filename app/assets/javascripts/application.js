@@ -16,3 +16,11 @@
 //= require_tree .
 
 $(document).foundation();
+
+$(document).ready(function() {
+    $('.add_occasion button').on('click', function() {
+        $('.add_occasion button').hide();
+        $('.add_occasion form').show();
+    });
+
+});
