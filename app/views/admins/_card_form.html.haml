@@ -1,0 +1,22 @@
+
+= card.title
+= card.description
+%br
+= image_tag "card_images/card_#{card.id}/image_1/img_fullxfull.jpg", width: "200" 
+= image_tag "card_images/card_#{card.id}/image_2/img_fullxfull.jpg", width: "200"
+= image_tag "card_images/card_#{card.id}/image_3/img_fullxfull.jpg", width: "200"
+= link_to "Delete", card, :confirm => "Are you sure?", :method => :delete
+%br
+
+= form_for card do |f|
+  = f.fields_for :cards_tags, [CardsTag.new] do |t|
+    = t.collection_select :tag_id, Tag.all, :id, :name
+  = f.submit
+%br
+
+Existing Tags:
+- card.tags.each do |tag|
+  =tag.name 
+  =link_to "Delete", cardstags_path(card: card, tag: tag), :confirm => "Are you sure?", :method => :delete
+%br
+%br
