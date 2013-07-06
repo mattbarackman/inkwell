@@ -21,13 +21,13 @@ Inkwell::Application.routes.draw do
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
   resources :occasions
   resources :orders
+  resources :cards
   resources :tags
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'cards#index'
 
 
-  resources :cards, :only => [:show]
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

@@ -38,7 +38,8 @@ gem 'database_cleaner'
 gem 'sextant'
 gem 'shoulda'
 gem "nifty-generators"
-
+gem 'paperclip-aws'
+gem 'rmagick'
 
 gem 'jquery-rails'
 gem 'devise'

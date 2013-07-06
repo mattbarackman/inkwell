@@ -1,6 +1,26 @@
 .card
-  %h3= link_to card.title, card
-  %p= card.description
-  %p 
-    Price:
-    =format_price(card.price)
+  %h1 
+    =@card.title
+
+  %p
+    Description:
+    =@card.description
+
+  %p
+    Price: 
+    ="$"+"#{@card.price / 100}"+"."+"#{@card.price % 100}"
+
+  %p
+    =pluralize(@card.inventory, "card")
+    remaining
+
+  
+  = image_tag @card.photos.first.data.url(:thumb)
+  = image_tag @card.photos.first.data.url(:medium)
+  = image_tag @card.photos.first.data.url(:full)
+  = image_tag @card.photos.last.data.url(:original)
+  
+  -unless current_user.occasions_without_cards.empty?
+    =render partial: 'associate_card_form', locals: {card: @card, order: @order}
+
+
