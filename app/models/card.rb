@@ -13,4 +13,8 @@ class Card < ActiveRecord::Base
 
  accepts_nested_attributes_for :cards_tags
 
+ def tag_names
+  tags.map{|tag| tag.name}.join(", ")
+ end
+
 end

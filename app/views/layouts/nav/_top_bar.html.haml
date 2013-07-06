@@ -1,0 +1,23 @@
+%nav{class: "top-bar"}
+  %ul{class: "title-area"}
+    %li{class: "name"}
+      %h1 
+        =link_to "Inkwell", root_path
+  
+  %section{class: "top-bar-section"}
+    %ul{class: "right"}
+      %li{class: "divider"}
+      %li{class: "active"}
+        =link_to "Login", new_user_session_path unless current_user
+        =link_to "Logout", destroy_user_session_path if current_user
+
+      %li{class: "divider"}
+
+      %li{class: "has-dropdown"}
+        %a{href: "#"}
+          Categories
+
+        %ul{class: "dropdown"}
+          %li{class: "has-dropdown"}
+            =link_to "Anniversary Cards", tag_path(1)
+            =link_to "Birthday Cards", tag_path(2)

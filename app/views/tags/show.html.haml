@@ -1,3 +1,6 @@
-%h1= @tag.name.titleize 
+%h1
+  = @tag.name.titleize
+  Cards
+
 = render :partial => "cards/card", :collection => @cards, :as => :card
 

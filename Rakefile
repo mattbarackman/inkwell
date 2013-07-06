@@ -20,10 +20,10 @@ namespace :etsy do
       description = listing.description
       price = ((listing.price.to_f)*100).round
       listing_id = listing.result["listing_id"]
-
+      
       card = Card.create(title: title, description: description, 
-        inventory: inventory, company_url: company_url,
-        company_name: company_name, price: price, listing_id: listing_id)
+          inventory: inventory, company_url: company_url,
+          company_name: company_name, price: price, listing_id: listing_id)
 
       listing.images.each do |image|
         photo1 = Photo.new

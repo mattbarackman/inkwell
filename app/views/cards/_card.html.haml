@@ -1,26 +1,35 @@
 .card
-  %h1 
-    =@card.title
+  %h3 
+    =link_to card.title, card
 
-  %p
-    Description:
-    =@card.description
+  .div{class: "row"}
+    
+    .div{class: "small-4 columns"}
+      = image_tag card.photos.first.data.url(:full)
+    
+    .div{class: "small-8 columns"}
+      %p
+        Description:
+        =card.description
 
-  %p
-    Price: 
-    ="$"+"#{@card.price / 100}"+"."+"#{@card.price % 100}"
+      %p
+        Price: 
+        =format_price(card.price)
 
-  %p
-    =pluralize(@card.inventory, "card")
-    remaining
+      %p
+        =pluralize(card.inventory, "card")
+        remaining
+      %p
+        Tags:
+        =card.tag_names
+        
 
   
-  = image_tag @card.photos.first.data.url(:thumb)
-  = image_tag @card.photos.first.data.url(:medium)
-  = image_tag @card.photos.first.data.url(:full)
-  = image_tag @card.photos.last.data.url(:original)
+  / = image_tag card.photos.first.data.url(:thumb)
+  / = image_tag card.photos.first.data.url(:medium)
+  / = image_tag card.photos.last.data.url(:original)
   
-  -unless current_user.occasions_without_cards.empty?
-    =render partial: 'associate_card_form', locals: {card: @card, order: @order}
+  -unless current_user && current_user.occasions_without_cards.empty?
+    =render partial: 'cards/associate_card_form', locals: {card: card, order: @order}
 
 

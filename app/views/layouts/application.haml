@@ -9,5 +9,10 @@
   %body
     #header
       %h2{class: "title"}= link_to "InkWell", root_path
-      = render :partial => "layouts/nav/nav"
-    = yield
+      = render :partial => "layouts/nav/top_bar"
+      / = render :partial => "layouts/nav/nav"
+    .row
+      %div{class: "small-8 columns"}
+        = yield
+      %div{class: "small-4 columns"}
+        = render 'layouts/sidebar' if current_user

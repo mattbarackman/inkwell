@@ -1,7 +1,8 @@
 module ApplicationHelper
 
   def format_price(price)
-    "$"+(price/100).to_s+"."+(price%100).to_s
+    cents = (price % 100 == 0) ? "00" : (price % 100).to_s
+    "$"+(price/100).to_s+"."+cents
   end
 
 end
