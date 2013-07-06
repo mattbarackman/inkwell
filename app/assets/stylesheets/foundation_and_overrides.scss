@@ -15,9 +15,9 @@
 // $em-base: 16px;
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: #FFFAE8;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -65,6 +65,7 @@
 // Grid Variables
 //
 
+$row-width: 100%;
 // $row-width: 62.5em;
 // $column-gutter: 1.875em;
 // $total-columns: 12;
@@ -85,9 +86,9 @@
 //
 
 // We use these to control header font styles
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+ $header-font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $header-font-weight: bold;
-// $header-font-style: normal;
+ $header-font-style: normal;
 // $header-font-color: #222;
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
@@ -968,7 +969,7 @@
 //
 
 // Background color for the top bar
-$topbar-bg: #D9FEFF;
+$topbar-bg: #D1C756;
 
 // Height and margin
 $topbar-height: 75px;
@@ -982,12 +983,12 @@ $topbar-title-weight: bold;
 $topbar-title-font-size: 3em;
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: #111;
+// $topbar-link-color: #D1C756;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: emCalc(13px);
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: #333;
+$topbar-dropdown-bg: #D1C756;
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;

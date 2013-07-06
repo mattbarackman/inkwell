@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     orders.select{|order| order.card == nil}.map{|order| order.occasion}
   end
 
+  def occasions_with_cards
+    orders.select{|order| order.card != nil}.map{|order| order.occasion}
+  end
+
   def facebook
     oauth_token = self.authentications.find_by_provider('facebook').oauth_token
     @facebook ||= Koala::Facebook::API.new(oauth_token)

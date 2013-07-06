@@ -1,3 +1,19 @@
 .div{class: "side_bar"}
   .div{class: "pending_orders"}
+    
+    - unless current_user.occasions_without_cards.empty?
+      %h3 Drag cards onto these occasions
+      
+      - current_user.occasions_without_cards.each do |occasion|
+        %p 
+          = occasion.name
+          = occasion.friend.name
+          = occasion.date
+
   .div{class: "shopping_cart"}
+    %h3 Shopping Cart
+    - current_user.occasions_with_cards.each do |occasion|
+      %p 
+        = occasion.name
+        = occasion.friend.name
+        = occasion.date

@@ -62,7 +62,7 @@ end
 users.each do |user|
   user.friends.each do |friend|
     name = friend.first_name + " " + friend.last_name
-    friend.occasions << Occasion.create(date: datetime_rand, name:"#{name.titleize}'s Birthday", event_type_name: "birthday")
+    friend.occasions.build(date: datetime_rand, name:"#{name.titleize}'s Birthday", event_type_name: "birthday")
   end
 end
 

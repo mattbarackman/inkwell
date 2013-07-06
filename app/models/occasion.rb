@@ -6,6 +6,8 @@ class Occasion < ActiveRecord::Base
   has_many :orders
   belongs_to :friend
 
+  after_create :create_order
+
   def user
     self.friend.user
   end
@@ -22,8 +24,6 @@ class Occasion < ActiveRecord::Base
     DateTime.parse(date)
   end
   
-  after_create :create_order
-
   def create_order
     Order.create(occasion_id: id, user_id: friend.user.id )
   end

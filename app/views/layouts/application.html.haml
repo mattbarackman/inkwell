@@ -14,7 +14,8 @@
 
   -# Set the viewport width to device width for mobile
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
-
+  <link href='http://fonts.googleapis.com/css?family=Redressed|Satisfy|Sacramento|Cookie|Dancing+Script:400,700|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
   %title= content_for?(:title) ? yield(:title) : "Untitled"
 
   = stylesheet_link_tag "application"
@@ -25,7 +26,11 @@
   = render :partial => "layouts/nav/top_bar"
   .main_container
     .row
-      %div{class: "small-8 columns"}
-        = yield
-      %div{class: "small-4 columns"}
-        = render 'layouts/sidebar' if current_user
+      - if current_user 
+        %div{class: "small-8 columns"}
+          = yield
+        %div{class: "small-4 columns"}
+          = render 'layouts/sidebar' if current_user
+      - else
+        %div{class: "small-12 columns"}
+          = yield

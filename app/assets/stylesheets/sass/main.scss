@@ -1,4 +1,11 @@
+
+
+
 $topbar-bg: #D9FEFF;
+
+body {
+  background: url('/assets/paper.png');
+}
 
 body .main_container {
   padding-left: 40px;
@@ -17,6 +24,6 @@ body .main_container {
   margin-bottom: 40px;
 }
 
-.row {
-  margin-left: 0;
+.top-bar {
+  border-bottom: #B7BF4C 4px solid;
 }
