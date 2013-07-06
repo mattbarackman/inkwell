@@ -7,6 +7,8 @@ class Authentication < ActiveRecord::Base
     where(omniauth.slice(:provider, :uid)).first_or_create do |auth|
       auth.provider = omniauth.provider
       auth.uid = omniauth.uid
+      auth.oauth_token = omniauth.credentials.token
+      auth.oauth_expires_at = Time.at(omniauth.credentials.expires_at)
     end
   end
 

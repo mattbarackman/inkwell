@@ -29,6 +29,13 @@ class FriendsController < ApplicationController
     redirect_to friends_path
   end
 
+  def facebook
+  end
+
+  def add_facebook_friends
+
+  end
+
   private
 
   # See try_to_update in ApplicationController

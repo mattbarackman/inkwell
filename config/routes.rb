@@ -5,11 +5,12 @@ Inkwell::Application.routes.draw do
     match "/users/auth/:provider/callback" => 'authentications#all'
   end
 
+
   # devise_scope :user do 
   #   get "/users/auth/:provider/callback" => 'devise/authentications#create'
   # end
   
-
+  match '/friends/facebook' => 'friends#facebook', as: :add_facebook_friends
   match '/profile' => 'users#profile', as: :user_root
   # match '/orders/associate_card' => 'orders#new_card', as: :associate_card
   match '/orders/associate_card' => 'orders#create_card', as: :associate_card, via: :post

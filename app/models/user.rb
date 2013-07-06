@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def facebook
+    oauth_token = self.authentications.find_by_provider('facebook').oauth_token
     @facebook ||= Koala::Facebook::API.new(oauth_token)
     block_given? ? yield(@facebook) : @facebook
     rescue Koala::Facebook::APIError => e
@@ -42,8 +43,13 @@ class User < ActiveRecord::Base
     nil # or consider a custom null object
   end
 
-  def friends_count
-    facebook { |fb| fb.get_connection("me", "friends").size }
+  def get_facebook_friends
+    friends = facebook.get_connections("me", "friends", "fields"=>"name,birthday")
+    friends.sort{|a,b| a['name'] <=> b['name']}
+  end
+
+  def logged_in_with_facebook?
+    self.authentications.find_by_provider('facebook')
   end
 
   def send_welcome_email
