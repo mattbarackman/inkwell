@@ -1,10 +1,11 @@
 Inkwell::Application.routes.draw do
   # match '/auth/:provider/callback' => 'authentications#create'
   devise_for :admins
-  devise_for :users, :controllers => {:omniauth_callbacks => 'registrations'} do
+  devise_for :users, :controllers => {:registrations => 'registrations'} do
     match "/users/auth/:provider/callback" => 'authentications#all'
   end
 
+  
 
   # devise_scope :user do 
   #   get "/users/auth/:provider/callback" => 'devise/authentications#create'

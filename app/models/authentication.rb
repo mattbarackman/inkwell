@@ -13,8 +13,8 @@ class Authentication < ActiveRecord::Base
   end
 
   def self.new_with_session(params, session)
-    if session["devise.authentication_attributes"]
-      new(session["devise.authentication_attributes"], without_protection: true) do |auth|
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |auth|
         auth.attributes = params
         auth.valid?
       end

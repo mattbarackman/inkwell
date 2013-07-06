@@ -3,10 +3,7 @@ class User < ActiveRecord::Base
   has_many :friends
   has_many :orders  
   has_many :occasions, :through => :friends
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
   :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
@@ -17,13 +14,11 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_email
 
-  # please do not uncomment line below, devise validates appropriate fields
-  # and having the below validations makes omniauth fb/twitter logins not work
-  # validates_presence_of :first_name, :last_name, :email, :encrypted_password
-
+  #validates_presence_of :email, :encrypted_password
+  validates_confirmation_of :password
 
   def password_required?
-    (authentications.empty? || password.blank?) && super
+    password.blank?
   end
 
   def name
@@ -40,7 +35,7 @@ class User < ActiveRecord::Base
     block_given? ? yield(@facebook) : @facebook
     rescue Koala::Facebook::APIError => e
       logger.info e.to_s
-    nil # or consider a custom null object
+    nil
   end
 
   def get_facebook_friends

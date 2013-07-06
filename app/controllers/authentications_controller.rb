@@ -1,17 +1,16 @@
-class AuthenticationsController < ApplicationController
+class AuthenticationsController < Devise::RegistrationsController
 
   def all
     omniauth = request.env["omniauth.auth"]
+    user = User.find_or_create_by_email(omniauth.info.email)
     authentication = Authentication.from_omniauth(omniauth)
 
     if authentication.persisted?
-      @user = User.find_or_create_by_email(omniauth.info.email)
-      authentication.user = @user
-      authentication.save
-      sign_in_and_redirect @user
-      # redirect_to '/profile'
+      user.authentications << authentication
+      user.update_attribute('email', omniauth.info.email)
+      sign_in_and_redirect user
     else
-      session["devise.authentication_attributes"] = authentication.attributes
+      session["devise.user_attributes"] = user.attributes
       redirect_to new_user_registration_url
     end
   end
