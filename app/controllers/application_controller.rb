@@ -15,7 +15,10 @@ class ApplicationController < ActionController::Base
       if !authorized
         redirect_to user_root_path, notice: "Not authorized", status: :unauthorized
       elsif resource.update_attributes(params[resource_symbol])
-        redirect_to resource_path
+        respond_to do |format|
+          format.html { redirect_to resource_path }
+          format.js { render :partial => 'layouts/occasion', locals: {occasion: resource} }
+        end
       else
         redirect_to user_root_path, notice: "Failed to save", status: :internal_server_error
       end

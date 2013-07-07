@@ -8,6 +8,7 @@ body {
 }
 
 body .main_container {
+  margin-top: 100px;
   padding-left: 40px;
 }
 
@@ -24,6 +25,37 @@ body .main_container {
   margin-bottom: 40px;
 }
 
-.top-bar {
+/*.top-bar {
   border-bottom: #B7BF4C 4px solid;
+  .title-area {
+    .name {
+       h1 {
+       font-family: 'Amatic SC' !important;
+       font-style: 'cursive' !important;
+      
+    }
+  }
+}
+*/
+
+h1 {
+  font-family: 'Amatic SC';
+  font-style: 'cursive'; 
+}
+
+.logo {
+  display: inline-block;
+  float: left;
+  margin-left: 30px;
+
+}
+
+.top-bar {
+  .name h1 a {
+    padding-top: 2px;
+    padding-left: 15px;
+  }
+  li {
+    display: inline-block;
+  }
 }
