@@ -25,13 +25,22 @@ class User < ActiveRecord::Base
     first_name + " " + last_name
   end
 
-  def occasions_without_cards
-    orders.select{|order| order.card == nil}.map{|order| order.occasion}
+  def orders_without_cards
+    orders.select{|order| order.status == "no_card"}.map{|order| order.occasion}
   end
 
-  def occasions_with_cards
-    orders.select{|order| order.card != nil}.map{|order| order.occasion}
+  def orders_in_cart
+    orders.select{|order| order.status == "in_cart"}.map{|order| order.occasion}
   end
+
+  def future_orders
+    orders.reject{|order| order.upcoming?}
+  end
+
+  def upcoming_orders
+    orders.select{|order| order.upcoming?}
+  end
+
 
   def facebook
     oauth_token = self.authentications.find_by_provider('facebook').oauth_token

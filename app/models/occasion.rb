@@ -28,4 +28,12 @@ class Occasion < ActiveRecord::Base
     Order.create(occasion_id: id, user_id: friend.user.id )
   end
 
+  def upcoming?
+    (date - Date.today).to_i < 60
+  end
+  
+  def today?
+    date == Date.today
+  end
+
 end

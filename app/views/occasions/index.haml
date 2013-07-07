@@ -1,4 +1,11 @@
-%h1 Occasions
+%h1 Upcoming Occasions
 
-.occassions
- =render @occasions
+.upcoming_orders
+  .orders
+    =render partial: "order", collection: @upcoming_orders, as: :order
+
+%h1 Future Occasions
+
+.future_orders
+  .orders
+    =render partial: "order", collection: @future_orders, as: :order

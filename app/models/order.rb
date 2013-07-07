@@ -11,4 +11,16 @@ class Order < ActiveRecord::Base
     self.status = "in_cart" if status == "no_card" && card
   end
 
+  def delivery_date
+    (occasion.date.to_time - lead_time).to_date
+  end
+
+  def upcoming?
+    occasion.upcoming?
+  end
+
+  def today?
+    occasion.today?
+  end
+
 end

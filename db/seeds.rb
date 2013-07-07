@@ -66,9 +66,7 @@ users.each do |user|
   end
 end
 
-half_of_occasions = Occasion.all.select {|occasion| occasion.id.odd?}
-
-half_of_occasions.each do |occasion|
+Occasion.all.each do |occasion|
   Card.all.sample.orders << Order.create(user_id: occasion.friend.user.id, occasion_id: occasion.id)
 end
 

@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705230331) do
+ActiveRecord::Schema.define(:version => 20130707195643) do
+
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -92,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20130705230331) do
     t.integer "occasion_id",                        :null => false
     t.integer "card_id"
     t.integer "lead_time",   :default => 604800
-    t.string  "status",      :default => "in_cart"
+    t.string  "status",      :default => "no_card"
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"

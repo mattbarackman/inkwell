@@ -1,0 +1,22 @@
+.order_partial {
+  padding: 10px;
+  margin-bottom: 10px;
+  ul {
+    margin-bottom: 0px;
+  }
+  li {
+    margin-left: 20px;
+  }
+}
+
+.no_card {
+  background-color: red;
+}
+
+.in_cart {
+  background-color: yellow;
+}
+
+.purchased {
+  background-color: green;
+}

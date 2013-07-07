@@ -1,0 +1,47 @@
+
+
+- if order.status == "no_card"
+  .order_partial.no_card
+    %ul 
+      %h4= order.occasion.name.titleize
+      %li
+        For:
+        = order.occasion.friend.name.titleize
+      %li
+        On:
+        = order.occasion.date
+      %li
+        Status:
+        = order.status
+
+- elsif order.status == "in_cart"
+  .order_partial.in_cart
+    %ul 
+      %h4= order.occasion.name.titleize
+      %li
+        For:
+        = order.occasion.friend.name.titleize
+      %li
+        On:
+        = order.occasion.date
+      %li
+        Status:
+        = order.status
+      %li
+        =image_tag order.card.photos.first.data("thumb")
+
+- else
+  .order_partial.purchased
+    %ul 
+      %h4= order.occasion.name.titleize
+      %li
+        For:
+        = order.occasion.friend.name.titleize
+      %li
+        On:
+        = order.occasion.date
+      %li
+        Status:
+        = order.status
+      %li
+        =image_tag order.card.photos.first.data("thumb")

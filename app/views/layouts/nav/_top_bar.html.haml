@@ -15,16 +15,28 @@
 
         %li{class: "divider"}
 
-        %li{class: "has-dropdown"}
+        %li{class: "has-dropdown", id: "category_dropdown"}
           %a{href: "#"}
             Categories
 
           %ul{class: "dropdown"}
             %li
               =link_to "Anniversary Cards", tag_path(1)
+            %li
               =link_to "Birthday Cards", tag_path(2)
 
         %li{class: "divider"}
-        %li{class: "active"}
-          =link_to "Login", new_user_session_path unless current_user
-          =link_to "Logout", destroy_user_session_path if current_user
+          -if current_user
+            %li{class: "has-dropdown"}
+              =link_to current_user.email, user_root_path
+              %ul.dropdown
+                %li
+                  =link_to "Dashboard", user_root_path
+                %li
+                  =link_to "Import Birthdays", friends_facebook_path
+                %li
+                  =link_to "Logout", destroy_user_session_path
+          -else
+            %li
+              =link_to "Login", new_user_session_path
+ 

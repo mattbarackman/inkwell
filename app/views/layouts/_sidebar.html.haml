@@ -2,10 +2,10 @@
   %div{class: "side_bar"}
     %div{class: "pending_orders"}
       
-      - unless current_user.occasions_without_cards.empty?
+      - unless current_user.orders_without_cards.empty?
         %h3 Drag cards onto these occasions
         
-        - current_user.occasions_without_cards.each do |occasion|
+        - current_user.orders_without_cards.each do |occasion|
           = render partial: "layouts/occasion", locals: {occasion: occasion}
 
     .add_occasion
@@ -17,7 +17,7 @@
 
     %div{class: "shopping_cart"}
       %h3 Shopping Cart
-      - current_user.occasions_with_cards.each do |occasion|
+      - current_user.orders_in_cart.each do |occasion|
         %p 
           = occasion.name
           = occasion.friend.name
