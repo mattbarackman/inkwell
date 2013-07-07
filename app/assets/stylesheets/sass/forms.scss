@@ -5,4 +5,14 @@ form {
   select {
     display: block
   }
+  legend {
+    background: none;
+  }
+  fieldset {
+    border: none;
+  }
+  input[type=submit]{
+    margin-left: 21px;
+    margin-bottom: 40px;
+  }
 }

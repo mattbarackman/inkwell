@@ -12,10 +12,6 @@
     
     %section{class: "top-bar-section"}
       %ul{class: "right"}
-        %li{class: "divider"}
-        %li{class: "active"}
-          =link_to "Login", new_user_session_path unless current_user
-          =link_to "Logout", destroy_user_session_path if current_user
 
         %li{class: "divider"}
 
@@ -24,6 +20,11 @@
             Categories
 
           %ul{class: "dropdown"}
-            %li{class: "has-dropdown"}
+            %li
               =link_to "Anniversary Cards", tag_path(1)
               =link_to "Birthday Cards", tag_path(2)
+
+        %li{class: "divider"}
+        %li{class: "active"}
+          =link_to "Login", new_user_session_path unless current_user
+          =link_to "Logout", destroy_user_session_path if current_user
