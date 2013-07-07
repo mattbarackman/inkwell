@@ -2,6 +2,7 @@
   
   =form_tag add_fb_friend_path, :method => :post, :remote => true, :class => 'add-fb-friend-form' do
     
+    =image_tag friend['picture']['data']['url']
     =text_field_tag "name", friend['name']
     =text_field_tag "birthday", friend['birthday']
     =submit_tag "Add friend"   

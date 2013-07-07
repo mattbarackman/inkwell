@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def get_facebook_friends
-    friends = facebook.get_connections("me", "friends", "fields"=>"name,birthday")
+    friends = facebook.get_connections("me", "friends", "fields"=>"name,birthday,picture")
     friends.sort{|a,b| a['name'] <=> b['name']}
   end
 

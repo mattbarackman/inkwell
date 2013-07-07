@@ -30,8 +30,7 @@ class FriendsController < ApplicationController
   end
 
   def show_fb_friends
-    friend = Friend.new()
-    render 'facebook'
+    render :json => current_user.get_facebook_friends.to_json
   end
 
   def add_fb_friend
