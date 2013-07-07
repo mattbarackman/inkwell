@@ -12,6 +12,7 @@ gem 'awesome_print'
 gem 'haml-rails'
 gem 'html2haml'
 gem 'etsy', "~> 0.2.2"
+gem 'paypal-express'
 
 # Gems used only for assets and not required
 # in production environments by default.
