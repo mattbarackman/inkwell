@@ -18,3 +18,4 @@ config/gmail_env_variables.yaml
 /DS_Store
 config/s3.yml
 config/gmail_env_variables.yaml
+config/paypal_api.yaml

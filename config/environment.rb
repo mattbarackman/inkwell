@@ -4,8 +4,6 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 Inkwell::Application.initialize!
 
-Etsy.api_key = "423vt2xp6agkds798k39ffvx"
-Etsy.api_secret = "tq0dit98n6"
 require 'yaml'
 
 unless Rails.env.production?

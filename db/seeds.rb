@@ -15,6 +15,8 @@
 
 # end
 
+system("rake etsy:read_image")
+
 Admin.create(email: "admin@inkwell.com", password: "cardmaster")
 User.create(email: "user@inkwell.com", password: "password")
 
@@ -75,5 +77,6 @@ Tag.create(name: "birthday")
 
 Card.all.each do |card|
   card.tags << Tag.all.sample
+  card.save
 end
 
