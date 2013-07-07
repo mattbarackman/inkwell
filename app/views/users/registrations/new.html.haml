@@ -3,19 +3,38 @@
 = form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
   = devise_error_messages!
   = field_set_tag "Authentication details" do
-    = f.email_field :email, placeholder: 'Email', :autofocus => true
+    .row
+      %div{class: "small-6 columns"}
+        = f.email_field :email, placeholder: 'Email', :autofocus => true
     -if f.object.password_required?
-      = f.password_field :password, placeholder: 'Password'
-      = f.password_field :password_confirmation, placeholder: 'Confirm password'
+      .row
+        %div{class: "small-6 columns"}
+          = f.password_field :password, placeholder: 'Password'
+      .row
+        %div{class: "small-6 columns"}
+          = f.password_field :password_confirmation, placeholder: 'Confirm password'
 
   = field_set_tag "Personal" do
-    = f.text_field :first_name, placeholder: 'First Name'
-    = f.text_field :last_name, placeholder: 'Last Name'
-    = f.text_field :street_address, placeholder: 'Street Address'
-    = f.text_field :city, placeholder: 'City'
-    = f.select :state, options_for_select(us_states)
-    = f.text_field :zipcode, placeholder: 'ZIP Code'
+    .row
+      %div{class: "small-6 columns"}
+        = f.text_field :first_name, placeholder: 'First Name'
+    .row
+      %div{class: "small-6 columns"}
+        = f.text_field :last_name, placeholder: 'Last Name'
+    .row
+      %div{class: "small-6 columns"}
+        = f.text_field :street_address, placeholder: 'Street Address'
+    .row
+      %div{class: "small-6 columns"}
+        = f.text_field :city, placeholder: 'City'
+    .row
+      %div{class: "small-6 columns"}
+        = f.select :state, options_for_select(us_states)
+    .row
+      %div{class: "small-6 columns"}
+        = f.text_field :zipcode, placeholder: 'ZIP Code'
 
   = f.submit 'Sign up'
 
 = render "users/shared/links"
+
