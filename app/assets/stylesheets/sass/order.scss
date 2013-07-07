@@ -1,22 +1,43 @@
 .order_partial {
   padding: 10px;
   margin-bottom: 10px;
-  ul {
+  box-shadow: 2px 2px 2px #888888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  h4 {
     margin-bottom: 0px;
   }
-  li {
-    margin-left: 20px;
+
+  .description {
+    margin-bottom: 0px;
+    p {
+      margin-left: 10px;
+    }
   }
+
+
+
 }
 
+
 .no_card {
-  background-color: red;
+  border: #FF9999 solid 5px;
+  background-color: white;
 }
 
 .in_cart {
-  background-color: yellow;
+  border: #FF9999 solid 5px;
+  background-color: white;
 }
 
+// .in_cart {
+//   border: #FFFF99 solid 5px;
+//   background-color: white;
+// }
+
 .purchased {
-  background-color: green;
+  border: #D1C756 solid 5px;
+  background-color: white;
 }

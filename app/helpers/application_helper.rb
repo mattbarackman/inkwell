@@ -5,4 +5,8 @@ module ApplicationHelper
     "$"+(price/100).to_s+"."+cents
   end
 
+  def format_date(date)
+    date.strftime("%A %B %e, %Y")
+  end
+
 end
