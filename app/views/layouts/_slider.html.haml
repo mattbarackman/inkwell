@@ -1,0 +1,29 @@
+
+.flexslider
+  %ul{class: "slides"}
+    %li 
+      .row
+        .div{class: "small-6 columns description"}
+          %h2 Welcome to Inkwell
+          %p= Faker::Lorem.sentences(5).join("")
+        .div{class: "small-6 columns"}
+          = image_tag('hello_there_resized_burn.jpg')
+
+    %li
+      .row
+        .div{class: "small-6 columns description"}
+          %h2 All of the Thought,
+          %h2 None of the Hassle
+          %p= Faker::Lorem.sentences(5).join("")
+        .div{class: "small-6 columns"}
+          = image_tag('letters_resized.jpg')
+
+    %li
+      .row
+        .div{class: "small-6 columns description"}
+          %h2 Curated Selection, 
+          %h2 Independent Spirit
+          %p= Faker::Lorem.sentences(5).join("")
+        .div{class: "small-6 columns"}
+          = image_tag('sweet-letterpress-1.jpg')
+

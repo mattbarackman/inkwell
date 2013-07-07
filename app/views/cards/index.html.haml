@@ -1,9 +1,8 @@
-%h1 Cards
-- @cards.each do |card|
-  %p= card.title
-  =image_tag "card_images/card_#{card.id}/image_1/img_fullxfull.jpg", width: "200"
-  =image_tag "card_images/card_#{card.id}/image_2/img_fullxfull.jpg", width: "200"
-  =image_tag "card_images/card_#{card.id}/image_3/img_fullxfull.jpg", width: "200" 
+- unless current_user
+  = render :partial => "layouts/slider"
 
+%h1 Cards
+
+= render :partial => "cards/card", :collection => @cards, :as => :card
 
 
