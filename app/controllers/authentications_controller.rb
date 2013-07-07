@@ -2,6 +2,7 @@ class AuthenticationsController < Devise::RegistrationsController
 
   def all
     omniauth = request.env["omniauth.auth"]
+    # raise omniauth.to_yaml
     user = User.find_or_create_by_email(omniauth.info.email)
     authentication = Authentication.from_omniauth(omniauth)
 
