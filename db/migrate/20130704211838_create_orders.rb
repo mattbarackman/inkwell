@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration
     t.references :occasion, null: false
     t.references :card
     t.integer :lead_time, :default => 604800
-    t.string :status, :default => "in_cart"
+    t.string :status, :default => "no_card"
   end
 
   add_index :orders, :user_id
