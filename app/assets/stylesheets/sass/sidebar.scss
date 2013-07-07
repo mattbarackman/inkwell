@@ -18,3 +18,14 @@
 .add_occasion form {
   display: none;
 }
+
+.occasion_partial {
+  margin-top: 10px;
+  border-bottom: gray 1px solid;
+  padding: 10px;
+  li {
+    margin-left: 20px;
+    list-style: dash;
+  }
+
+}

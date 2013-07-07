@@ -5,15 +5,12 @@
       %h3 Drag cards onto these occasions
       
       - current_user.occasions_without_cards.each do |occasion|
-        %p 
-          = occasion.name
-          = occasion.friend.name
-          = occasion.date
+        = render partial: "layouts/occasion", locals: {occasion: occasion}
 
   .add_occasion
     - unless current_user.friends.empty?
       %button Add occasion
-      = form_for :occasion, remote: true do |f|
+      = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
         = render partial: "occasions/form", locals: {f: f}
         = f.submit 'Add!'
 
