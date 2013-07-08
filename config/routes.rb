@@ -26,6 +26,7 @@ Inkwell::Application.routes.draw do
   resources :orders
   resources :cards
   resources :tags
+  resources :charges
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'cards#index'
