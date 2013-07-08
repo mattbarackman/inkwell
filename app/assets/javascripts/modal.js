@@ -10,7 +10,7 @@ var modal = (function(){
     method.center = function () {
       var top, left;
 
-      top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
+      top = (Math.max($(window).height() - $modal.outerHeight(), 0) / 2) - 200;
       left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
 
       $modal.css({
@@ -30,14 +30,14 @@ var modal = (function(){
 
       method.center();
       $(window).bind('resize.modal', method.center);
-      $modal.show();
-      $overlay.show();
+      $modal.fadeIn();//show();
+      $overlay.fadeIn();//show();
     };
 
     // Close the modal
     method.close = function () {
       $modal.hide();
-      $overlay.hide();
+      $overlay.fadeOut();
       $content.empty();
       $(window).unbind('resize.modal');
     };
@@ -61,16 +61,33 @@ var modal = (function(){
       method.close();
     });
     
-    $('.add-fb-friend-form').on('click', function(e){
-      e.preventDefault();
-      console.log(e);
-      console.log(this);
-    });
     return method;
   }());
 
 // Wait until the DOM has loaded before querying the document
 $(document).ready(function(){
+
+  $('#login-button').click(function(e){
+    e.preventDefault();
+
+    data =  '<div id="login-box-modal">';
+    data += '<div id="login-box-oauth">';
+    data += '<a href="/users/auth/facebook"><img src="/assets/facebook_128.png"></a>';
+    data += '<a href="/users/auth/google_oauth2"><img src="/assets/google_128.png"></a><br>';
+    data += '<form action="/users/sign_in" method="post" id="login-form">';
+    data += '<input autofocus="autofocus" id="user_email" name="user[email]" size="30" type="email" value="" placeholder="Email">';
+    data += '<input id="user_password" name="user[password]" size="30" type="password" placeholder="Password">';
+    data += '<input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" checked>';
+    data += '<input name="commit" type="submit" value="Sign in" id="sign-in-button">';
+    data += '<a href="/users/sign_up" class="login-link">Sign up</a><br>';
+    data += '<a href="/users/password/new" class="login-link">Forgot your password?</a>';
+    data += '</form>';
+
+    data += '</div></div>';
+
+    modal.open({content: data, width: '320', height: '337'});
+  });
+
 
   $('#facebook-add-friends-link').click(function(e){
     e.preventDefault();
@@ -92,7 +109,7 @@ $(document).ready(function(){
         friendData += '<input type="submit"></form></div>';
       });
 
-      modal.open({content: friendData });
+      modal.open({content: friendData, height: '600', width: '600' });
     });
     
   });
