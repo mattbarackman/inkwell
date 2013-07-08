@@ -10,7 +10,7 @@ var login = (function(){
   method.center = function () {
     var top, left;
 
-    top = (Math.max($(window).height() - $modal.outerHeight(), 0) / 2) - 200;
+    top = (Math.max($(window).height() - $modal.outerHeight(), 0) / 2)-100;
     left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
 
     $modal.css({
@@ -67,10 +67,7 @@ var login = (function(){
 // Wait until the DOM has loaded before querying the document
 $(document).ready(function(){
 
-  $('#login-button').click(function(e){
-    e.preventDefault();
-
-    data =  '<div id="login-box-modal">';
+   data =  '<div id="login-box-modal">';
     data += '<div id="login-box-oauth">';
     data += '<a href="/users/auth/facebook"><img src="/assets/facebook_128.png"></a>';
     data += '<a href="/users/auth/google_oauth2"><img src="/assets/google_128.png"></a><br>';
@@ -85,6 +82,21 @@ $(document).ready(function(){
 
     data += '</div></div>';
 
-    login.open({content: data, width: '320', height: '337'});
-  });
+    $('#login-button').fancybox({
+      content: data
+    });
+
+    $('#signup-button').fancybox({
+      content: data
+    });
+
+  // $('#login-button').click(function(e){
+  //   e.preventDefault();
+
+ 
+
+
+
+  //   // login.open({content: data, width: '320', height: '337'});
+  // });
 });
