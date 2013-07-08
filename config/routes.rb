@@ -22,7 +22,9 @@ Inkwell::Application.routes.draw do
 
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
 
+  get '/occasions/js' => "occasions#ajax_get"
   resources :occasions
+
   resources :orders
   resources :cards
   resources :tags
