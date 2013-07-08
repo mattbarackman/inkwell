@@ -6,10 +6,20 @@ Devise.setup do |config|
 	require "omniauth-facebook"
   require "omniauth-google-oauth2"
 
+  if Rails.env.production?
+    devise_config = {'facebook_key' => ENV['facebook_key'],
+              'facebook_secret' => ENV['facebook_secret'],
+              'google_oauth2_key' => ENV['google_oauth2_key'],
+              'google_oauth2_secret' => ENV['google_oauth2_secret']
+             }
+  else
+    devise_config = YAML.load_file("#{Rails.root}/config/devise_keys.yaml")
+  end
+
 	OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?	
-  config.omniauth :facebook, '185220694978236', '99946ed9ee406b1a85396294ea25c4df', {:scope => "friends_birthday, email"}
+  config.omniauth :facebook, devise_config['facebook_key'], devise_config['facebook_secret'], {:scope => "friends_birthday, email"}
 	# config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET']
-  config.omniauth :google_oauth2, "206882459863.apps.googleusercontent.com", "wh5Q8gMce9SKzy6oRUbsA96J", { access_type: "offline", approval_prompt: "" }
+  config.omniauth :google_oauth2, devise_config['google_oauth2_key'], devise_config['google_oauth2_secret'], { access_type: "offline", approval_prompt: "" }
 
 
   # ==> Mailer Configuration

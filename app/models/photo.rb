@@ -11,7 +11,16 @@ class Photo < ActiveRecord::Base
   end
 
   def self.s3_config
-    @@s3_config = YAML.load_file("#{Rails.root}/config/s3.yml")
+    if Rails.env.production?
+      @@s3_config = {'access_key_id' => ENV['access_key_id'],
+                     'secret_access_key' => ENV['secret_access_key'],
+                     'endpoint' => ENV['endpoint:'],
+                     'bucket' => ENV['bucket'],
+                     'host_alias' => ENV['host_alias'],
+                    }
+    else
+      @@s3_config = YAML.load_file("#{Rails.root}/config/s3.yml")
+    end
   end
 
   has_attached_file :data,
