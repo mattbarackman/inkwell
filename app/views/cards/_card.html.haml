@@ -2,12 +2,18 @@
   %h3 
     =link_to card.title, card
 
-  .div{class: "row"}
+  .div{class: "row", id: "card-show-row"}
     
-    .div{class: "small-4 columns"}
+    .div{class: "small-1 columns"}
+      - card.photos.each do |photo|
+        =image_tag photo.data.url(:thumb), :id => photo.id
+        %br
+        %br
+
+    .div{class: "small-4 columns", "data-default" => card.photos.first.data.url(:full) }
       = image_tag card.photos.first.data.url(:full)
-    
-    .div{class: "small-8 columns"}
+
+    .div{class: "small-7 columns"}
       %p
         Description:
         =card.description
@@ -22,7 +28,7 @@
       %p
         Tags:
         =card.tag_names
-        
+
 
   
   / = image_tag card.photos.first.data.url(:thumb)
