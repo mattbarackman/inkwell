@@ -38,5 +38,9 @@
                   =link_to "Logout", destroy_user_session_path
           -else
             %li
-              =link_to "Login", new_user_session_path, :id => 'login-button'
+              =link_to "Sign Up", new_user_registration_path
+          
+            %li.divider
+              %li
+                =link_to "Login", new_user_session_path, :id => 'login-button'
  
