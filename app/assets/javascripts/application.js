@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require fancybox
+//= require jquery.ui.datepicker
 //= require foundation
 //= require_tree .
 

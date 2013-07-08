@@ -1,19 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-
-#   Card.create(title:       title, 
-#               description: description, 
-#               price:       price, 
-#               inventory:   inventory)
-
-# end
 
 system("rake etsy:read_image")
 
@@ -64,6 +48,7 @@ users.each do |user|
   user.friends.each do |friend|
     name = friend.name
     friend.occasions.build(date: datetime_rand, name:"#{name.titleize}'s Birthday", event_type_name: "birthday")
+    friend.save
   end
 end
 

@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     if current_admin
       admin_path
     else
-      user_root_path
+      root_path
     end
   end
 

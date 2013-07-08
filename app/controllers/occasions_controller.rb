@@ -12,6 +12,7 @@ class OccasionsController < ApplicationController
   end
   
   def create
+    params[:occasion][:date] = Date.strptime(params[:occasion][:date], "%m/%d/%Y") if params[:occasion][:date].class == String
     occasion = Occasion.new(params[:occasion])
     try_to_update(occasion, authorize_user: true)
   end

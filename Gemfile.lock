@@ -115,6 +115,7 @@ GEM
     jquery-ui-rails (4.0.3)
       jquery-rails
       railties (>= 3.1.0)
+    jquery_datepicker (0.4)
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
@@ -262,6 +263,7 @@ DEPENDENCIES
   html2haml
   jquery-rails
   jquery-ui-rails
+  jquery_datepicker
   koala
   mocha
   modernizr-rails

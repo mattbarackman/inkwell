@@ -26,11 +26,13 @@ class User < ActiveRecord::Base
   end
 
   def orders_without_cards
-    orders.select{|order| order.status == "no_card"}.map{|order| order.occasion}
+    selected_orders = orders.select{|order| order.status == "no_card"}
+    selected_orders.sort{|x,y|y.created_at <=> x.created_at}.map{|order| order.occasion}
   end
 
   def orders_in_cart
-    orders.select{|order| order.status == "in_cart"}.map{|order| order.occasion}
+    selected_orders = orders.select{|order| order.status == "in_cart"}.sort_by{|order| }
+    selected_orders.sort{|x,y|y.created_at <=> x.created_at}.map{|order| order.occasion}
   end
 
   def future_orders
