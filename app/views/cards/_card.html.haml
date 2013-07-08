@@ -30,11 +30,6 @@
         =card.tag_names
 
 
-  
-  / = image_tag card.photos.first.data.url(:thumb)
-  / = image_tag card.photos.first.data.url(:medium)
-  / = image_tag card.photos.last.data.url(:original)
-  
   -unless current_user && current_user.orders_without_cards.empty?
     =render partial: 'cards/associate_card_form', locals: {card: card, order: @order}
 

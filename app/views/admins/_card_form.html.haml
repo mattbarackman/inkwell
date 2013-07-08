@@ -1,22 +1,46 @@
+%div{class: "small-6 columns"}
 
-= card.title
-= card.description
-%br
-= image_tag "card_images/card_#{card.id}/image_1/img_fullxfull.jpg", width: "200" 
-= image_tag "card_images/card_#{card.id}/image_2/img_fullxfull.jpg", width: "200"
-= image_tag "card_images/card_#{card.id}/image_3/img_fullxfull.jpg", width: "200"
-= link_to "Delete", card, :confirm => "Are you sure?", :method => :delete
-%br
+.card
 
-= form_for card do |f|
-  = f.fields_for :cards_tags, [CardsTag.new] do |t|
-    = t.collection_select :tag_id, Tag.all, :id, :name
-  = f.submit
-%br
+  .div{class: "row", id: "card-show-row"}
 
-Existing Tags:
-- card.tags.each do |tag|
-  =tag.name 
-  =link_to "Delete", cardstags_path(card: card, tag: tag), :confirm => "Are you sure?", :method => :delete
-%br
-%br
+    = form_for card do |f|
+      = f.text_field :title
+      = f.text_area :description
+      = f.submit
+    %br
+
+    %p
+      Price: 
+      =format_price(card.price)
+
+    %p
+      =pluralize(card.inventory, "card")
+      remaining
+
+    .row
+      - card.photos.each do |photo|
+        .div{class: "small-3 columns left"}
+          =link_to "Delete Photo", photo, :method => :delete
+          =image_tag photo.data.url(:full), :id => photo.id
+          %br
+          %br
+
+
+  = link_to "Delete", card, :confirm => "Are you sure?", :method => :delete
+  %br
+
+
+
+  = form_for card do |f|
+    = f.fields_for :cards_tags, [CardsTag.new] do |t|
+      = t.collection_select :tag_id, Tag.all, :id, :name
+    = f.submit
+  %br
+
+  Existing Tags:
+  - card.tags.each do |tag|
+    =tag.name 
+    =link_to "Delete", cardstags_path(card: card, tag: tag), :confirm => "Are you sure?", :method => :delete
+  %br
+  %br

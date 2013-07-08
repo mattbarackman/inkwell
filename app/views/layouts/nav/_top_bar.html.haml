@@ -24,6 +24,9 @@
               =link_to "Anniversary Cards", tag_path(1)
             %li
               =link_to "Birthday Cards", tag_path(2)
+            %li
+              =link_to "Graduation Cards", tag_path(3)
+
 
         %li{class: "divider"}
           -if current_user
@@ -38,6 +41,21 @@
                   =link_to "Import Birthdays", '/friends/facebook', :class => 'facebook-add-friends-link'
                 %li
                   =link_to "Logout", destroy_user_session_path
+          
+          -if current_admin
+            %li{class: "has-dropdown"}
+              =link_to current_admin.email, admin_path
+              %ul.dropdown
+                %li
+                  =link_to "Cards", "#"
+                %li
+                  =link_to "Orders", "#"
+                %li
+                  =link_to "Users", "#"
+                %li
+                  =link_to "Logout", destroy_admin_session_path
+
+
           -else
             %li
               =link_to "Sign Up", new_user_registration_path, :id => 'signup-button'

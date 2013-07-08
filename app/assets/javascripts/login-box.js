@@ -77,7 +77,8 @@ $(document).ready(function(){
     data += '<input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" checked>';
     data += '<input name="commit" type="submit" value="Sign in" id="sign-in-button">';
     data += '<a href="/users/sign_up" class="login-link">Sign up</a><br>';
-    data += '<a href="/users/password/new" class="login-link">Forgot your password?</a>';
+    data += '<a href="/users/password/new" class="login-link">Forgot your password?</a><br>';
+    data += '<a href="/admins/sign_in" class="login-link">Admin</a>';
     data += '</form>';
 
     data += '</div></div>';
