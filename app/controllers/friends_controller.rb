@@ -20,6 +20,10 @@ class FriendsController < ApplicationController
     redirect_to user_root_path unless @friend && @friend.user == current_user
   end
 
+  def show
+    @friends = current_user.friends
+  end
+
   def update
     friend = Friend.find(params[:id])
     try_to_update(friend, authorize_user: true)

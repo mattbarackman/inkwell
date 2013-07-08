@@ -6,6 +6,7 @@ class Friend < ActiveRecord::Base
 
   validates_presence_of :name
   
+
   def self.add_fb_friend(current_user, params)
     friend = current_user.friends.build
     friend.name = params[:name]

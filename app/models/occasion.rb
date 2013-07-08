@@ -1,5 +1,5 @@
 class Occasion < ActiveRecord::Base
-  attr_accessible :date, :event_type_name, :name, :friend_id
+  attr_accessible :date, :event_type_name, :name, :friend_id, :friend_name
 
   validates_presence_of :name, :date
   
@@ -10,6 +10,14 @@ class Occasion < ActiveRecord::Base
 
   def user
     self.friend.user
+  end
+
+  def friend_name
+    friend.try(:name)
+  end
+
+  def friend_name=(name)
+    self.friend = Friend.find_or_create_by_name(name) if name.present?
   end
 
   def self.parse_birthday(birthday)

@@ -84,7 +84,9 @@ $(document).ready(function(){
     data += '</div></div>';
 
     $('#login-button').fancybox({
-      content: data
+      content: data,
+      height: 337,
+      width: 320
     });
 
     $('#signup-button').fancybox({

@@ -61,6 +61,7 @@ gem 'omniauth-google-oauth2'
 gem 'koala'
 gem 'flexslider'
 gem 'fancybox2-rails'
+gem 'rails3-jquery-autocomplete', :git => 'git://github.com/juniorz/rails3-jquery-autocomplete.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

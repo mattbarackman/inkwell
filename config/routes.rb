@@ -5,8 +5,6 @@ Inkwell::Application.routes.draw do
     match "/users/auth/:provider/callback" => 'authentications#all'
   end
 
-  
-
   # devise_scope :user do 
   #   get "/users/auth/:provider/callback" => 'devise/authentications#create'
   # end
@@ -20,7 +18,9 @@ Inkwell::Application.routes.draw do
   resources :authentications
 
 
-  resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy]
+  resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy, :show] do
+    get :autocomplete_friend_name, :on => :collection
+  end
 
   get '/orders/js' => "orders#ajax_get"
   post '/orders/js' => "orders#ajax_post"
