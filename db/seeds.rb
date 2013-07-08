@@ -45,7 +45,7 @@ users = User.all
 
   users.each do |user|
 
-    params = { name:     Faker::Name.name,
+    params = { name:           Faker::Name.name,
                street_address: Faker::Address.street_address,
                city:           Faker::Address.city,
                state:          Faker::Address.state_abbr,
