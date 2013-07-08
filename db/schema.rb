@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(:version => 20130707233007) do
 
   create_table "friends", :force => true do |t|
     t.integer  "user_id"
+    t.string   "name"
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "name"
   end
 
   add_index "friends", ["user_id"], :name => "index_friends_on_user_id"
