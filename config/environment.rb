@@ -10,8 +10,8 @@ unless Rails.env.production?
   config = YAML.load_file("#{Rails.root}/config/web_app_api.yaml")
 end
 
-#Etsy.api_key = config['ETSY_KEYSTRING']
-#Etsy.api_secret = config['ETSY_SECRET']
+Etsy.api_key = config['ETSY_KEYSTRING']
+Etsy.api_secret = config['ETSY_SECRET']
 Etsy.callback_url = 'http://localhost:3000'
 Etsy.environment = :production
 

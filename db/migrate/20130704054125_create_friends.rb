@@ -2,8 +2,7 @@ class CreateFriends < ActiveRecord::Migration
   def change
     create_table :friends do |t|
       t.references :user
-      t.string :first_name
-      t.string :last_name
+      t.string :name
       t.string :street_address
       t.string :city
       t.string :state
