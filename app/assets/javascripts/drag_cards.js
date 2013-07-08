@@ -77,7 +77,7 @@ SideBar.prototype = {
 
     getOrders: function() {
         that = this
-        $.get("/occasions/js", function(data) {
+        $.get("/orders/js", function(data) {
             for (i in data.future) {
                 that.cart.addItem( new Occasion(data.future[i]) );
             }
@@ -95,7 +95,7 @@ SideBar.prototype = {
     },
 
     makeDroppable: function() {
-        sidebarOverLord = this;
+        var sidebarOverLord = this;
 
         $(".pending_orders .occasion_partial").droppable({
             accept: ".card img",
