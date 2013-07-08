@@ -14,7 +14,7 @@ class Photo < ActiveRecord::Base
     if Rails.env.production?
       @@s3_config = {'access_key_id' => ENV['access_key_id'],
                      'secret_access_key' => ENV['secret_access_key'],
-                     'endpoint' => ENV['endpoint:'],
+                     'endpoint' => ENV['endpoint'],
                      'bucket' => ENV['bucket'],
                      'host_alias' => ENV['host_alias'],
                     }
