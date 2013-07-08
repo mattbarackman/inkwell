@@ -33,7 +33,6 @@ class FriendsController < ApplicationController
   def show_fb_friends
     @friends = current_user.get_facebook_friends
     render "facebook", layout: false
-    # render :json => current_user.get_facebook_friends.to_json
   end
 
   def add_fb_friend

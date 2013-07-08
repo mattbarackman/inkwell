@@ -71,7 +71,6 @@ var modal = (function(){
 }());
 
 
-
 var AddUser = {
 
   init: function() {
@@ -106,7 +105,6 @@ var AddUser = {
     $.post('/friends/facebook', $(this).parent().serialize());
     $(this).parent().animate({opacity: "0.3"});
   }
-
 }
 
 
