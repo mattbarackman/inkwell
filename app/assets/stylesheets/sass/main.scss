@@ -50,11 +50,16 @@ h1 {
 
 }
 
-.top-bar {
+.top-bar { 
   .name h1 a {
     padding-top: 2px;
     padding-left: 15px;
   }
+  // border-bottom: #2284a1 2px solid;
+  // .right {
+  //   box-sizing: border-box;
+  //   border-bottom: #2284a1 2px solid;
+  // }
 }
 
 #category_dropdown {
