@@ -1,4 +1,4 @@
-#overlay {
+#fb-overlay {
 	position: fixed; 
 	top: 0;
 	left: 0;
@@ -9,23 +9,21 @@
 	filter: alpha(opacity=50);
 }
 
-#modal {
-	position:absolute;
+#fb-modal {
+	position: absolute;
 	background:url(tint20.png) 0 0 repeat;
 	background:rgba(0,0,0,0.2);
-	border-radius:14px;
 	padding:8px;
 }
 
-#content {
-	border-radius:8px;
-	background:#fff;
+#fb-content {
 	padding:20px;
 	background-color: #EEE;
-	/*overflow: scroll;*/
+	overflow: auto;
+	height: 550px;
 }
 
-#close {
+#fb-close {
 	position:absolute;
 	background:url('http://www.jacklmoore.com/demo/modal/close.png') 0 0 no-repeat;
 	width:24px;
@@ -37,15 +35,12 @@
 }
 
 .facebook-friend {
-	box-shadow: 2px 2px 1px gray;
-	border: 1px solid lightgray;
-	background-color: #EEE;
 	margin: 5px;
 	max-height: 70px;
 	min-height: 55px;
 	min-width: 250px;
-	float: left;
 	display: inline-block;
+	border-bottom: 1px dotted lightgray;
 	li {
 		list-style: none;
 	}
@@ -67,37 +62,8 @@
 	float: left;
 	margin-right: 5px;
 	padding: 5px;
-}
-
-#login-box-modal {
-	
-
-
-	height: 280px;
-
-	#login-box-oauth {
-		float: left;
-
-		#user_email {
-			margin-left: 10px;
-			margin-bottom: 5px;
-			width: 250px;
-		}
-		#user_password {
-			margin-left: 10px;
-			width: 250px;
-		}
-
-		#sign-in-button {
-			margin: 0 0 10px 10px;
-		}
-		#user_remember_me {
-			display: none;
-		}
-		
-		.login-link {
-			margin: 0 0 0 10px;
-		}
-
+	&:hover {
+		cursor: hand; cursor: pointer;
 	}
 }
+

@@ -1,8 +1,9 @@
--current_user.get_facebook_friends.each do |friend|
+-@friends.each do |friend|
   
-  =form_tag add_fb_friend_path, :method => :post, :remote => true, :class => 'add-fb-friend-form' do
-    
-    =image_tag friend['picture']['data']['url']
-    =text_field_tag "name", friend['name']
-    =text_field_tag "birthday", friend['birthday']
-    =submit_tag "Add friend"   
+  .facebook-friend
+    =form_tag add_fb_friend_path, :method => :post, :remote => true, :class => 'add-fb-friend-form' do
+      =image_tag friend['picture']['data']['url'], :class => 'facebook-friend-picture'
+      %ul
+        %li= text_field_tag "name", friend['name']
+        %li= text_field_tag "birthday", friend['birthday']
+        =submit_tag "Add friend"   
