@@ -31,6 +31,12 @@ class OccasionsController < ApplicationController
     redirect_to occasions_path
   end
 
+  def ajax_get
+    upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
+    future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
+    render json: { :upcoming => upcoming_orders, :future => future_orders }
+  end
+
   private
 
   # See try_to_update in ApplicationController
