@@ -65,3 +65,10 @@ h1 {
 #category_dropdown {
   width: 160px;
 }
+
+.sidebar{ 
+  left: 70%; 
+  height: 90%
+  // more in-line, couldn't get to work with foundation in .scss file 
+}
+

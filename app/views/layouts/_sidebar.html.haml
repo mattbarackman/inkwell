@@ -1,24 +1,22 @@
-#addBar
-  %div{class: "side_bar"}
-    %div{class: "pending_orders"}
+%div.side_bar{style: "position: fixed; width: 28%; height: auto"}
+  %div{class: "pending_orders"}  
+    - unless current_user.orders_without_cards.empty?
+      %h3 Drag cards onto these occasions
       
-      - unless current_user.orders_without_cards.empty?
-        %h3 Drag cards onto these occasions
-        
-        - current_user.orders_without_cards.each do |occasion|
-          = render partial: "layouts/occasion", locals: {occasion: occasion}
+      - current_user.orders_without_cards.each do |occasion|
+        = render partial: "layouts/occasion", locals: {occasion: occasion}
 
-    .add_occasion
-      - unless current_user.friends.empty?
-        %button Add occasion
-        = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
-          = render partial: "occasions/form", locals: {f: f}
-          = f.submit 'Add!'
+  .add_occasion
+    - unless current_user.friends.empty?
+      %button Add occasion
+      = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
+        = render partial: "occasions/form", locals: {f: f}
+        = f.submit 'Add!'
 
-    %div{class: "shopping_cart"}
-      %h3 Shopping Cart
-      - current_user.orders_in_cart.each do |occasion|
-        %p 
-          = occasion.name
-          = occasion.friend.name
-          = occasion.date
+  %div{class: "shopping_cart"}
+    %h3 Shopping Cart
+    - current_user.orders_in_cart.each do |occasion|
+      %p 
+        = occasion.name
+        = occasion.friend.name
+        = occasion.date

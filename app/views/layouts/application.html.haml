@@ -18,7 +18,6 @@
   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 
-
   %title= Inkwell
 
   = stylesheet_link_tag "application"
@@ -38,3 +37,8 @@
       - else
         %div{class: "small-12 columns"}
           = yield
+
+  %script
+    document.write('<script src=/js/vendor/'
+    + ('__proto__' in {} ? 'zepto' : 'jquery')
+    + '.js><\/script>');
