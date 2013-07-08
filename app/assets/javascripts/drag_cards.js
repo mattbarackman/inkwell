@@ -17,8 +17,8 @@ Occasion.prototype = {
         return result;
     },
 
-    associateCard: function(card) {
-
+    associateCard: function(card_number) {
+        this.occasion.card_id = card_number;
     }
 
 };
@@ -63,9 +63,7 @@ ShoppingCart.prototype = {
     },
 
     addItem: function(occasion) {
-        console.log("got here");
         this.occasions.push(occasion);
-        console.log(this);
     }
 };
 
@@ -90,8 +88,6 @@ SideBar.prototype = {
         });
     },
 
-
-
     render: function() {
         this.cart.render();
         this.queue.render();
@@ -106,10 +102,16 @@ SideBar.prototype = {
             drop: function(e, card) {
                 //Note: need the -1 due to header... may go away later
                 var index = $(this).index() - 1;
-                console.log(index);
+
                 var moved = sidebarOverLord.queue.removeItem(index)[0];
                 console.log(moved);
+                var cardNumber = card.draggable.attr('class').split(' ')[0];
+                console.log(cardNumber);
+
+                moved.associateCard(cardNumber);
+                console.log(moved);
                 sidebarOverLord.cart.addItem(moved);
+                
                 sidebarOverLord.render();
             }
         });

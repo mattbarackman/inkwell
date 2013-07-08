@@ -5,7 +5,7 @@
   .div{class: "row"}
     
     .div{class: "small-4 columns"}
-      = image_tag card.photos.first.data.url(:full)
+      = image_tag card.photos.first.data.url(:full), class: card.id
     
     .div{class: "small-8 columns"}
       %p
