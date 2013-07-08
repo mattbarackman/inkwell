@@ -32,8 +32,8 @@ class OccasionsController < ApplicationController
   end
 
   def ajax_get
-    upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
-    future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
+    upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}.map { |order| { :id => order.id, :date => order.occasion.date, :friend => order.occasion.friend.name.titleize, :name => order.occasion.name.titleize } }
+    future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}.map { |order| { :id => order.id, :date => order.occasion.date, :friend => order.occasion.friend.name.titleize, :name => order.occasion.name.titleize } }
     render json: { :upcoming => upcoming_orders, :future => future_orders }
   end
 
