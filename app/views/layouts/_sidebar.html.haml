@@ -2,33 +2,37 @@
   %div.side_bar{style: "position: fixed; width: 28%; height: 10vh" }
     %button{id: "add_occasion_button"} Add occasion
 
-%row
-  %div.side_bar.orders{class: "pending_orders", style: "position: fixed; top: 200px; width: 28%; height: 300px; overflow-y: auto" }
-    
-    .add_occasion
-      - unless current_user.friends.empty?
-        = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
-          = render partial: "occasions/form", locals: {f: f}
-          = f.submit 'Add!'
+%row  
+  .side_bar{style: "position: fixed; top: 200px; width: 28%; height: 20px" }
+    - if current_user.orders_without_cards.empty? && current_user.orders_in_cart.empty?        
+      %h3 Add some occasions to get started!
 
-    %div{class: "pending_orders"}  
-      - if current_user.orders_without_cards.empty? && current_user.orders_in_cart.empty?
-        %h3 Add some occasions to get started!
-        
-      - elsif current_user.orders_without_cards.empty? && !current_user.orders_in_cart.empty?
-        %h3 You're all set to checkout below!
-      
-      - else
-        %h3 Drag cards onto your occasions.   
+    - elsif current_user.orders_without_cards.empty? && !current_user.orders_in_cart.empty?
+      %h3 You're all set to checkout below!
+
+    - else
+      %h3 Drag cards onto your occasions.   
+
+
+    .orders{class: "pending_orders", style: "height: 200px; overflow-y: auto" }
+    
+      .add_occasion
+        - unless current_user.friends.empty?
+          = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
+            = render partial: "occasions/form", locals: {f: f}
+            = f.submit 'Add!'
+
+      %div{class: "pending_orders"}  
         - current_user.orders_without_cards.each do |occasion|
           = render partial: "layouts/occasion", locals: {occasion: occasion}
 
 %row
-
-  %div.side_bar.orders{class: "shopping_cart", style: "position: fixed; top: 525px; width: 28%; height: 40vh; overflow-y: auto"} 
+  .side_bar{style: "position: fixed; top: 475px; width: 28%; height: 20px" }
     %h3 Shopping Cart
-    - current_user.orders_in_cart.each do |occasion|
-      %p 
-        = occasion.name
-        = occasion.friend.name
-        = occasion.date
+
+    %div.orders{class: "shopping_cart", style: "position: fixed; top: 530px; width: 28%; height: 300px; overflow-y: auto"} 
+      - current_user.orders_in_cart.each do |occasion|
+        %p 
+          = occasion.name
+          = occasion.friend.name
+          = occasion.date
