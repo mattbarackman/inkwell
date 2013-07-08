@@ -46,6 +46,13 @@ Inkwell::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
+  stripe_config = YAML.load_file("#{Rails.root}/config/stripe_env_variables.yaml")
+  Rails.configuration.stripe = {
+    :publishable_key => stripe_config['STRIPE_PUBLISHABLE_KEY'],
+    :secret_key => stripe_config['STRIPE_SECRET_KEY']
+  }
+  Stripe.api_key = Rails.configuration.stripe[:secret_key]
+
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 

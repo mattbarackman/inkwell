@@ -4,15 +4,13 @@ ruby '1.9.3'
 
 gem 'rails', '3.2.13'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 gem 'awesome_print'
 gem 'haml-rails'
 gem 'html2haml'
 gem 'etsy', "~> 0.2.2"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'modernizr-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,19 +29,27 @@ group :test, :development do
   gem 'debugger'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'database_cleaner'
+  gem 'shoulda'
+  gem 'mocha'
+end
+
+group :development do
+  gem 'sextant'
+end
+
 #move these back into :test, :development before demo
 gem 'faker'
-gem 'rspec-rails'
-gem 'capybara'
-gem 'factory_girl'
-gem 'database_cleaner'
-gem 'sextant'
-gem 'shoulda'
 gem "nifty-generators"
 gem 'paperclip-aws'
 gem 'rmagick'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'devise'
 
 gem 'omniauth'

@@ -1,10 +1,16 @@
 .side_bar {
-  height: 100%;
-  width: 100%;
+  left: 70%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+.orders {
   background-color: #C8EBFE;
   padding: 20px;
-
 }
+
 .pending_orders {
   height: auto;
   width: 100%;

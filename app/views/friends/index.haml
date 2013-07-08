@@ -1,12 +1,8 @@
 %h3 Friends
 
 %ul.friends-list
--current_user.friends.each do |friend|
-  %li
-    = friend.name + " -"
-    = friend.city + ","
-    = friend.state
-    = link_to "edit", edit_friend_path(friend)
-    = link_to "delete", friend, :confirm => "Are you sure?", :method => :delete
+  =render @friends
 
 %p= link_to "Add a friend", new_friend_path
+-if current_user.logged_in_with_facebook?
+  =link_to 'Add friends from Facebook', '/friends/facebook', :class => 'facebook-add-friends-link'
