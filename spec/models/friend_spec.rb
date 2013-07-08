@@ -5,8 +5,7 @@ describe Friend do
   let!(:friend) {create(:friend)}
   let(:occasion) {create(:occasion)}
 
-  it { should validate_presence_of(:first_name)}
-  it { should validate_presence_of(:last_name)}
+  it { should validate_presence_of(:name)}
 
   it { should have_many(:occasions) }
 
