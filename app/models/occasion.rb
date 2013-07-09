@@ -25,12 +25,8 @@ class Occasion < ActiveRecord::Base
     /(\d{2})\/(\d{2})/.match(birthday)
     month = $1
     day = $2
-    
-    year = "2013"
-    year = $1 if /(\d{4})/.match(birthday)
-
-    date = "#{day}-#{month}-#{year}"      
-    DateTime.parse(date)
+    date = "#{day}-#{month}"      
+    Date.strptime(date, "%d-%m")
   end
   
   def create_order
