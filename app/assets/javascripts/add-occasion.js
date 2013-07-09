@@ -1,13 +1,13 @@
-var Occasion = {
+var OccasionForm = {
+
   init: function() {
     this.occasion = $('.add_occasion form');
-    this.fancybox();
+    this.fancyBox();
     this.setAutocomplete();
     $('#submit_form').on("ajax:success", this.addResponse);
-
   },
 
-  fancybox: function() {
+  fancyBox: function() {
     var self = this;
     $('#add_occasion_button').fancybox({
       content: self.occasion.show()
@@ -21,12 +21,14 @@ var Occasion = {
     });
   },
 
-  addResponse: function(e, xhr) {
-    $('.pending_orders').prepend(xhr);
+  addResponse: function(e, response) {
+    $('.pending_orders').prepend(response);
     $.fancybox.close();
   }
-}
+
+};
 
 $(document).ready(function() {
-  Occasion.init();
+  console.log('got here');
+  OccasionForm.init()
 });
