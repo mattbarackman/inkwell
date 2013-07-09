@@ -13,6 +13,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'modernizr-rails'
 gem 'jquery_datepicker'
 gem 'jquery-ui-rails'
+gem 'whenever', :require => false
 
 # Gems used only for assets and not required
 # in production environments by default.

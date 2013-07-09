@@ -1,8 +1,6 @@
 shop_owners = ["jdeluce"]
 current_listings = []
 
-
-
 namespace :etsy do
   desc "get cards" 
   task :refresh => :environment do
