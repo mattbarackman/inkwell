@@ -1,13 +1,15 @@
 class Occasion < ActiveRecord::Base
-  attr_accessible :date, :event_type_name, :name, :friend_id, :friend_name
+  attr_accessible :date, :event_type_name, :name, :friend_id, :friends_name, :user_id
+
+  attr_accessor :friends_name, :user_id
 
   validates_presence_of :name, :date
   
   has_many :orders
   belongs_to :friend
 
-  #before_create :find_or_create_friend
-  after_create :create_order
+  before_save :find_or_create_friend
+  after_save :create_order
 
   def user
     self.friend.user
@@ -43,8 +45,15 @@ class Occasion < ActiveRecord::Base
 
   private
   
-  # def find_or_create_friend
-  #   self.friend = Friend.find_or_create_by_name(name)
-  # end
+  def find_or_create_friend
+    a = Friend.where("name = ? AND user_id = ?", friends_name, user_id)
+    if a.empty?
+      self.friend = Friend.create(:name => friends_name, :user_id => user_id)
+    else
+      self.friend = a[0]
+    end
+    self.friends_name = nil
+    self.user_id = nil
+  end
 
 end

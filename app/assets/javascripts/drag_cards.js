@@ -80,6 +80,10 @@ function SideBar() {
     this.refreshOrders();
 }
 
+function extractOrderData($partial) {
+    
+}
+
 SideBar.prototype = {
 
     refreshOrders: function() {

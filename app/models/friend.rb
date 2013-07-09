@@ -2,7 +2,7 @@ class Friend < ActiveRecord::Base
   belongs_to :user
   has_many :occasions
 
-  attr_accessible :city, :name, :state, :street_address, :zipcode
+  attr_accessible :city, :name, :state, :street_address, :zipcode, :user_id
 
   validates_presence_of :name
   

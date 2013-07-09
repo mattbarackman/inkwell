@@ -1,4 +1,4 @@
 #autocomple-results
-= f.text_field :friend_name, placeholder: 'Friend name', class: 'occasion-friend-name', data: {autocomplete_source: current_user.friends.order(:name).map(&:name)}
+= f.text_field :friends_name, placeholder: 'Friend name', class: 'occasion-friend-name', data: {autocomplete_source: current_user.friends.order(:name).map(&:name)}
 = f.datepicker :date, placeholder: 'Date'
 = f.text_field :name, placeholder: 'Occasion'
