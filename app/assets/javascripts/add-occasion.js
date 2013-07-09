@@ -1,5 +1,5 @@
 function OccasionForm() {
-    this.occasion = $('.add_occasion form');
+    this.occasion = $('#submit_form');
     this.occasion.hide();
     this.fancyBox();
     this.setAutocomplete();
@@ -38,5 +38,5 @@ OccasionForm.prototype = {
 
 $(document).ready(function() {
   //OccasionForm.init();
-  $('.add_occasion form').hide();
+  $('#submit_form').hide();
 });
