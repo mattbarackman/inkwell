@@ -4,6 +4,7 @@ class Occasion < ActiveRecord::Base
   attr_accessor :friends_name, :user_id
 
   validates_presence_of :name, :date
+  validate :is_future_event
   
   has_many :orders
   belongs_to :friend
@@ -44,6 +45,12 @@ class Occasion < ActiveRecord::Base
   end
 
   private
+
+  def is_future_event
+    if date < Date.today
+      errors.add(:date, "must be in the future")
+    end
+  end
   
   def find_or_create_friend
     a = Friend.where("name = ? AND user_id = ?", friends_name, user_id)
