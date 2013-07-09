@@ -26,9 +26,17 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.update_attributes(params[:order])
+    @order = Order.find(params[:id])
+    p @order
+    p params[:order]
+    status = params[:order].first[:status]
+    if status
+      @order.status = status
+      params[:order].first.delete(:status)
+    end 
+    @order.update_attributes(params[:order].first)
     if @order.save
-      redirect_to @order
+      redirect_to :back
     else
       render :edit
     end

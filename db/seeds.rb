@@ -23,11 +23,9 @@ User.create(email: "user@inkwell.com", password: "password")
 
 end
 
-users = User.all
-
 5.times do 
 
-  users.each do |user|
+  User.all.each do |user|
 
     params = { name:           Faker::Name.name,
                street_address: Faker::Address.street_address,
@@ -36,19 +34,17 @@ users = User.all
                zipcode:        Faker::Address.zip_code}
 
     user.friends << Friend.create(params)
-  end
-  
+  end  
 end
 
 def datetime_rand from = Time.now, to = Time.now + 6.months
   Time.at(from + rand * (to.to_f - from.to_f))
 end
 
-users.each do |user|
+User.all.each do |user|
   user.friends.each do |friend|
     name = friend.name
-    friend.occasions.build(date: datetime_rand, name:"#{name.titleize}'s Birthday", event_type_name: "birthday")
-    friend.save
+    friend.occasions << Occasion.create(date: datetime_rand, name:"#{name.titleize}'s Birthday", event_type_name: "birthday")
   end
 end
 
@@ -62,6 +58,5 @@ Tag.create(name: "graduation")
 
 Card.all.each do |card|
   card.tags << Tag.all.sample
-  card.save
 end
 

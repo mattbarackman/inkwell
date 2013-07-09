@@ -38,7 +38,7 @@
             .right
               =image_tag order.card.photos.first.data("medium")
 
-    - else
+    - elsif order.status == "purchased"
       .order_partial.purchased
         .row
           .small-8.columns
@@ -53,6 +53,25 @@
                 %p
                   Your card will be delivered by
                   %em= format_date(order.delivery_date) 
+          .small-4.columns
+            .right
+              =image_tag order.card.photos.first.data("medium")
+
+    - else order.status == "fulfilled"
+      .order_partial.purchased
+        .row
+          .small-8.columns
+            %ul 
+              %h4= order.occasion.name.titleize
+              %p= format_date(order.occasion.date)
+              .description
+                %strong For:
+                %p
+                  = order.occasion.friend.name.titleize              
+                %strong Status:
+                %p
+                  Your card will be delivered by
+                  %em= format_date(order.fulfillment_date) 
           .small-4.columns
             .right
               =image_tag order.card.photos.first.data("medium")
