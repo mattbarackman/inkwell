@@ -1,9 +1,12 @@
-%row
-  %div.side_bar{style: "position: fixed; width: 28%; height: 10vh" }
+/ {style: "position: fixed; width: 28%; height: 10vh" }
+
+.side_bar
+
+  %row
     %button{id: "add_occasion_button"} Add occasion
 
-%row  
-  .side_bar{style: "position: fixed; top: 200px; width: 28%; height: 20px" }
+  %row  
+
     - if current_user.orders_without_cards.empty? && current_user.orders_in_cart.empty?        
       %h3 Add some occasions to get started!
 
@@ -13,26 +16,17 @@
     - else
       %h3 Drag cards onto your occasions. 
 
-
-    .orders{class: "pending_orders", style: "height: 200px; overflow-y: auto" }
-    
+  %row
+    .orders{class: "pending_orders"}
       .add_occasion
-        = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
-          = render partial: "occasions/form", locals: {f: f}
-          = f.submit 'Add!'
+        - unless current_user.friends.empty?
+          = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
+            = render partial: "occasions/form", locals: {f: f}
+            = f.submit 'Add!'
 
-
-      %div{class: "pending_orders"}  
-        - current_user.orders_without_cards.each do |occasion|
-          = render "layouts/occasion", occasion: occasion
-
-%row
-  .side_bar{style: "position: fixed; top: 475px; width: 28%; height: 20px" }
+  
+  %row
     %h3 Shopping Cart
 
-    %div.orders{class: "shopping_cart", style: "position: fixed; top: 530px; width: 28%; height: 300px; overflow-y: auto"} 
-      /- current_user.orders_in_cart.each do |occasion|
-      /  %p 
-      /    = occasion.name
-      /    = occasion.friend.name
-      /    = occasion.date
+  %row
+    %div.orders{class: "shopping_cart"}

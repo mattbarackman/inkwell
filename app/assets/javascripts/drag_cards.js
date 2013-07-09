@@ -35,7 +35,7 @@ UpcomingQueue.prototype = {
 
     render: function() {
         $(".pending_orders .occasion_partial").detach();
-        for (i in this.occasions) {
+        for (var i in this.occasions) {
             $(".pending_orders").append(this.occasions[i].DOM);
         }
     },
@@ -60,7 +60,7 @@ ShoppingCart.prototype = {
 
     render: function() {
         $(".shopping_cart .occasion_partial").detach();
-        for (i in this.occasions) {
+        for (var i in this.occasions) {
             $(".shopping_cart").append(this.occasions[i].DOM);
         }
         //Calculate price
@@ -82,10 +82,10 @@ SideBar.prototype = {
     getOrders: function() {
         var that = this;
         $.get("/orders/js", function(data) {
-            for (i in data.future) {
+            for (var i in data.future) {
                 that.cart.addItem( new Occasion(data.future[i]) );
             }
-            for (i in data.upcoming) {
+            for (var i in data.upcoming) {
                 that.queue.addItem( new Occasion(data.upcoming[i]) );
             }
             that.render();
@@ -102,8 +102,9 @@ SideBar.prototype = {
         var sidebarOverLord = this;
 
         $(".pending_orders .occasion_partial").droppable({
-            accept: ".card img",
+            accept: ".draggable_card",
             drop: function(e, card) {
+                console.log(card);
                 //Note: need the -1 due to header... may go away later
                 var index = $(this).index() - 1;
 
@@ -124,6 +125,17 @@ SideBar.prototype = {
 
 $(document).ready(function() {
     var sidebar = new SideBar();
-
-    $( ".card img" ).draggable({ helper: "clone" });
-})
+    $( ".draggable_card" ).draggable({ helper: "clone",
+        start: function(e, ui)
+        {
+          $(e.target).css('opacity', '0');
+          $(ui.helper).children('li').css('background-color', 'pink');
+        },
+        stop: function(e, ui)
+        {
+          $(e.target).animate({
+            opacity: 1
+          }, 3000);
+        }
+  });
+});

@@ -42,7 +42,7 @@
                 %li
                   =link_to "Logout", destroy_user_session_path
           
-          -if current_admin
+          -elsif current_admin
             %li{class: "has-dropdown"}
               =link_to current_admin.email, admin_path
               %ul.dropdown

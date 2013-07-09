@@ -6,6 +6,7 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
+    render :show
   end
 
   def update

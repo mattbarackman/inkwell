@@ -1,5 +1,10 @@
 .side_bar {
   left: 70%;
+
+  position: fixed; 
+  top: 90px; 
+  width: 28%; 
+  // height: 80vh;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -14,7 +19,9 @@
 .pending_orders {
   height: auto;
   width: 100%;
-  margin-bottom: 30px
+  margin-bottom: 30px;
+  height: 200px; 
+  overflow-y: auto;
 }
 
 .shopping_cart {
