@@ -11,7 +11,7 @@
         %br
 
     .div{class: "small-4 columns", "data-default" => card.photos.first.data.url(:full) }
-      = image_tag card.photos.first.data.url(:full)
+      = image_tag card.photos.first.data.url(:full), class: card.id
 
     .div{class: "small-7 columns"}
       %p

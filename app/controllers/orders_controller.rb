@@ -50,4 +50,36 @@ class OrdersController < ApplicationController
     Order.find(params[:id]).destroy
     redirect_to :back
   end
+
+  def ajax_get
+    upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
+    future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
+
+    upcoming_orders.map! { |order|
+      { id: order.id,
+        card_id: order.card_id,
+        date: order.occasion.date,
+        friend: order.occasion.friend.name.titleize,
+        name: order.occasion.name.titleize
+      }
+    }
+
+    future_orders.map! { |order|
+      { id: order.id,
+        card_id: order.card_id,
+        date: order.occasion.date,
+        friend: order.occasion.friend.name.titleize,
+        name: order.occasion.name.titleize
+      }
+    }
+    render json: { :upcoming => upcoming_orders, :future => future_orders }
+  end
+
+  def ajax_post
+    order = Order.find(params[:id])
+    order.card_id = params[:card_id].to_i
+    order.save
+    render nothing: true, status: :ok
+  end
+
 end

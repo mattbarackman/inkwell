@@ -22,17 +22,17 @@
             = render partial: "occasions/form", locals: {f: f}
             = f.submit 'Add!'
 
-      %div{class: "pending_orders"}  
-        - current_user.orders_without_cards.each do |occasion|
-          = render partial: "layouts/occasion", locals: {occasion: occasion}
+      /%div{class: "pending_orders"}  
+      /  - current_user.orders_without_cards.each do |occasion|
+      /    = render partial: "layouts/occasion", locals: {occasion: occasion}
 
 %row
   .side_bar{style: "position: fixed; top: 475px; width: 28%; height: 20px" }
     %h3 Shopping Cart
 
     %div.orders{class: "shopping_cart", style: "position: fixed; top: 530px; width: 28%; height: 300px; overflow-y: auto"} 
-      - current_user.orders_in_cart.each do |occasion|
-        %p 
-          = occasion.name
-          = occasion.friend.name
-          = occasion.date
+      /- current_user.orders_in_cart.each do |occasion|
+      /  %p 
+      /    = occasion.name
+      /    = occasion.friend.name
+      /    = occasion.date
