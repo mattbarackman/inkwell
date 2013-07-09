@@ -31,7 +31,13 @@
         %li{class: "divider"}
           -if current_user
             %li{class: "has-dropdown"}
-              =link_to current_user.email, user_root_path
+              %a
+                %span 
+                  - if current_user.image_url
+                    =image_tag current_user.image_url, size: "40x40" 
+                    &#160;&#160;&#160;&#160;&#160;
+                  =current_user.email
+
               %ul.dropdown
                 %li
                   =link_to "Friends", friends_path

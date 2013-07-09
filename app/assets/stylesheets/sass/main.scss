@@ -25,19 +25,6 @@ body .main_container {
   margin-bottom: 40px;
 }
 
-/*.top-bar {
-  border-bottom: #B7BF4C 4px solid;
-  .title-area {
-    .name {
-       h1 {
-       font-family: 'Amatic SC' !important;
-       font-style: 'cursive' !important;
-      
-    }
-  }
-}
-*/
-
 h1 {
   font-family: 'Amatic SC';
   font-style: 'cursive'; 
@@ -55,11 +42,15 @@ h1 {
     padding-top: 2px;
     padding-left: 15px;
   }
-  // border-bottom: #2284a1 2px solid;
-  // .right {
-  //   box-sizing: border-box;
-  //   border-bottom: #2284a1 2px solid;
-  // }
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+
+
 }
 
 #category_dropdown {
