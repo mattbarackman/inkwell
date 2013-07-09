@@ -106,15 +106,16 @@ SideBar.prototype = {
             drop: function(e, card) {
                 console.log(card);
                 //Note: need the -1 due to header... may go away later
+                console.log(this);
                 var index = $(this).index() - 1;
 
                 var moved = sidebarOverLord.queue.removeItem(index)[0];
                 console.log(moved);
-                var cardNumber = card.draggable.attr('class').split(' ')[0];
+                var cardNumber = card.draggable.find('img').attr('class').split(' ')[0];
                 console.log(cardNumber);
 
                 moved.associateCard(cardNumber);
-                console.log(moved);
+                //console.log(moved);
                 sidebarOverLord.cart.addItem(moved);
                 $.post("/orders/js", moved.occasion);
                 sidebarOverLord.render();
