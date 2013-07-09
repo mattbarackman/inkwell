@@ -55,31 +55,17 @@ class OrdersController < ApplicationController
     upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
     future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
 
-    upcoming_orders.map! { |order|
-      { id: order.id,
-        card_id: order.card_id,
-        date: order.occasion.date,
-        friend: order.occasion.friend.name.titleize,
-        name: order.occasion.name.titleize
-      }
-    }
+    upcoming_orders.map! { |order| order.ajax_hash }
+    future_orders.map! { |order| order.ajax_hash }
 
-    future_orders.map! { |order|
-      { id: order.id,
-        card_id: order.card_id,
-        date: order.occasion.date,
-        friend: order.occasion.friend.name.titleize,
-        name: order.occasion.name.titleize
-      }
-    }
     render json: { :upcoming => upcoming_orders, :future => future_orders }
   end
 
   def ajax_post
     order = Order.find(params[:id])
-    order.card_id = params[:card_id].to_i
+    order.card_id = params[:card_id].to_i if params[:card_id]
     order.save
-    render nothing: true, status: :ok
+    render json: order, status: :ok
   end
 
 end

@@ -7,6 +7,14 @@ class Order < ActiveRecord::Base
 
   before_save :update_status
 
+  def ajax_hash
+    { id: self.id,
+      card_id: self.card_id,
+      date: self.occasion.date,
+      friend: self.occasion.friend.name.titleize,
+      name: self.occasion.name.titleize }
+  end
+
   def update_status
     self.status = "in_cart" if status == "no_card" && card
   end

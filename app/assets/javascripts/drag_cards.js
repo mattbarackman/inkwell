@@ -74,12 +74,17 @@ ShoppingCart.prototype = {
 function SideBar() {
     this.cart = new ShoppingCart();
     this.queue = new UpcomingQueue();
-    this.getOrders();
+    this.form = new OccasionForm();
+    $('#submit_form').on("ajax:success", null, this, 
+                         function(e) { e.data.addOccasion(); });
+    this.refreshOrders();
 }
 
 SideBar.prototype = {
 
-    getOrders: function() {
+    refreshOrders: function() {
+        this.cart = new ShoppingCart();
+        this.queue = new UpcomingQueue();
         var that = this;
         $.get("/orders/js", function(data) {
             for (var i in data.future) {
@@ -96,6 +101,13 @@ SideBar.prototype = {
         this.cart.render();
         this.queue.render();
         this.makeDroppable();
+    },
+
+    addOccasion: function() {
+        $.fancybox.close();
+        $('#submit_form').find('input[type="text"]').val('');
+        console.log(this);
+        this.refreshOrders();
     },
 
     makeDroppable: function() {
