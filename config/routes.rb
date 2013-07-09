@@ -5,6 +5,9 @@ Inkwell::Application.routes.draw do
     match "/users/auth/:provider/callback" => 'authentications#all'
   end
 
+  ## testing the checkout webpage
+  match '/checkout' => "users#checkout"
+
   # devise_scope :user do 
   #   get "/users/auth/:provider/callback" => 'devise/authentications#create'
   # end

@@ -1,27 +1,33 @@
 class ChargesController < ApplicationController
+  
   def new
   end
 
   def create
-    # Amount in cents
-    @amount = 500
-
     customer = Stripe::Customer.create(
-      :email => 'example@stripe.com',
+      :email => 'user@inkwell.com',
       :card => params[:stripeToken]
     )
-
-    charge = Stripe::Charge.create(
-      :customer  => customer.id,
-      :amount => @amount,
-      :description => 'Rails Stripe customer',
-      :currency  => 'usd'
-    )
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to charges_path
-
+    begin 
+      charge = Stripe::Charge.create(
+        :customer  => customer.id,
+        :amount => params[:amount].to_i,
+        :description => 'Inkwell customer',
+        :currency  => 'usd'
+      )
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+    end
+    if charge
+      current_user.orders_in_cart.each do |order|
+        order.status = "purchased"
+        order.save
+      end
+      price = format_price(params[:amount])
+      flash[:success] = "Your payment for #{price} cents went through successfully !"
+    end
+      
+    redirect_to checkout_path
   end
 
 end

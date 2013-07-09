@@ -1,0 +1,42 @@
+
+%h1 Checkout
+
+.payment-message
+  =p flash[:error] if flash[:error]
+  =p flash[:success] if flash[:success]
+
+%br
+
+%div.checkout_cart
+  %div{class: "small-12 columns"}
+    %table
+      %thead
+        %tr
+          %th Friend
+          %th Occasion
+          %th Occasion Date
+          %th Card Title
+          %th Delivery Date
+          %th Price
+      %tfoot
+        %tr
+          %td 
+          %td
+          %td
+          %td
+          %td Total Price:
+          %td= format_price(current_user.orders_in_cart_total)
+      %tbody
+      -if current_user.orders_in_cart
+        -current_user.orders_in_cart.each do |order|
+          %tr
+            %td= order.occasion.friend.name
+            %td= order.occasion.name
+            %td= order.occasion.date
+            %td= order.card.title
+            %td= order.delivery_date
+            %td= format_price(order.card.price)
+
+= render 'charges/new', totalprice: current_user.orders_in_cart_total    
+          
+

@@ -31,9 +31,12 @@ class User < ActiveRecord::Base
   end
 
   def orders_in_cart
-    selected_orders = orders.select{|order| order.status == "in_cart"}.sort_by{|order| }
-    selected_orders.sort{|x,y|y.created_at <=> x.created_at}.map{|order| order.occasion}
+    orders.select { |order| order.status == "in_cart" }
   end
+
+  def orders_in_cart_total
+     orders_in_cart.inject(0) {|sum, order| sum += order.card.price}
+  end 
 
   def future_orders
     orders.reject{|order| order.upcoming?}
