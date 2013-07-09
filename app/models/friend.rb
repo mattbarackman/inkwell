@@ -12,7 +12,9 @@ class Friend < ActiveRecord::Base
     friend.name = params[:name]
     friend.save
 
+    p params[:birthday].length
     if params[:birthday].length > 1
+      p 'got inside the birthday conditional'
       occasion = friend.occasions.build
       occasion.date = Occasion.parse_birthday(params[:birthday])
       occasion.name = "#{friend.name}'s Birthday!"

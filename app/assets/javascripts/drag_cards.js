@@ -12,7 +12,7 @@ Occasion.prototype = {
         result = "<div class='occasion_partial'><ul>";
         result += "<li>" + this.occasion.name + "</li>";
         result += "<li>For: " + this.occasion.friend + "</li>";
-        result += "<li>On: " + this.occasion.date + "</li></ul></div>";
+        result                                                   += "<li>On: " + this.occasion.date + "</li></ul></div>";
         //code for card, price
         return result;
     },
@@ -155,4 +155,5 @@ $(document).ready(function() {
           }, 3000);
         }
   });
+
 });

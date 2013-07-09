@@ -1,4 +1,8 @@
+- unless current_user
+  =render partial: "layouts/slider"  
+
 %h1 Cards
+
 %ul{class: "card_gallery inline-list"}
   - @cards.each do |card|
     %div{class: "draggable_card small-3 columns left"}

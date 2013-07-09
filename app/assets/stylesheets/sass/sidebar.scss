@@ -12,34 +12,43 @@
 
 
 .orders {
-  background-color: #C8EBFE;
   padding: 20px;
 }
 
-.pending_orders {
-  height: auto;
-  width: 100%;
-  margin-bottom: 30px;
-  height: 200px; 
-  overflow-y: auto;
-}
+
 
 .shopping_cart {
   height: 50%;
   width: 100%;
 }
 
-.add_occasion form {
+#submit_form {
   display: none;
 }
 
-.occasion_partial {
-  margin-top: 10px;
-  border-bottom: gray 1px solid;
-  padding: 10px;
-  li {
-    margin-left: 20px;
-    list-style: dash;
+.jcarousel_test {
+  position: relative;
+  overflow: hidden;
+  height: 620px;
+  width: 100%px;
+
+  .pending_orders {
+    height: 200000em;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
+  .occasion_partial {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    float: left;
+    height: 200px;
+    width: 100%;
+    border: 1px solid gray;
+    background-color: #EEE;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
 }
