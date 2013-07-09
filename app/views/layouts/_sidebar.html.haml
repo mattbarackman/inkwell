@@ -13,19 +13,13 @@
     - elsif current_user.orders_without_cards.empty? && !current_user.orders_in_cart.empty?
       %h3 You're all set to checkout below!
 
-    - else
-      %h3 Drag cards onto your occasions. 
-
   %row
-    .orders{class: "pending_orders"}
-      .add_occasion
-        = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
-          = render partial: "occasions/form", locals: {f: f}
-          = f.submit 'Add!'
+    .jcarousel_test
+      .orders{class: "pending_orders"}
+    <a class="scrollup">up</a>
+    <a class="scrolldown">down</a>
 
-  
-  %row
-    %h3 Shopping Cart
-
-  %row
-    %div.orders{class: "shopping_cart"}
+- unless current_user.friends.empty?
+  = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
+    = render partial: "occasions/form", locals: {f: f}
+    = f.submit 'Add!'
