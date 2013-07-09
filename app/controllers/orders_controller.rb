@@ -76,7 +76,10 @@ class OrdersController < ApplicationController
   end
 
   def ajax_post
-    
+    order = Order.find(params[:id])
+    order.card_id = params[:card_id].to_i
+    order.save
+    render nothing: true, status: :ok
   end
 
 end

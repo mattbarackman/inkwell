@@ -19,6 +19,10 @@ Occasion.prototype = {
 
     associateCard: function(card_number) {
         this.occasion.card_id = card_number;
+    },
+
+    updateOnServer: function() {
+
     }
 
 };
@@ -76,7 +80,7 @@ function SideBar() {
 SideBar.prototype = {
 
     getOrders: function() {
-        that = this
+        var that = this;
         $.get("/orders/js", function(data) {
             for (i in data.future) {
                 that.cart.addItem( new Occasion(data.future[i]) );
@@ -111,12 +115,12 @@ SideBar.prototype = {
                 moved.associateCard(cardNumber);
                 console.log(moved);
                 sidebarOverLord.cart.addItem(moved);
-                
+                $.post("/orders/js", moved.occasion);
                 sidebarOverLord.render();
             }
         });
     }
-}
+};
 
 $(document).ready(function() {
     var sidebar = new SideBar();
