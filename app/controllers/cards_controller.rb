@@ -1,5 +1,8 @@
 
 class CardsController < ApplicationController
+
+  layout 'side_bar_layout'  
+
   def index
     @cards = Card.all
   end

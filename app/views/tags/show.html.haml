@@ -2,5 +2,14 @@
   = @tag.name.titleize
   Cards
 
-= render :partial => "cards/card", :collection => @cards, :as => :card
+%ul{class: "card_gallery inline-list"}
+  - @cards.each do |card|
+    %div{class: "draggable_card small-3 columns left"}
+      %li{class: "each-card-display"}
+        = image_tag card.photos.first.data.url(:full), class: card.id
+        %div{class: "pop-up"}
+          %h4=card.title
+          %p=card.description
+          %p=format_price(card.price)
+          %p=pluralize(card.inventory, 'card') 
 

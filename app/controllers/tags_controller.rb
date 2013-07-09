@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
 
+  layout 'side_bar_layout'
+  
   def index
     @tags = Tag.all
   end

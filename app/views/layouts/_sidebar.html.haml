@@ -2,9 +2,9 @@
 
 .side_bar
 
+
   %row
     %button{id: "add_occasion_button"} Add occasion
-
   %row  
 
     - if current_user.orders_without_cards.empty? && current_user.orders_in_cart.empty?        
@@ -19,10 +19,9 @@
   %row
     .orders{class: "pending_orders"}
       .add_occasion
-        - unless current_user.friends.empty?
-          = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
-            = render partial: "occasions/form", locals: {f: f}
-            = f.submit 'Add!'
+        = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
+          = render partial: "occasions/form", locals: {f: f}
+          = f.submit 'Add!'
 
   
   %row
