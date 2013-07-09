@@ -35,7 +35,8 @@ Inkwell::Application.routes.draw do
   # first created -> highest priority.
   root :to => 'cards#index'
 
-  match '/admin/dashboard' => 'admins#index', as: :admin
+  match '/admin/cards' => 'admins#cards', as: :admin_cards
+  match '/admin/orders' => 'admins#orders', as: :admin_orders
 
   # resources :cardstags, :only => [:destroy]
   match '/cardstags' => 'cardstags#destroy'

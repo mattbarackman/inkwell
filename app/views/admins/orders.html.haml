@@ -1,0 +1,20 @@
+%h1 Ship Today
+- if @orders_to_ship_today.empty?
+  %h3 No orders to ship today.
+- else
+  .todays_orders_admin
+    =render partial: "order", collection: @orders_to_ship_today, as: :order
+
+%h1 Ship this Week
+- if @orders_to_ship_this_week.empty?
+  %h3 No orders to ship this week.
+- else
+  .weeks_orders_admin
+    =render partial: "order", collection: @orders_to_ship_this_week, as: :order
+
+%h1 Ship Later
+- if @orders_to_ship_later.empty?
+  %h3 No orders to ship after this week.
+- else
+  .future_orders_admin
+    =render partial: "order", collection: @orders_to_ship_later, as: :order, :locals => {statuses: @statuses}

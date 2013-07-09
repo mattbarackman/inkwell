@@ -1,0 +1,56 @@
+.row
+
+  .small-10.small-offset-1.columns
+    - if order.status == "fulfilled"
+      .order_partial.fulfilled
+        .row
+          .small-8.columns
+            %ul 
+              %h4= order.occasion.name.titleize
+              %p= format_date(order.occasion.date)
+              .description
+                %strong For:
+                %p
+                  = order.occasion.friend.name.titleize
+                %strong Status: 
+                %p
+                  This card was fulfilled on
+                  = format_date(order.fulfillment_date)
+                  \.
+                %p
+                  = form_for order do |f|
+                    = f.select("status", %w[purchased fulfilled], {}, { index: nil })#, :selected => order.status)
+                    = f.submit
+
+          .small-4.columns
+            .right
+              =image_tag order.card.photos.first.data("medium")
+
+    - else 
+      .order_partial.unfulfilled
+        .row
+          .small-8.columns
+            %ul 
+              %h4= order.occasion.name.titleize
+              %p= format_date(order.occasion.date)
+
+              .description
+                %strong For:
+                %p
+                  = order.occasion.friend.name.titleize
+                %strong Status:
+                %p
+                  This card needs to be shipped on
+                  = format_date(order.fulfillment_date)
+                  \.
+                %p
+                  / = form_for "/orders/#{order.id}/edit", method: "put" do |f|
+                  /   = f.select(:status, %w[no_card in_cart purchased fulfilled])#, :selected => order.status
+                  /   = f.submit
+                  = form_for order do |f|
+                    = f.select("status", %w[purchased fulfilled], {}, { index: nil })#, :selected => order.status)
+                    = f.submit
+
+          .small-4.columns
+            .right
+              =image_tag order.card.photos.first.data("medium")

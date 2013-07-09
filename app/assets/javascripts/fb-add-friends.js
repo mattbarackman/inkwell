@@ -71,45 +71,45 @@ var modal = (function(){
 }());
 
 
-var AddUser = {
+// var AddUser = {
 
-  init: function() {
+//   init: function() {
 
-    $('body').on('click', '.facebook-friend-picture', this.addFriend);
+//     $('body').on('click', '.facebook-friend-picture', this.addFriend);
     
-    var facebookFriends = '';
+//     var facebookFriends = '';
 
-    function allFriendData(html) {
-      $.ajax({
-        url: '/friends/facebook',
-        method: 'get',
-        success: html
-      });
-    };
+//     function allFriendData(html) {
+//       $.ajax({
+//         url: '/friends/facebook',
+//         method: 'get',
+//         success: html
+//       });
+//     };
 
-    allFriendData(function(result){
-      facebookFriends = result;
-      console.log('loaded the modal');
-      modal.load({content: facebookFriends, height: '570', width: '600' });
-    });
+//     allFriendData(function(result){
+//       facebookFriends = result;
+//       console.log('loaded the modal');
+//       modal.load({content: facebookFriends, height: '570', width: '600' });
+//     });
 
-    $('.facebook-add-friends-link').on('click', function(e){
-      e.preventDefault();
-      modal.show();
-      console.log('showing the modal');
-    });
+//     $('.facebook-add-friends-link').on('click', function(e){
+//       e.preventDefault();
+//       modal.show();
+//       console.log('showing the modal');
+//     });
     
-  },
+//   },
 
-  addFriend: function() {
-    $.post('/friends/facebook', $(this).parent().serialize());
-    $(this).parent().animate({opacity: "0.3"});
-  }
-}
+//   addFriend: function() {
+//     $.post('/friends/facebook', $(this).parent().serialize());
+//     $(this).parent().animate({opacity: "0.3"});
+//   }
+// }
 
 
 
-$(document).ready(function(){
-  AddUser.init();
-});
+// $(document).ready(function(){
+//   AddUser.init();
+// });
 
