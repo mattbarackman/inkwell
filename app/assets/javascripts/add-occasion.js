@@ -8,7 +8,7 @@ var OccasionForm = {
   },
 
   fancyBox: function() {
-    var self = this;
+    var self = this; 
     $('#add_occasion_button').fancybox({
       content: self.occasion.show()
     });
@@ -17,18 +17,19 @@ var OccasionForm = {
   setAutocomplete: function() {
     $('#occasion_friend_name').autocomplete({
       appendTo: '#autocomple-results',
-      source: ['foo', 'food', 'fooker', 'foomazing']
+      source: $('#occasion_friend_name').data('autocomplete-source')
     });
   },
 
   addResponse: function(e, response) {
     $('.pending_orders').prepend(response);
     $.fancybox.close();
+    $('#submit_form').find('input[type="text"]').val('');
   }
 
 };
 
 $(document).ready(function() {
-  console.log('got here');
-  OccasionForm.init()
+  OccasionForm.init();
+  $('.add_occasion form').hide();
 });
