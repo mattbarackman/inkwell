@@ -6,4 +6,5 @@
       %ul
         %li= text_field_tag "name", friend['name']
         %li= text_field_tag "birthday", friend['birthday']
+        =hidden_field_tag "image_url", friend['picture']['data']['url']
         =submit_tag "Add friend"   

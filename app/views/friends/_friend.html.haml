@@ -1,4 +1,6 @@
 %li
+  = image_tag friend.image_url if friend.image_url
   = friend.name + " -"
   = link_to "edit", edit_friend_path(friend)
   = link_to "delete", friend, :confirm => "Are you sure?", :method => :delete
+

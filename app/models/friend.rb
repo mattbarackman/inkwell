@@ -10,6 +10,7 @@ class Friend < ActiveRecord::Base
   def self.add_fb_friend(current_user, params)
     friend = current_user.friends.build
     friend.name = params[:name]
+    friend.image_url = params[:image_url]
     friend.save
 
     p params[:birthday].length
