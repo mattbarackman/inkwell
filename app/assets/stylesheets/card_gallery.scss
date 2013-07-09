@@ -1,0 +1,19 @@
+
+.inline-list {
+  .each-card-display {
+    min-height: 250px;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
+    .pop-up {
+      display: none;
+      width: 500px;
+      padding: 10px;
+      background: #eeeeee;
+      color: #000000;
+      border: 1px solid #1a1a1a;
+      font-size: 90%;
+    }
+}
+}

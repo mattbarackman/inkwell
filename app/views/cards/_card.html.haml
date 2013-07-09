@@ -30,7 +30,4 @@
         =card.tag_names
 
 
-  -unless current_user && current_user.orders_without_cards.empty?
-    =render partial: 'cards/associate_card_form', locals: {card: card, order: @order}
-
 

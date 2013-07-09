@@ -2,7 +2,13 @@
   = render :partial => "layouts/slider"
 
 %h1 Cards
-
-= render :partial => "cards/card", :collection => @cards, :as => :card
-
+%ul{class: "inline-list"}
+  - @cards.each do |card|
+    %li{class: "small-3 columns left each-card-display"}
+      =image_tag card.photos.first.data.url(:full)
+      .div{class: "pop-up"}
+        %h4=card.title
+        %p=card.description
+        %p=format_price(card.price)
+        %p=pluralize(card.inventory, 'card') 
 
