@@ -6,7 +6,8 @@ class Occasion < ActiveRecord::Base
   has_many :orders
   belongs_to :friend
 
-  after_create :create_order
+  before_create :find_or_create_friend
+  # after_create :create_order
 
   def user
     self.friend.user
@@ -44,4 +45,9 @@ class Occasion < ActiveRecord::Base
     date == Date.today
   end
 
+  private
+  
+  def find_or_create_friend
+    self.friend = Friend.find_or_create_by_name(name)
+  end
 end

@@ -17,14 +17,14 @@
     .orders{class: "pending_orders", style: "height: 200px; overflow-y: auto" }
     
       .add_occasion
-        - unless current_user.friends.empty?
-          = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
-            = render partial: "occasions/form", locals: {f: f}
-            = f.submit 'Add!'
+        = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|
+          = render partial: "occasions/form", locals: {f: f}
+          = f.submit 'Add!'
 
-      /%div{class: "pending_orders"}  
-      /  - current_user.orders_without_cards.each do |occasion|
-      /    = render partial: "layouts/occasion", locals: {occasion: occasion}
+
+      %div{class: "pending_orders"}  
+        - current_user.orders_without_cards.each do |occasion|
+          = render "layouts/occasion", occasion: occasion
 
 %row
   .side_bar{style: "position: fixed; top: 475px; width: 28%; height: 20px" }

@@ -14,7 +14,10 @@ class OccasionsController < ApplicationController
   def create
     params[:occasion][:date] = Date.strptime(params[:occasion][:date], "%m/%d/%Y") if params[:occasion][:date].class == String
     occasion = Occasion.new(params[:occasion])
-    try_to_update(occasion, authorize_user: true)
+    if occasion.save
+      render :json => render_to_string(partial: "layouts/occasion", locals: {occasion: occasion}).to_json
+    else
+    end
   end
 
   def edit
