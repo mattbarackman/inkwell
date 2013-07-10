@@ -1,11 +1,16 @@
 %li
-  %div{class: " each-friend-view"}
-    = image_tag friend.image_url if friend.image_url
-    = friend.name + " -"
-    = link_to "Edit", edit_friend_path(friend)
-    = link_to "Delete", friend, :confirm => "Are you sure?", :method => :delete
-    %div{class: "small-5 columns right"}
-      - friend.occasions.each do |occasion|
-        %p= occasion.event_type_name.capitalize+ ": " + occasion.date.strftime("%A, %b %d")
+  .row
+    .each-friend-view{class: "small-6 columns left"}
+      .row
+        %div{class: "small-6 columns left"}
+          = image_tag friend.image_url if friend.image_url    
+          %h5= friend.name
+          %p
+            = link_to "Edit", edit_friend_path(friend)
+            = link_to "Delete", friend, :confirm => "Are you sure?", :method => :delete
+        %div{class: "small-6 columns left each-friend-view-occasions"}
+          %h6 Occasions:
+          - friend.occasions.each do |occasion|
+            %p= '"'+occasion.name.titleize+ '" on ' + occasion.date.strftime("%B %-d")
 
 

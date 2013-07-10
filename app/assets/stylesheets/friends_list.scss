@@ -11,8 +11,19 @@ li .each-friend-view {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  height: 110px;
   margin-bottom: 10px;
   width: 80%;
-  overflow: hidden;
+
+  h5 {
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    vertical-align: bottom;
+  }
+  p {
+    margin-top: 10px;
+    a{
+      margin-right: 5px;
+    }
+  }
 }
