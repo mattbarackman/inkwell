@@ -77,8 +77,6 @@ var AddUser = {
 
     $('body').on('click', '.facebook-friend-picture', this.addFriend);
     
-    var facebookFriends = '';
-
     function allFriendData(html) {
       $.ajax({
         url: '/friends/facebook',
@@ -87,18 +85,16 @@ var AddUser = {
       });
     };
 
-    allFriendData(function(result){
-      facebookFriends = result;
-      console.log('loaded the modal');
-      modal.load({content: facebookFriends, height: '570', width: '600' });
-    });
+    modal.load({content: '<img src="/assets/spinner.gif" style="margin: 40%;">', height: '570', width: '600' });
 
     $('.facebook-add-friends-link').on('click', function(e){
       e.preventDefault();
       modal.show();
-      console.log('showing the modal');
+
+      allFriendData(function(results){
+        $('#fb-content').html(results);
+      });
     });
-    
   },
 
   addFriend: function() {
@@ -109,7 +105,7 @@ var AddUser = {
 
 
 
-// $(document).ready(function(){
-//   AddUser.init();
-// });
+$(document).ready(function(){
+  AddUser.init();
+});
 
