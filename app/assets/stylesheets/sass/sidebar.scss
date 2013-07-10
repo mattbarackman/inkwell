@@ -29,7 +29,7 @@
 .jcarousel_test {
   position: relative;
   overflow: hidden;
-  height: 620px;
+  height: 700px;
   width: 100%px;
 
   .pending_orders {
@@ -40,7 +40,7 @@
     padding: 0;
   }
 
-  .occasion_partial {
+/*  .occasion_partial {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     float: left;
@@ -50,5 +50,42 @@
     background-color: #EEE;
     margin-bottom: 10px;
     padding: 10px;
+
   }
+*/
 }
+.occasion_partial {
+  position: relative;
+  float: left;
+  height: 380px;
+  width: 250px;
+
+  .event_title {
+    text-align: center;
+    position: absolute;
+    width: 90%;
+    height: 20%;
+    margin: 5%;
+    margin-bottom: 0;
+    color: white;
+    background-color: #0080a3;
+    h1 {
+      color: white;
+      font-size: 160%;
+    }
+  }
+  .event_card_container {
+    position: absolute;
+    padding-top: 20%;
+    margin: 5%;
+    margin-top: 36%;
+    width: 90%;
+    height: 70%;
+    text-align: center;
+    line-height: 110%;
+    background-color: white;
+    color: gray;
+    min-height: 65%;
+  }      
+}
+

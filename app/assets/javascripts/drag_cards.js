@@ -9,10 +9,13 @@ function Occasion(occasion) {
 Occasion.prototype = {
 
     domify: function() {
-        result = "<div class='occasion_partial'><ul>";
-        result += "<li>" + this.occasion.name + "</li>";
-        result += "<li>For: " + this.occasion.friend + "</li>";
-        result                                                   += "<li>On: " + this.occasion.date + "</li></ul></div>";
+        result = "<div class='occasion_partial'>";
+        result += "<div class='event_title jquery-shadow jquery-shadow-standard'><h1>" + this.occasion.name + "</h1>";
+        result += "<div class='event_name_date'>" + this.occasion.date + "</div></div>";
+        result += "<div class='event_card_container jquery-shadow jquery-shadow-lifted'>";
+        result += "<div class='event_card'><h1>Darg card</h1><h1>here</h1></div>";
+        result += "</div></div>";
+        result 
         //code for card, price
         return result;
     },
@@ -155,5 +158,8 @@ $(document).ready(function() {
           }, 3000);
         }
   });
+
+    $('.event_card_container').shadow('lifted')
+    $('.event_title').shadow()
 
 });
