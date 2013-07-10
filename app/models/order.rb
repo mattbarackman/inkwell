@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
   def ajax_hash
     order_hash = { id: self.id,
                   card_id: self.card_id,
-                  date: self.event_date,
+                  date: format_date(self.event_date),
                   friend: self.occasion.friend.name.titleize,
                   name: self.occasion.name.titleize
                   }
@@ -58,5 +58,11 @@ class Order < ActiveRecord::Base
   def ship_in_future?
     fulfillment_date > Date.today + 7.days
   end
+
+  def format_date(date)
+    day = date.day.ordinalize
+    date.strftime("%B #{day}")
+  end
+
 
 end
