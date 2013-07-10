@@ -18,6 +18,7 @@
           %th Card Title
           %th Delivery Date
           %th Price
+          %th Delete Order
       %tfoot
         %tr
           %td 
@@ -26,6 +27,7 @@
           %td
           %td Total Price:
           %td= format_price(current_user.orders_in_cart_total)
+          %td
       %tbody
       -if current_user.orders_in_cart
         -current_user.orders_in_cart.each do |order|
@@ -36,6 +38,7 @@
             %td= order.card.title
             %td= order.delivery_date
             %td= format_price(order.card.price)
+            %td= link_to "Delete", order, method: :delete, :confirm => "Delete this order? Your occasion and friend will not be deleted."
 
 = render 'charges/new', totalprice: current_user.orders_in_cart_total    
           
