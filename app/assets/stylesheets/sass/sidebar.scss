@@ -75,7 +75,8 @@
     background-color: #0080a3;
     h1 {
       color: white;
-      font-size: 160%;
+      font-size: 1.6em;
+      margin-bottom: 0.3em;
     }
   }
   .event_card_container {
@@ -97,6 +98,13 @@
   z-index: 1000;  
   .each_card_display {
     background-color: red;
+  }
+}
+
+.event_card {
+  h1 {
+    font-size: 2.5em;
+    // line-height: 150px;
   }
 }
 

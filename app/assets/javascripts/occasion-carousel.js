@@ -14,7 +14,7 @@ $(document).ready(function(){
     $('.jcarousel_test').jcarousel('scroll', '+=1');
   });
 
-  $('.scrolldown').on('mouseover', function(e) {
+  $('.scrolldown').on('click', function(e) {
     e.preventDefault();
     var Scroll = function(){
       $('.jcarousel_test').jcarousel('scroll', '-=1');

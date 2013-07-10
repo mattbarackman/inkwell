@@ -37,5 +37,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :format_price
 
+  def format_date(date)
+    day = date.day.ordinalize
+    date.strftime("%B #{day}")
+  end
+
+  helper_method :format_date
 
 end
