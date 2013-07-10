@@ -60,8 +60,8 @@ class OrdersController < ApplicationController
   end
 
   def ajax_get
-    upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
-    future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
+    upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.event_date}
+    future_orders = current_user.future_orders.sort_by {|order| order.event_date}
 
     upcoming_orders.map! { |order| order.ajax_hash }
     future_orders.map! { |order| order.ajax_hash }
