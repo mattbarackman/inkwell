@@ -9,7 +9,6 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
-    render :show
   end
 
   def update
@@ -23,9 +22,8 @@ class CardsController < ApplicationController
 
   def destroy
     card = Card.find(params[:id])
-    system("pwd")
-    system("rm -rf app/assets/images/card_images/card_#{card.id}")
     card.destroy
+    #Do we want code here to delete the image from AWS?
     redirect_to admin_path
   end
 end
