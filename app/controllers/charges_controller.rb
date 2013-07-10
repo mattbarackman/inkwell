@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-  
+
   def new
   end
 
@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
       :email => 'user@inkwell.com',
       :card => params[:stripeToken]
     )
-    begin 
+    begin
       charge = Stripe::Charge.create(
         :customer  => customer.id,
         :amount => params[:amount].to_i,
@@ -20,13 +20,12 @@ class ChargesController < ApplicationController
     end
     if charge
       current_user.orders_in_cart.each do |order|
-        order.status = "purchased"
-        order.save
+        order.purchased!
       end
       price = format_price(params[:amount].to_i)
       flash[:success] = "Your payment of #{price} went through successfully! Check out your delivery dates below!"
     end
-      
+
     redirect_to occasions_path
   end
 

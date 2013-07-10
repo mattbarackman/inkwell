@@ -1,7 +1,7 @@
 class OccasionsController < ApplicationController
 
   before_filter :authenticate_user!
-  
+
   def index
     @upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
     @future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
@@ -10,12 +10,10 @@ class OccasionsController < ApplicationController
   def new
     @occasion = Occasion.new
   end
-  
+
   def create
-
+    # move lines 16
     friend = Friend.find_or_create_by_name_and_user_id(params[:occasion][:friend_name], current_user.id)
-
-    params[:occasion][:date] = Date.strptime(params[:occasion][:date], "%m/%d/%Y") if params[:occasion][:date].class == String
 
     occasion = friend.occasions.build(params[:occasion])
 
@@ -28,6 +26,7 @@ class OccasionsController < ApplicationController
 
   def edit
     @occasion = Occasion.find(params[:id])
+    # use load_and_authorize_resource
     redirect_to user_root_path unless @occasion && @occasion.user == current_user
   end
 

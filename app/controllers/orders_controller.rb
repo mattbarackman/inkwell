@@ -27,13 +27,11 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    p @order
-    p params[:order]
     status = params[:order].first[:status]
     if status
-      @order.status = status
+      @order."#{status}!"
       params[:order].first.delete(:status)
-    end 
+    end
     @order.update_attributes(params[:order].first)
     if @order.save
       redirect_to :back
@@ -51,14 +49,12 @@ class OrdersController < ApplicationController
       redirect_to :back
     else
       render card
-    end    
+    end
   end
 
   def destroy
     order = Order.find(params[:id])
-    order.status = "no_card"
-    order.card = nil
-    order.save
+    order.no_card!
     redirect_to :back
   end
 

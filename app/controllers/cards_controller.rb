@@ -1,7 +1,6 @@
-
 class CardsController < ApplicationController
 
-  layout 'side_bar_layout'  
+  layout 'side_bar_layout'
 
   def index
     @cards = Card.all
@@ -9,7 +8,6 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
-    render :show
   end
 
   def update
@@ -23,8 +21,6 @@ class CardsController < ApplicationController
 
   def destroy
     card = Card.find(params[:id])
-    system("pwd")
-    system("rm -rf app/assets/images/card_images/card_#{card.id}")
     card.destroy
     redirect_to admin_path
   end

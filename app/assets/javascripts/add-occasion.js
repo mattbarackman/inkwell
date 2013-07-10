@@ -1,14 +1,14 @@
-function OccasionForm() {
-    this.occasion = $('#submit_form');
-    this.occasion.hide();
-    this.fancyBox();
-    this.setAutocomplete();
+var OccasionForm = function() {
+  this.occasion = $('#submit_form');
+  this.occasion.hide();
+  this.fancyBox();
+  this.setAutocomplete();
 }
 
 OccasionForm.prototype = {
 
   fancyBox: function() {
-    var self = this; 
+    var self = this;
     $('#add_occasion_button').on('click', function(e){
       e.preventDefault();
       login.open({content: self.occasion.show(), width: '320', height: '257'});

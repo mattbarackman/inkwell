@@ -6,6 +6,23 @@ class Order < ActiveRecord::Base
   belongs_to :card
 
   before_save :update_status
+  before_save :update_card
+
+  STATUSES = {
+    :no_card => 'no_card',
+    :purchased => 'purchased',
+    :in_cart => 'in_cart',
+    :fulfilled => 'fulfilled'
+  }
+
+  STATUSES.keys.each do |stat|
+    define_method "#{stat}?" do
+      self.status == STATUSES[stat]
+    end
+    define_method "#{stat}!" do
+      self.update_attributes :status => STATUSES[stat]
+    end
+  end
 
   def ajax_hash
     order_hash = { id: self.id,
@@ -25,8 +42,8 @@ class Order < ActiveRecord::Base
 
   scope :with_card, where("status != 'no_card'")
 
-  def update_status
-    self.status = "in_cart" if status == "no_card" && card
+  def self.shipping_today
+    self.with_card.select{|order| order.ship_today?}.sort_by{|order| order.fulfillment_date}
   end
 
   def delivery_date
@@ -57,6 +74,15 @@ class Order < ActiveRecord::Base
 
   def ship_in_future?
     fulfillment_date > Date.today + 7.days
+  end
+
+  private
+  def update_status
+    self.status = "in_cart" if no_card? && card
+  end
+
+  def update_card
+    order.card = nil if self.no_card?
   end
 
 end

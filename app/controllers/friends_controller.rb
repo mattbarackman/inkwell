@@ -1,11 +1,11 @@
 class FriendsController < ApplicationController
-
+  before_filter :load_and_authorize_resource, :only => [:edit]
   before_filter :authenticate_user!
 
   def index
     @friends = current_user.friends
   end
-  
+
   def new
     @friend = current_user.friends.new
   end
@@ -16,8 +16,6 @@ class FriendsController < ApplicationController
   end
 
   def edit
-    @friend = Friend.find(params[:id])
-    redirect_to user_root_path unless @friend && @friend.user == current_user
   end
 
   def show
@@ -49,6 +47,11 @@ class FriendsController < ApplicationController
 
 
   private
+
+  def load_and_authorize_resource
+    @friend = Friend.find(params[:id])
+    redirect_to user_root_path unless @friend && @friend.user == current_user # move this to
+  end
 
   # See try_to_update in ApplicationController
 
