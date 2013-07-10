@@ -67,7 +67,7 @@ var login = (function(){
 // Wait until the DOM has loaded before querying the document
 $(document).ready(function(){
 
-   data =  '<div id="login-box-modal">';
+    var data =  '<div id="login-box-modal">';
     data += '<div id="login-box-oauth">';
     data += '<a href="/users/auth/facebook"><img src="/assets/facebook_128.png"></a>';
     data += '<a href="/users/auth/google_oauth2"><img src="/assets/google_128.png"></a><br>';
@@ -80,21 +80,31 @@ $(document).ready(function(){
     data += '<a href="/users/password/new" class="login-link">Forgot your password?</a><br>';
     data += '<a href="/admins/sign_in" class="login-link">Admin</a>';
     data += '</form>';
-
     data += '</div></div>';
+    
 
-    //   $('#login-button').fancybox({
-    // content: data,
-    //   height: 337,
-    //   width: 320
-    // });
+    
+    var signupForm =  '<div id="login-box-modal">';
+    signupForm += '<div id="login-box-oauth">';
+    signupForm += '<a href="/users/auth/facebook"><img src="/assets/facebook_128.png"></a>';
+    signupForm += '<a href="/users/auth/google_oauth2"><img src="/assets/google_128.png"></a><br>';
+    signupForm += '<form action="/users/sign_up" method="post" id="signup-form">';
+    signupForm += '<input autofocus="autofocus" id="user_email" name="user[email]" size="30" type="email" value="" placeholder="Email">';
+    signupForm += '<input id="user_password" name="user[password]" size="30" type="password" placeholder="Password">';
+    signupForm += '<input id="user_password" name="user[password_confirmation]" size="30" type="password" placeholder="Confirm password">';
+    signupForm += '<input name="commit" type="submit" value="Sign up" id="sign-up-button">';
+    signupForm += '</form>';
+    signupForm += '</div></div>';
 
-    $('#signup-button').fancybox({
-      content: data
-    });
 
   $('#login-button').click(function(e){
     e.preventDefault();
     login.open({content: data, width: '320', height: '337'});
+  });
+
+  $('#signup-button').click(function(e){
+    console.log(e);
+    e.preventDefault();
+    login.open({content: signupForm, width: '320', height: '337'});
   });
 });

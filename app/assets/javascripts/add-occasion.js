@@ -7,17 +7,12 @@ function OccasionForm() {
 
 OccasionForm.prototype = {
 
-  // init: function() {
-  //   this.occasion = $('.add_occasion form');
-  //   this.fancyBox();
-  //   this.setAutocomplete();
-  //   $('#submit_form').on("ajax:success", this.addResponse);
-  // },
-
   fancyBox: function() {
     var self = this; 
-    $('#add_occasion_button').fancybox({
-      content: self.occasion//.show()
+    $('#add_occasion_button').on('click', function(e){
+      e.preventDefault();
+      login.open({content: self.occasion.show(), width: '320', height: '257'});
+      $('#login-content').css('height', '240');
     });
   },
 
@@ -26,17 +21,10 @@ OccasionForm.prototype = {
       appendTo: '#autocomple-results',
       source: $('#occasion_friend_name').data('autocomplete-source')
     });
-  },
-
-  //addResponse: function(e, response) {
-    //$('.pending_orders').prepend(response);
-    //$.fancybox.close();
-    //$('#submit_form').find('input[type="text"]').val('');
-  //}
+  }
 
 };
 
 $(document).ready(function() {
-  //OccasionForm.init();
   $('#submit_form').hide();
 });
