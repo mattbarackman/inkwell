@@ -61,3 +61,24 @@ h1 {
 #add_occasion_button {
   margin-top: 25px;
 }
+
+
+.flash_success {
+  background-color: #F7F2B2;
+  color: #545026;
+  border: #D1C756 solid 1px;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.flash_errors {
+  background-color: #FFD9D9;
+  color: #FF3B3B;
+  border: #FF9999 solid 1px;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}

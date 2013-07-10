@@ -23,11 +23,11 @@ class ChargesController < ApplicationController
         order.status = "purchased"
         order.save
       end
-      price = format_price(params[:amount])
-      flash[:success] = "Your payment for #{price} cents went through successfully !"
+      price = format_price(params[:amount].to_i)
+      flash[:success] = "Your payment of #{price} went through successfully! Check out your delivery dates below!"
     end
       
-    redirect_to checkout_path
+    redirect_to occasions_path
   end
 
 end
