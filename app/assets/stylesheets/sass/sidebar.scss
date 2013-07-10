@@ -30,7 +30,10 @@
   position: relative;
   overflow: hidden;
   height: 500px;
-  width: 100%px;
+  width: 255px;
+  border-bottom: #bbb solid 1px;
+  border-top: #bbb solid 1px;
+
 
   .pending_orders {
     height: 200000em;
@@ -65,7 +68,8 @@
     position: absolute;
     width: 90%;
     height: 20%;
-    margin: 5%;
+    margin-left: 5%;
+    // margin: 5%;
     margin-bottom: 0;
     color: white;
     background-color: #0080a3;
@@ -77,8 +81,8 @@
   .event_card_container {
     position: absolute;
     padding-top: 5%;
-    margin: 5%;
-    margin-top: 36%;
+    margin-left: 5%;
+    margin-top: 31%;
     width: 90%;
     height: 70%;
     text-align: center;
