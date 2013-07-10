@@ -26,7 +26,7 @@ class Photo < ActiveRecord::Base
   has_attached_file :data,
                     :styles => {
                       :thumb => [">50x"],
-                      :medium => [">180x"],
+                      :medium => ["180x240#"],
                       :full => [">600x"]
                       },                    
                       :storage => :aws,
