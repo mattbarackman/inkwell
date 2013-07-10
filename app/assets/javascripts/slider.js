@@ -4,5 +4,5 @@ $(window).load(function() {
     keyboard: true,
     slideshow: true,
     pauseOnAction: true            //Boolean: Pause the slideshow when interacting with control elements, highly recommended.
-});
+	});
 });

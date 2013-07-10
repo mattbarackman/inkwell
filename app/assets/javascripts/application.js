@@ -17,6 +17,7 @@
 //= require jquery.ui.datepicker
 //= require foundation
 //= require_tree .
+//= require_tree ../../../vendor/assets/javascripts
 
 $(document).foundation();
 
