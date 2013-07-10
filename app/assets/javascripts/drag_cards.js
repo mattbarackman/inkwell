@@ -139,7 +139,7 @@ SideBar.prototype = {
 };
 
 $(document).ready(function() {
-    var sidebar = new SideBar();
+    sidebar = new SideBar();
     $( ".draggable_card" ).draggable({ helper: "clone",
         start: function(e, ui)
         {
