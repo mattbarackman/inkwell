@@ -77,5 +77,3 @@ gem 'rails3-jquery-autocomplete', :git => 'git://github.com/juniorz/rails3-jquer
 
 # To use debugger
 # gem 'debugger'
-
-gem "mocha", :group => :test
