@@ -83,23 +83,18 @@ $(document).ready(function(){
 
     data += '</div></div>';
 
-    $('#login-button').fancybox({
-      content: data,
-      height: 337,
-      width: 320
-    });
+    //   $('#login-button').fancybox({
+    // content: data,
+    //   height: 337,
+    //   width: 320
+    // });
 
     $('#signup-button').fancybox({
       content: data
     });
 
-  // $('#login-button').click(function(e){
-  //   e.preventDefault();
-
- 
-
-
-
-  //   // login.open({content: data, width: '320', height: '337'});
-  // });
+  $('#login-button').click(function(e){
+    e.preventDefault();
+    login.open({content: data, width: '320', height: '337'});
+  });
 });
