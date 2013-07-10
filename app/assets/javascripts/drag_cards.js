@@ -9,11 +9,13 @@ function Occasion(occasion) {
 Occasion.prototype = {
 
     domify: function() {
+
+        debugger;
         result = "<div class='occasion_partial'>";
         result += "<div class='event_title jquery-shadow jquery-shadow-standard'><h1>" + this.occasion.name + "</h1>";
         result += "<div class='event_name_date'>" + this.occasion.date + "</div></div>";
         result += "<div class='event_card_container jquery-shadow jquery-shadow-lifted'>";
-        result += "<div class='event_card'><h1>Darg card</h1><h1>here</h1></div>";
+        result += "<div class='event_card'><h1>Drag card</h1><h1>here</h1></div>";
         result += "</div></div>";
         result 
         //code for card, price
@@ -94,11 +96,9 @@ SideBar.prototype = {
         this.queue = new UpcomingQueue();
         var that = this;
         $.get("/orders/js", function(data) {
-            for (var i in data.future) {
-                that.cart.addItem( new Occasion(data.future[i]) );
-            }
-            for (var i in data.upcoming) {
-                that.queue.addItem( new Occasion(data.upcoming[i]) );
+            // debugger;
+            for (var i in data.not_purchased_orders) {
+                that.queue.addItem( new Occasion(data.not_purchased_orders[i]) );
             }
             that.render();
         });
