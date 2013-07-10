@@ -44,7 +44,8 @@ var modal = (function(){
   method.close = function () {
     $modal.animate({opacity: 0.0, 'z-index': -1000});
     $overlay.animate({opacity: 0.0, 'z-index': -1000});
-    location.reload(true);
+    sidebar.refreshOrders();
+    //location.reload(true);
   };
 
   // Generate the HTML and add it to the document
