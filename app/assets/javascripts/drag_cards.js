@@ -98,6 +98,7 @@ SideBar.prototype = {
                 that.queue.addItem( new Occasion(data.not_purchased_orders[i], i) );
             }
             that.render();
+            console.log(that);
 
         });
     },
