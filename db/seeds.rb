@@ -50,7 +50,7 @@ User.all.each do |user|
 end
 
 Occasion.all.each do |occasion|
-  Card.all.sample.orders << Order.create(user_id: occasion.friend.user.id, occasion_id: occasion.id)
+  Card.all.sample.orders << Order.create(user_id: occasion.friend.user.id, occasion_id: occasion.id, event_date: occasion.date)
 end
 
 Tag.create(name: "anniversary")
