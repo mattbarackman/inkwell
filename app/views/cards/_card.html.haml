@@ -10,8 +10,8 @@
         %br
         %br
 
-    .div{class: "small-4 columns", "data-default" => card.photos.first.data.url(:full) }
-      = image_tag card.photos.first.data.url(:full)
+    .div{class: "small-4 columns", "data-default" => card.photos.first.data.url(:medium) }
+      = image_tag card.photos.first.data.url(:medium)
 
     .div{class: "small-7 columns"}
       %p

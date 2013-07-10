@@ -55,7 +55,10 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    Order.find(params[:id]).destroy
+    order = Order.find(params[:id])
+    order.status = "no_card"
+    order.card = nil
+    order.save
     redirect_to :back
   end
 

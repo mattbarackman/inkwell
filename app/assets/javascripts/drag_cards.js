@@ -10,14 +10,17 @@ Occasion.prototype = {
 
     domify: function() {
 
-        debugger;
         result = "<div class='occasion_partial'>";
         result += "<div class='event_title jquery-shadow jquery-shadow-standard'><h1>" + this.occasion.name + "</h1>";
         result += "<div class='event_name_date'>" + this.occasion.date + "</div></div>";
         result += "<div class='event_card_container jquery-shadow jquery-shadow-lifted'>";
-        result += "<div class='event_card'><h1>Drag card</h1><h1>here</h1></div>";
+
+        if (this.occasion.image_url === undefined) {
+          result += "<div class='event_card'><h1>Drag card</h1><h1>here</h1></div>";
+        } else {
+          result += "<div class='event_card'><img src='" + this.occasion.image_url + "'></div>";
+        }
         result += "</div></div>";
-        result 
         //code for card, price
         return result;
     },
@@ -61,14 +64,11 @@ function ShoppingCart() {
 
 ShoppingCart.prototype = {
 
-    calculateTotal: function() {},
-
     render: function() {
         $(".shopping_cart .occasion_partial").detach();
         for (var i in this.occasions) {
             $(".shopping_cart").append(this.occasions[i].DOM);
         }
-        //Calculate price
     },
 
     addItem: function(occasion) {
@@ -96,7 +96,6 @@ SideBar.prototype = {
         this.queue = new UpcomingQueue();
         var that = this;
         $.get("/orders/js", function(data) {
-            // debugger;
             for (var i in data.not_purchased_orders) {
                 that.queue.addItem( new Occasion(data.not_purchased_orders[i]) );
             }
@@ -123,21 +122,17 @@ SideBar.prototype = {
         $(".pending_orders .occasion_partial").droppable({
             accept: ".draggable_card",
             drop: function(e, card) {
-                console.log(card);
                 //Note: need the -1 due to header... may go away later
-                console.log(this);
-                var index = $(this).index() - 1;
-
-                var moved = sidebarOverLord.queue.removeItem(index)[0];
-                console.log(moved);
+                var index = $(this).index();
+                var newImage = card.helper.find('img')[0];
+                var replacedImage = $(this).find('.event_card').html(newImage);
+                $(replacedImage).hide();
+                $(replacedImage).fadeIn();
+                var occasion = sidebarOverLord.queue.occasions[index];
                 var cardNumber = card.draggable.find('img').attr('class').split(' ')[0];
-                console.log(cardNumber);
-
-                moved.associateCard(cardNumber);
-                //console.log(moved);
-                sidebarOverLord.cart.addItem(moved);
-                $.post("/orders/js", moved.occasion);
-                sidebarOverLord.render();
+                occasion.associateCard(cardNumber);
+                $.post("/orders/js", occasion.occasion);
+                // sidebarOverLord.render();
             }
         });
     }
@@ -149,7 +144,7 @@ $(document).ready(function() {
         start: function(e, ui)
         {
           $(e.target).css('opacity', '0');
-          $(ui.helper).children('li').css('background-color', 'pink');
+          $(ui.helper).addClass('cardclone');
         },
         stop: function(e, ui)
         {
@@ -158,8 +153,5 @@ $(document).ready(function() {
           }, 3000);
         }
   });
-
-    $('.event_card_container').shadow('lifted')
-    $('.event_title').shadow()
 
 });

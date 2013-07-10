@@ -8,11 +8,17 @@ class Order < ActiveRecord::Base
   before_save :update_status
 
   def ajax_hash
-    { id: self.id,
-      card_id: self.card_id,
-      date: self.event_date,
-      friend: self.occasion.friend.name.titleize,
-      name: self.occasion.name.titleize }
+    order_hash = { id: self.id,
+                  card_id: self.card_id,
+                  date: self.event_date,
+                  friend: self.occasion.friend.name.titleize,
+                  name: self.occasion.name.titleize
+                  }
+
+    order_hash[:image_url] = self.card.photos.first.data.url(:medium) if self.card && self.card.photos.first.data.url(:medium)
+
+    order_hash
+
   end
 
   FULLFILLMENT_TRANSIT_TIME = 432000 # 5 Days

@@ -52,7 +52,7 @@
     padding: 10px;
 
   }
-*/
+  */
 }
 .occasion_partial {
   position: relative;
@@ -87,5 +87,12 @@
     color: gray;
     min-height: 65%;
   }      
+}
+
+.cardclone {
+  z-index: 1000;  
+  .each_card_display {
+    background-color: red;
+  }
 }
 
