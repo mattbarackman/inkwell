@@ -49,8 +49,23 @@ h1 {
     }
   }
 
+}
 
+.scrolldown{
+  margin-left: 109px;
+  display: block;
+}
 
+.scrollup{
+  margin-left: 109px;
+  display: block;
+}
+
+i{
+  margin: auto; 
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 #category_dropdown {

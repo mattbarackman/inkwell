@@ -14,10 +14,10 @@
       %h3 You're all set to checkout below!
 
   %row
+    <a class="scrollup"><i class="icon-chevron-up icon-2x"></i></a>
     .jcarousel_test
       .orders{class: "pending_orders"}
-    <a class="scrollup">up</a>
-    <a class="scrolldown">down</a>
+    <a class="scrolldown"><i class="icon-chevron-down icon-2x"></i></a>
 
 - unless current_user.friends.empty?
   = form_for :occasion, remote: true, url: occasions_path, format: :json, html: { id: "submit_form" } do |f|

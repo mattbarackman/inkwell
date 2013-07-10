@@ -109,7 +109,7 @@ var AddUser = {
 
 
 
-$(document).ready(function(){
-  AddUser.init();
-});
+// $(document).ready(function(){
+//   AddUser.init();
+// });
 
