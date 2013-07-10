@@ -3,8 +3,8 @@ class OccasionsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
-    @future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
+    @upcoming_orders = current_user.upcoming_orders
+    @future_orders = current_user.future_orders
   end
 
   def new

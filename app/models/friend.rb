@@ -16,7 +16,6 @@ class Friend < ActiveRecord::Base
       occasion.date = Occasion.parse_birthday(params[:birthday])
       occasion.name = "#{friend.name}'s Birthday!"
       occasion.event_type_name = 'birthday'
-      occasion.user_id = current_user.id
       occasion.annual = true
       occasion.save
     end
