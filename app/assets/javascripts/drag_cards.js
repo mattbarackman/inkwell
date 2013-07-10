@@ -95,26 +95,41 @@ SideBar.prototype = {
     refreshOrders: function() {
         this.cart = new ShoppingCart();
         this.queue = new UpcomingQueue();
+
         var that = this;
         $.get("/orders/js", function(data) {
             for (var i in data.not_purchased_orders) {
                 that.queue.addItem( new Occasion(data.not_purchased_orders[i], i) );
             }
             that.render();
+
         });
+
+
     },
 
     render: function() {
         this.cart.render();
         this.queue.render();
+        console.log(this.queue);
         this.makeDroppable();
+        this.renderCheckout();
     },
 
     addOccasion: function() {
         $.fancybox.close();
         $('#submit_form').find('input[type="text"]').val('');
-        console.log(this);
+        // console.log(this);
         this.refreshOrders();
+    },
+
+    renderCheckout: function() {
+        var totalOrders = $('.event_card').find('img').length;
+
+        if (totalOrders > 0) {
+            $('.checkout').html('<a href="/checkout">Checkout (' + $(".event_card").find("img").length + ')</a>');
+            $('.checkout').siblings().first().show();
+        }
     },
 
     makeDroppable: function() {
@@ -123,19 +138,20 @@ SideBar.prototype = {
         $(".pending_orders .occasion_partial").droppable({
             accept: ".draggable_card",
             drop: function(e, card) {
-                //Note: need the -1 due to header... may go away later
                 var index = $(this).attr('name');
-                console.log(index);
+                
                 var newImage = card.helper.find('img')[0];
                 var replacedImage = $(this).find('.event_card').html(newImage);
                 $(replacedImage).hide();
                 $(replacedImage).fadeIn();
+                sidebarOverLord.renderCheckout();
+
                 var occasion = sidebarOverLord.queue.occasions[index];
                 var cardNumber = card.draggable.find('img').attr('class').split(' ')[0];
                 occasion.associateCard(cardNumber);
                 console.log(occasion.occasion);
+
                 $.post("/orders/js", occasion.occasion);
-                // sidebarOverLord.render();
             }
         });
     }
