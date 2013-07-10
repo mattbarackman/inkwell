@@ -105,7 +105,6 @@ SideBar.prototype = {
     render: function() {
         this.cart.render();
         this.queue.render();
-        console.log(this.queue);
         this.makeDroppable();
         this.renderCheckout();
     },
@@ -142,8 +141,6 @@ SideBar.prototype = {
                 var occasion = sidebarOverLord.queue.occasions[index];
                 var cardNumber = card.draggable.find('img').attr('class').split(' ')[0];
                 occasion.associateCard(cardNumber);
-
-                console.log(occasion.occasion);
 
                 $.post("/orders/js", occasion.occasion);
             }
