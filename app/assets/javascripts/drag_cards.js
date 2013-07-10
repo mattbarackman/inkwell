@@ -1,8 +1,9 @@
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
 
-function Occasion(occasion) {
+function Occasion(occasion, index) {
     this.occasion = occasion;
+    this.index = index;
     this.DOM = this.domify();
 }
 
@@ -10,7 +11,7 @@ Occasion.prototype = {
 
     domify: function() {
 
-        result = "<div class='occasion_partial'>";
+        result = "<div class='occasion_partial' name='" + this.index + "'>";
         result += "<div class='event_title jquery-shadow jquery-shadow-standard'><h1>" + this.occasion.name + "</h1>";
         result += "<div class='event_name_date'>" + this.occasion.date + "</div></div>";
         result += "<div class='event_card_container jquery-shadow jquery-shadow-lifted'>";
@@ -97,7 +98,7 @@ SideBar.prototype = {
         var that = this;
         $.get("/orders/js", function(data) {
             for (var i in data.not_purchased_orders) {
-                that.queue.addItem( new Occasion(data.not_purchased_orders[i]) );
+                that.queue.addItem( new Occasion(data.not_purchased_orders[i], i) );
             }
             that.render();
         });
@@ -123,7 +124,8 @@ SideBar.prototype = {
             accept: ".draggable_card",
             drop: function(e, card) {
                 //Note: need the -1 due to header... may go away later
-                var index = $(this).index();
+                var index = $(this).attr('name');
+                console.log(index);
                 var newImage = card.helper.find('img')[0];
                 var replacedImage = $(this).find('.event_card').html(newImage);
                 $(replacedImage).hide();
@@ -131,6 +133,7 @@ SideBar.prototype = {
                 var occasion = sidebarOverLord.queue.occasions[index];
                 var cardNumber = card.draggable.find('img').attr('class').split(' ')[0];
                 occasion.associateCard(cardNumber);
+                console.log(occasion.occasion);
                 $.post("/orders/js", occasion.occasion);
                 // sidebarOverLord.render();
             }
