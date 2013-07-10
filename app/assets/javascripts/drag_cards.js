@@ -30,10 +30,6 @@ Occasion.prototype = {
         this.occasion.card_id = card_number;
     },
 
-    updateOnServer: function() {
-
-    }
-
 };
 
 function UpcomingQueue() {
@@ -104,8 +100,6 @@ SideBar.prototype = {
             that.render();
 
         });
-
-
     },
 
     render: function() {
@@ -119,7 +113,6 @@ SideBar.prototype = {
     addOccasion: function() {
         $.fancybox.close();
         $('#submit_form').find('input[type="text"]').val('');
-        // console.log(this);
         this.refreshOrders();
     },
 
@@ -139,7 +132,7 @@ SideBar.prototype = {
             accept: ".draggable_card",
             drop: function(e, card) {
                 var index = $(this).attr('name');
-                
+
                 var newImage = card.helper.find('img')[0];
                 var replacedImage = $(this).find('.event_card').html(newImage);
                 $(replacedImage).hide();
@@ -149,6 +142,7 @@ SideBar.prototype = {
                 var occasion = sidebarOverLord.queue.occasions[index];
                 var cardNumber = card.draggable.find('img').attr('class').split(' ')[0];
                 occasion.associateCard(cardNumber);
+
                 console.log(occasion.occasion);
 
                 $.post("/orders/js", occasion.occasion);

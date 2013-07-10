@@ -26,13 +26,10 @@ class Occasion < ActiveRecord::Base
   def create_order
     month = self.date.month
     day = self.date.day
-    if Date.strptime("#{day}-#{month}-#{Date.today.year}", "%d-%m-%Y") < Date.today
-      year = Date.today.year + 1
-    else
-      year = Date.today.year
+    order_date = Date.strptime("#{day}-#{month}-#{Date.today.year}", "%d-%m-%Y")
+    if order_date < Date.today
+      order_date += 1.year
     end
-    order_date = Date.strptime("#{day}-#{month}-#{year}", "%d-%m-%Y") 
-
     Order.create(occasion_id: id, user_id: friend.user.id,
                  event_date: order_date)
   end
