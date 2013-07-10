@@ -8,16 +8,17 @@ class Friend < ActiveRecord::Base
   
 
   def self.add_fb_friend(current_user, params)
-    friend = current_user.friends.build
-    friend.name = params[:name]
+    friend = Friend.find_or_create_by_name_and_user_id(params[:name], current_user.id)
     friend.image_url = params[:image_url]
     
     if friend.save && params[:birthday].length > 1
-        occasion = friend.occasions.build
-        occasion.date = Occasion.parse_birthday(params[:birthday])
-        occasion.name = "#{friend.name}'s Birthday!"
-        occasion.event_type_name = 'birthday'
-        occasion.save
+      occasion = friend.occasions.build
+      occasion.date = Occasion.parse_birthday(params[:birthday])
+      occasion.name = "#{friend.name}'s Birthday!"
+      occasion.event_type_name = 'birthday'
+      occasion.user_id = current_user.id
+      occasion.annual = true
+      occasion.save
     end
   end
 end

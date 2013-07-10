@@ -13,11 +13,10 @@ class OccasionsController < ApplicationController
   
   def create
 
-    friend = Friend.find_or_create_by_name_and_user_id(params[:occasion][:friend_name], current_user.id)
-
     params[:occasion][:date] = Date.strptime(params[:occasion][:date], "%m/%d/%Y") if params[:occasion][:date].class == String
+    params[:occasion][:user_id] = current_user.id
 
-    occasion = friend.occasions.build(params[:occasion])
+    occasion = Occasion.new(params[:occasion])
 
     if occasion.save
       render :json => render_to_string(partial: "layouts/occasion", locals: {occasion: occasion}).to_json
