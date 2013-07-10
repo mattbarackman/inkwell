@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708223429) do
+ActiveRecord::Schema.define(:version => 20130709235842) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20130708223429) do
     t.string   "event_type_name"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.boolean  "annual"
   end
 
   add_index "occasions", ["friend_id"], :name => "index_occasions_on_friend_id"
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130708223429) do
     t.string   "status",      :default => "no_card"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "event_date"
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"

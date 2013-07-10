@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :user_id, :occasion_id
+  attr_accessible :user_id, :occasion_id, :event_date
 
   belongs_to :user
   belongs_to :occasion
@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
   def ajax_hash
     { id: self.id,
       card_id: self.card_id,
-      date: self.occasion.date,
+      date: self.event_date,
       friend: self.occasion.friend.name.titleize,
       name: self.occasion.name.titleize }
   end
