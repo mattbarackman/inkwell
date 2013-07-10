@@ -15,11 +15,8 @@ Inkwell::Application.routes.draw do
   post '/friends/facebook' => 'friends#add_fb_friend', as: :add_fb_friend
 
   match '/profile' => 'users#profile', as: :user_root
-  # match '/orders/associate_card' => 'orders#new_card', as: :associate_card
-  match '/orders/associate_card' => 'orders#create_card', as: :associate_card, via: :post
 
   resources :authentications
-
 
   resources :friends, :only => [:index, :new, :create, :edit, :update, :destroy, :show] do
     get :autocomplete_friend_name, :on => :collection
