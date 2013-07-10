@@ -60,13 +60,12 @@ class OrdersController < ApplicationController
   end
 
   def ajax_get
-    upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.event_date}
-    future_orders = current_user.future_orders.sort_by {|order| order.event_date}
 
-    upcoming_orders.map! { |order| order.ajax_hash }
-    future_orders.map! { |order| order.ajax_hash }
+    not_purchased_orders = current_user.orders.select {|order| order.status == "no_card" || order.status == "in_cart" }.sort_by {|order| order.event_date}
 
-    render json: { :upcoming => upcoming_orders, :future => future_orders }
+    not_purchased_orders.map! { |order| order.ajax_hash }
+
+    render json: { :not_purchased_orders => not_purchased_orders }
   end
 
   def ajax_post
