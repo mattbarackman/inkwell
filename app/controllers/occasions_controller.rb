@@ -3,8 +3,8 @@ class OccasionsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @upcoming_orders = current_user.upcoming_orders.sort_by {|order| order.occasion.date}
-    @future_orders = current_user.future_orders.sort_by {|order| order.occasion.date}
+    @upcoming_orders = current_user.upcoming_orders
+    @future_orders = current_user.future_orders
   end
 
   def new
@@ -13,11 +13,10 @@ class OccasionsController < ApplicationController
   
   def create
 
-    friend = Friend.find_or_create_by_name_and_user_id(params[:occasion][:friend_name], current_user.id)
-
     params[:occasion][:date] = Date.strptime(params[:occasion][:date], "%m/%d/%Y") if params[:occasion][:date].class == String
+    params[:occasion][:user_id] = current_user.id
 
-    occasion = friend.occasions.build(params[:occasion])
+    occasion = Occasion.new(params[:occasion])
 
     if occasion.save
       render :json => render_to_string(partial: "layouts/occasion", locals: {occasion: occasion}).to_json

@@ -39,11 +39,11 @@ class User < ActiveRecord::Base
   end 
 
   def future_orders
-    orders.reject{|order| order.upcoming?}
+    orders.reject{|order| order.upcoming?}.sort_by { |order| Date.today - order.event_date }
   end
 
   def upcoming_orders
-    orders.select{|order| order.upcoming?}
+    orders.select{|order| order.upcoming?}.sort_by { |order| Date.today - order.event_date  }
   end
 
 

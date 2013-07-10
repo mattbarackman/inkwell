@@ -1,24 +1,18 @@
 class Occasion < ActiveRecord::Base
   attr_accessible :date, :event_type_name, :name, :friend_id, :friend_name, :user_id, :annual
 
+  attr_accessor :user_id, :friend_name
+
   validates_presence_of :name, :date
   
   has_many :orders
   belongs_to :friend
 
-  # before_save :find_or_create_friend
+  before_save :find_or_create_friend
   after_save :create_order
 
   def user
     self.friend.user
-  end
-
-  def friend_name
-    friend.try(:name)
-  end
-
-  def friend_name=(name)
-    self.friend = Friend.find_or_create_by_name(name) if name.present?
   end
 
   def self.parse_birthday(birthday)
@@ -54,14 +48,16 @@ class Occasion < ActiveRecord::Base
   private
   
   def find_or_create_friend
-    a = Friend.where("name = ? AND user_id = ?", friends_name, user_id)
-    if a.empty?
-      self.friend = Friend.create(:name => friends_name, :user_id => user_id)
-    else
-      self.friend = a[0]
+    unless self.friend
+      a = Friend.where("name = ? AND user_id = ?", friend_name, user_id)
+      if a.empty?
+        self.friend = Friend.create(:name => friend_name, :user_id => user_id)
+      else
+        self.friend = a[0]
+      end
+      self.friend_name = nil
+      self.user_id = nil
     end
-    self.friends_name = nil
-    self.user_id = nil
   end
 
 end

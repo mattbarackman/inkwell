@@ -34,11 +34,11 @@ class Order < ActiveRecord::Base
   end
 
   def upcoming?
-    occasion.upcoming?
+    (event_date - Date.today).to_i < 60
   end
 
   def today?
-    occasion.today?
+    event_date == Date.today
   end
 
   # For Admin Tools
