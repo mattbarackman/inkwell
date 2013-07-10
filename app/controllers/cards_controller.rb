@@ -1,4 +1,3 @@
-
 class CardsController < ApplicationController
 
   layout 'side_bar_layout'  
