@@ -51,12 +51,14 @@ class OrdersController < ApplicationController
   end
 
   def ajax_get
-
     not_purchased_orders = current_user.orders.select {|order| order.status == "no_card" || order.status == "in_cart" }.sort_by {|order| order.event_date}
+    
+    last_order_added = not_purchased_orders.sort { |a,b| a.id <=> b.id }.last
+    last_order_index = not_purchased_orders.index { |order| order.id == last_order_added.id }
 
     not_purchased_orders.map! { |order| order.ajax_hash }
 
-    render json: { :not_purchased_orders => not_purchased_orders }
+    render json: { :not_purchased_orders => not_purchased_orders, :last_order_index => last_order_index }
   end
 
   def ajax_post

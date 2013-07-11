@@ -88,7 +88,7 @@ function SideBar() {
 
 SideBar.prototype = {
 
-    refreshOrders: function() {
+    refreshOrders: function(addedOccasion) {
         this.cart = new ShoppingCart();
         this.queue = new UpcomingQueue();
 
@@ -99,7 +99,10 @@ SideBar.prototype = {
             }
             that.render();
 
-            $('.jcarousel_test').jcarousel('reload');
+            if (addedOccasion === true) {
+                $('.jcarousel_test').jcarousel('reload');
+                $('.jcarousel_test').jcarousel('scroll', data.last_order_index);
+            }
         });
 
     },
@@ -117,7 +120,7 @@ SideBar.prototype = {
         console.log(login);
         $("#occasion_date").datepicker("destroy");
         login.softclose();
-        this.refreshOrders();
+        this.refreshOrders(true);
     },
 
     renderCheckout: function() {
