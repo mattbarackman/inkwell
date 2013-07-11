@@ -1,0 +1,66 @@
+// Place all the styles related to the charges controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.payment-input {
+	height: 30px;
+}
+
+#stripe-street-address {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	width: 300px;
+}
+
+#stripe-city {
+	width: 300px;
+}
+
+#stripe-state {
+	width: 100px;
+}
+
+#stripe-zipcode {
+	width: 100px
+}
+
+#stripe-credit-card {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	width: 200px;
+}
+
+#stripe-cvc {
+	width: 50px;
+	display: inline;
+	margin-left: 20px;
+}
+
+#payment-dash {
+	font-size: 20px;
+	line-height: 40px;
+}
+#stripe-mm {
+	width: 50px;
+	display: inline;
+}
+
+#stripe-yyyy {
+	width: 60px;
+	display: inline;
+}
+
+#stripe-submit {
+	display: block;
+}
+#shipping-box {
+	margin-left: 10%;
+	height: 100%;
+	width: 350px;
+	float: left;
+}
+
+#payment-box {
+	height: 100%;
+	float: left;	
+}
