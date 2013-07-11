@@ -11,13 +11,13 @@ $(document).ready(function(){
 
   $('.scrollup').on('click', function(e){
     e.preventDefault();
-    $('.jcarousel_test').jcarousel('scroll', '+=1');
+    $('.jcarousel_test').jcarousel('scroll', '-=1');
   });
 
   $('.scrolldown').on('click', function(e) {
     e.preventDefault();
     var Scroll = function(){
-      $('.jcarousel_test').jcarousel('scroll', '-=1');
+      $('.jcarousel_test').jcarousel('scroll', '+=1');
       setTimeout(function(e){
       Scroll();
       console.log(e);
