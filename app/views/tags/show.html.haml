@@ -4,8 +4,5 @@
 
 %ul{class: "card_gallery inline-list"}
   - @cards.each do |card|
-    %div{class: "draggable_card small-3 columns left"}
-      %li{class: "each-card-display"}
-        = link_to (image_tag card.photos.first.data.url(:medium), class: card.id), card
-
-
+    %div{class: "draggable_card each-card-display"}
+      = link_to (image_tag card.photos.first.data.url(:medium), class: card.id), card
