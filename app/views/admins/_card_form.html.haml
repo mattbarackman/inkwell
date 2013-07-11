@@ -1,35 +1,28 @@
 %div{class: "small-6 columns"}
 
-.card
+.admin_card
 
   .div{class: "row", id: "card-show-row"}
 
     = form_for card do |f|
+      = f.label :title
       = f.text_field :title
+      = f.label :description
       = f.text_area :description
+      = f.label :price
+      = f.text_area :price
+      =  f.label :inventory
+      = f.text_area :inventory
       = f.submit
     %br
-
-    %p
-      Price: 
-      =format_price(card.price)
-
-    %p
-      =pluralize(card.inventory, "card")
-      remaining
 
     .row
       - card.photos.each do |photo|
         .div{class: "small-3 columns left"}
-          =link_to "Delete Photo", photo, :method => :delete
+          =link_to "Delete Photo", photo, :remote => true, :method => :delete, :class => "delete_card_image"
           =image_tag photo.data.url(:full), :id => photo.id
           %br
           %br
-
-
-  = link_to "Delete", card, :confirm => "Are you sure?", :method => :delete
-  %br
-
 
 
   = form_for card do |f|
@@ -41,6 +34,8 @@
   Existing Tags:
   - card.tags.each do |tag|
     =tag.name 
-    =link_to "Delete", cardstags_path(card: card, tag: tag), :confirm => "Are you sure?", :method => :delete
+    =link_to "Delete Tag", cardstags_path(card: card, tag: tag), :confirm => "Are you sure?", :method => :delete
   %br
+  %br
+  = link_to "Delete Card", card, :confirm => "Are you sure?", :method => :delete
   %br
