@@ -61,8 +61,11 @@ class User < ActiveRecord::Base
     friends.sort{|a,b| a['name'] <=> b['name']}
   end
 
-  def logged_in_with_facebook?
-    self.authentications.find_by_provider('facebook')
+  def authenticated_with_facebook?
+    if self.authentications.find_by_provider('facebook')
+      return self.authentications.find_by_provider('facebook').oauth_expires_at > Time.now
+    end
+    false
   end
 
   def send_welcome_email

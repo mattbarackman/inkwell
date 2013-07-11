@@ -99,8 +99,9 @@ SideBar.prototype = {
             }
             that.render();
             console.log(that);
-
+            $('.jcarousel_test').jcarousel('reload');
         });
+
     },
 
     render: function() {
@@ -111,9 +112,10 @@ SideBar.prototype = {
     },
 
     addOccasion: function() {
-        $.fancybox.close();
         $('#submit_form').find('input[type="text"]').val('');
+        login.softclose();
         this.refreshOrders();
+
     },
 
     renderCheckout: function() {
