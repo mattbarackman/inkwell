@@ -16,13 +16,15 @@ $(document).ready(function(){
 
   $('.scrolldown').on('click', function(e) {
     e.preventDefault();
-    var Scroll = function(){
-      $('.jcarousel_test').jcarousel('scroll', '+=1');
-      setTimeout(function(e){
-      Scroll();
-      console.log(e);
-    }, 1000);
-    }();
+    $('.jcarousel_test').jcarousel('scroll', '+=1');
   });
+  //   var Scroll = function(){
+      
+  //     setTimeout(function(e){
+  //     Scroll();
+  //     console.log(e);
+  //   }, 1000);
+  //   }();
+  // });
 
 });

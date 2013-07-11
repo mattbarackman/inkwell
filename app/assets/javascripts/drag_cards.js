@@ -92,6 +92,7 @@ SideBar.prototype = {
         this.cart = new ShoppingCart();
         this.queue = new UpcomingQueue();
 
+        var last_order_index = undefined;
         var that = this;
         $.get("/orders/js", function(data) {
             for (var i in data.not_purchased_orders) {
@@ -99,11 +100,17 @@ SideBar.prototype = {
             }
             that.render();
 
-            if (addedOccasion === true) {
-                $('.jcarousel_test').jcarousel('reload');
-                $('.jcarousel_test').jcarousel('scroll', data.last_order_index);
-            }
+            $('.jcarousel_test').jcarousel('reload');
+            last_order_index = data.last_order_index;
+
         });
+
+        if (addedOccasion === true) {
+            setTimeout(function(e){
+                console.log(e);
+                $('.jcarousel_test').jcarousel('scroll', last_order_index);
+            }, 1000);
+        }
 
     },
 
@@ -127,7 +134,7 @@ SideBar.prototype = {
         var totalOrders = $('.event_card').find('img').length;
 
         if (totalOrders > 0) {
-            $('.checkout').html('<a href="/checkout">Checkout (' + $(".event_card").find(".carousel_image").length + ')</a>');
+            $('.checkout').html('<a href="/checkout">Checkout (' + $(".event_card").find('img').length + ')</a>');
             $('.checkout').siblings().first().show();
         }
     },
