@@ -154,6 +154,7 @@ SideBar.prototype = {
 };
 
 $(document).ready(function() {
+    $('.each-card-display').shadow('lifted');
     sidebar = new SideBar();
     $( ".draggable_card" ).draggable({ helper: "clone",
         start: function(e, ui)
