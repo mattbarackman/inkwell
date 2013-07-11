@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
   end
 
   def create
+    p params
     customer = Stripe::Customer.create(
       :email => 'user@inkwell.com',
       :card => params[:stripeToken]

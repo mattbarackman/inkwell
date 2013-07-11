@@ -1,77 +1,64 @@
 
-.row
+- if order.status == "no_card"
+  .order_partial.no_card
+    .small-12.columns
+      %h4= order.occasion.name.titleize
+      %p= format_date(order.occasion.date)
+      .description
+        %strong For:
+        %p
+          = order.occasion.friend.name.titleize
+        %strong Status: 
+        %p
+          Please select a card and checkout.
 
-  .small-10.small-offset-1.columns
+- elsif order.status == "in_cart"
+  .order_partial.in_cart
+    .small-8.columns
+      %h4= order.occasion.name.titleize
+      %p= format_date(order.occasion.date)
 
-    - if order.status == "no_card"
-      .order_partial.no_card
-        .row
-          .small-8.columns
-            %ul 
-              %h4= order.occasion.name.titleize
-              %p= format_date(order.occasion.date)
-              .description
-                %strong For:
-                %p
-                  = order.occasion.friend.name.titleize
-                %strong Status: 
-                %p
-                  Please select a card for this order and check out.
+      .description
+        %strong For:
+        %p
+          = order.occasion.friend.name.titleize
+        %strong Status:
+        %p
+          Your order is in the cart. Please check out.
+    .small-4.columns
+      .right
+        =image_tag order.card.photos.first.data("medium")
 
-    - elsif order.status == "in_cart"
-      .order_partial.in_cart
-        
-        .row
-          .small-8.columns
-            %ul 
-              %h4= order.occasion.name.titleize
-              %p= format_date(order.occasion.date)
+- elsif order.status == "purchased"
+  .order_partial.purchased
+    .small-8.columns
+      %h4= order.occasion.name.titleize
+      %p= format_date(order.occasion.date)
+      .description
+        %strong For:
+        %p
+          = order.occasion.friend.name.titleize              
+        %strong Status:
+        %p
+          Your card will be delivered by
+          %em= format_date(order.delivery_date) 
+    .small-4.columns
+      .right
+        =image_tag order.card.photos.first.data("medium")
 
-              .description
-                %strong For:
-                %p
-                  = order.occasion.friend.name.titleize
-                %strong Status:
-                %p
-                  Your order is in the cart. Please check out.
-          .small-4.columns
-            .right
-              =image_tag order.card.photos.first.data("medium")
-
-    - elsif order.status == "purchased"
-      .order_partial.purchased
-        .row
-          .small-8.columns
-            %ul 
-              %h4= order.occasion.name.titleize
-              %p= format_date(order.occasion.date)
-              .description
-                %strong For:
-                %p
-                  = order.occasion.friend.name.titleize              
-                %strong Status:
-                %p
-                  Your card will be delivered by
-                  %em= format_date(order.delivery_date) 
-          .small-4.columns
-            .right
-              =image_tag order.card.photos.first.data("medium")
-
-    - else order.status == "fulfilled"
-      .order_partial.purchased
-        .row
-          .small-8.columns
-            %ul 
-              %h4= order.occasion.name.titleize
-              %p= format_date(order.occasion.date)
-              .description
-                %strong For:
-                %p
-                  = order.occasion.friend.name.titleize              
-                %strong Status:
-                %p
-                  Your card will be delivered by
-                  %em= format_date(order.fulfillment_date) 
-          .small-4.columns
-            .right
-              =image_tag order.card.photos.first.data("medium")
+- else order.status == "fulfilled"
+  .order_partial.purchased
+    .small-8.columns
+      %h4= order.occasion.name.titleize
+      %p= format_date(order.occasion.date)
+      .description
+        %strong For:
+        %p
+          = order.occasion.friend.name.titleize              
+        %strong Status:
+        %p
+          Your card will be delivered by
+          %em= format_date(order.fulfillment_date) 
+    .small-4.columns
+      .right
+        =image_tag order.card.photos.first.data("medium")
