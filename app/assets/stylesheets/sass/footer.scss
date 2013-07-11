@@ -1,0 +1,15 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ddd;
+  padding-bottom: 10px;
+  height: 30px;
+  line-height: 30px;
+  a {
+    float: right;
+    margin-right: 10px;
+    color: #0080a3;
+  }
+}
