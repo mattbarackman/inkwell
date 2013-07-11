@@ -1,4 +1,6 @@
 Inkwell::Application.routes.draw do
+  get "static_pages/about"
+
   # match '/auth/:provider/callback' => 'authentications#create'
   devise_for :admins
   devise_for :users, :controllers => {:registrations => 'registrations'} do
@@ -41,6 +43,7 @@ Inkwell::Application.routes.draw do
   # resources :cardstags, :only => [:destroy]
   match '/cardstags' => 'cardstags#destroy'
   resources :cards, :only => [:index, :show, :update, :destroy]
+  match '/about' => 'static_pages#about'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
