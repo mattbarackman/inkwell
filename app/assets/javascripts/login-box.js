@@ -93,7 +93,7 @@ $(document).ready(function(){
     signupForm += '<div id="login-box-oauth">';
     signupForm += '<a href="/users/auth/facebook"><img src="/assets/facebook_128.png"></a>';
     signupForm += '<a href="/users/auth/google_oauth2"><img src="/assets/google_128.png"></a><br>';
-    signupForm += '<form action="/users/sign_up" method="post" id="signup-form">';
+    signupForm += '<form action="/users" method="post" id="signup-form">';
     signupForm += '<input autofocus="autofocus" id="user_email" name="user[email]" size="30" type="email" value="" placeholder="Email">';
     signupForm += '<input id="user_password" name="user[password]" size="30" type="password" placeholder="Password">';
     signupForm += '<input id="user_password" name="user[password_confirmation]" size="30" type="password" placeholder="Confirm password">';
