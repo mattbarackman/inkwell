@@ -60,14 +60,16 @@ var modal = (function(){
   $modal.append($content, $close);
 
   $(document).ready(function(){
-    $('body').append($overlay, $modal);                    
+    $('body').append($overlay, $modal);
   });
 
   $close.click(function(e){
     e.preventDefault();
     method.close();
+    if ($('.side_bar').length === 0){
+      location.reload();
+    }
   });
-  
   return method;
 }());
 

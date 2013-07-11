@@ -1,5 +1,9 @@
 
-system("rake etsy:refresh")
+if Rails.env.production?
+  system("rake etsy:refresh_production")
+else
+  system("rake etsy:refresh")
+end
 
 Admin.create(email: "admin@inkwell.com", password: "cardmaster")
 User.create(email: "user@inkwell.com", password: "password")

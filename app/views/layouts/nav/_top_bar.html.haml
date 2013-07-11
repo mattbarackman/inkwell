@@ -12,15 +12,14 @@
     
     %section{class: "top-bar-section"}
       %ul{class: "right"}
-        -if current_user
-          -if current_user.orders_in_cart.count > 0
-            %li{class: "divider"}
-            %li{class: "checkout"}
-              %a{href: '/checkout'}
-                Checkout (#{current_user.orders_in_cart.count})
-          -else
-            %li{class: "divider", style: "display: none;"}
-            %li{class: "checkout"}
+        -if current_user && current_user.orders_in_cart.count > 0
+          %li{class: "divider"}
+          %li{class: "checkout"}
+            %a{href: '/checkout'}
+              Checkout (#{current_user.orders_in_cart.count})
+        -else
+          %li{class: "divider", style: "display: none;"}
+          %li{class: "checkout"}
 
         %li{class: "divider"}
 
