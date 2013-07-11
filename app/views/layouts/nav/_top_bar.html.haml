@@ -52,7 +52,10 @@
                 %li
                   =link_to "Occasions", occasions_path
                 %li
-                  =link_to "Import Birthdays", '/friends/facebook', :class => 'facebook-add-friends-link'
+                  -if current_user.authenticated_with_facebook?
+                    =link_to "Import Birthdays", '/friends/facebook', :class => 'facebook-add-friends-link'
+                  -else
+                    =link_to "Import Birthdays", user_omniauth_authorize_path(:facebook)
                 %li
                   =link_to "Logout", destroy_user_session_path
           
