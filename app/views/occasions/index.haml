@@ -2,14 +2,16 @@
   .flash_success
     =p flash[:success]
 
-%h1 Upcoming Occasions
+.row
+  %h1 Upcoming Occasions
 
-.upcoming_orders
-  .occasions
-    =render partial: "order", collection: @upcoming_orders, as: :order
+  .upcoming_orders
+    .occasions
+      =render partial: "order", collection: @upcoming_orders, as: :order
 
-%h1 Future Occasions
 
-.future_orders
-  .occasions
-    =render partial: "order", collection: @future_orders, as: :order
+.row
+  %h1 Future Occasions
+  .future_orders
+    .occasions
+      =render partial: "order", collection: @future_orders, as: :order

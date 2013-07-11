@@ -22,7 +22,7 @@
                     = f.select("status", %w[purchased fulfilled], {}, { index: nil })#, :selected => order.status)
                     = f.submit
 
-          - if order.card.photos.first
+          - if order.card
             .small-4.columns
               .right
                 =image_tag order.card.photos.first.data("medium") 
@@ -52,6 +52,7 @@
                     = f.select("status", %w[purchased fulfilled], {}, { index: nil })#, :selected => order.status)
                     = f.submit
 
-          .small-4.columns
-            .right
-              =image_tag order.card.photos.first.data("medium")
+          - if order.card
+            .small-4.columns
+              .right
+                =image_tag order.card.photos.first.data("medium")
