@@ -13,7 +13,7 @@
     %section{class: "top-bar-section"}
       %ul{class: "right"}
 
-        -if current_user.orders_in_cart.count > 0
+        -if current_user && current_user.orders_in_cart.count > 0
           %li{class: "divider"}
           %li{class: "checkout"}
             %a{href: '/checkout'}
