@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 
-  layout 'side_bar_layout'  
+  layout 'side_bar_layout', :except => [:show]
 
   def index
     @cards = Card.all
