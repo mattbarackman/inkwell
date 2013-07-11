@@ -30,10 +30,6 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def after_sign_up_path_for(resource)
-    root_path
-  end
-
   def format_price(price)
     cents = (price % 100 == 0) ? "00" : (price % 100).to_s
     "$"+(price/100).to_s+"."+cents
