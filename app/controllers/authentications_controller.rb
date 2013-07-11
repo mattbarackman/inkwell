@@ -4,9 +4,13 @@ class AuthenticationsController < Devise::RegistrationsController
     omniauth = request.env["omniauth.auth"]
     # raise omniauth.to_yaml
     user = User.find_or_create_by_email(omniauth.info.email)
+    user.password = Devise.friendly_token[0,20]
+    user.save
+
     authentication = Authentication.from_omniauth(omniauth)
     if authentication.persisted?
       user.authentications << authentication
+
       user.update_attribute('email', omniauth.info.email)
       user.update_attribute('image_url', omniauth.info.image) if  /facebook/ =~ omniauth.info.image 
       sign_in_and_redirect user

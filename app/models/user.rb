@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :occasions, :through => :friends
 
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable,
+  :recoverable, :rememberable, :trackable,#, :validatable,
   :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_email
 
-  #validates_presence_of :email, :encrypted_password
+  validates_presence_of :email, :encrypted_password
   validates_confirmation_of :password
 
   def password_required?

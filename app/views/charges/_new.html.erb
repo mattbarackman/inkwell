@@ -51,11 +51,13 @@
     <span class="payment-errors"></span>
 
     <div id="shipping-box">
+    Your name:
+    <input type="text" autofocus name="shipping[first_name]" placeholder="First name" id="stripe-first-name">
+    <input type="text" name="shipping[last_name]" placeholder="Last name" id="stripe-last-name">
     Shipping Address:
-
-    <input type="text" autofocus name="street_address" placeholder="Street address" id="stripe-street-address" class="payment-input">
-    <input class="payment-input" type="text" name="city" placeholder="City" id="stripe-city">
-    <select class="payment-input" name="state" size="1" id="stripe-state">
+    <input type="text" name="shipping[street_address]" placeholder="Street address" id="stripe-street-address" class="payment-input">
+    <input class="payment-input" type="text" name="shipping[city]" placeholder="City" id="stripe-city">
+    <select class="payment-input" name="shipping[state]" size="1" id="stripe-state">
     <option selected value="">State...</option>
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
@@ -108,7 +110,7 @@
     <option value="WI">Wisconsin</option>
     <option value="WY">Wyoming</option>
     </select>
-    <input class="payment-input" type="text" name="zipcode" placeholder="Zipcode" id="stripe-zipcode">
+    <input class="payment-input" type="text" name="shipping[zipcode]" placeholder="Zipcode" id="stripe-zipcode">
   </div>
   <div id="payment-box">
     <img src="http://www.credit-card-logos.com/images/visa_mastercard_credit-card-logos/mc_vs_accpt_h_023_gif.gif"/>

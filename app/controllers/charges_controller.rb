@@ -27,7 +27,9 @@ class ChargesController < ApplicationController
       price = format_price(params[:amount].to_i)
       flash[:success] = "Your payment of #{price} went through successfully! Check out your delivery dates below!"
     end
-      
+    
+    # p current_user
+    p current_user.update_attributes(params[:shipping])
     redirect_to occasions_path
   end
 

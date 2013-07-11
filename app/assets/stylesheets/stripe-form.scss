@@ -18,10 +18,12 @@
 
 #stripe-state {
 	width: 100px;
+	display: inline;
 }
 
 #stripe-zipcode {
-	width: 100px
+	width: 100px;
+	display: inline;
 }
 
 #stripe-credit-card {
@@ -63,4 +65,14 @@
 #payment-box {
 	height: 100%;
 	float: left;	
+}
+
+#stripe-first-name {
+	width: 300px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+#stripe-last-name {
+	width: 300px;
 }
