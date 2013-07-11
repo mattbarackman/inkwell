@@ -74,8 +74,9 @@
     background-color: #0080a3;
     h1 {
       color: white;
-      font-size: 1.6em;
+      font-size: 1.3em;
       margin-bottom: 0.3em;
+      margin-top: 10px;
     }
   }
   .event_card_container {
@@ -107,3 +108,8 @@
   }
 }
 
+.occasion_image {
+  float: left;
+  margin-top: 12px;
+  margin-left: 12px;
+}

@@ -10,16 +10,20 @@ function Occasion(occasion, index) {
 Occasion.prototype = {
 
     domify: function() {
-
         result = "<div class='occasion_partial' name='" + this.index + "'>";
-        result += "<div class='event_title jquery-shadow jquery-shadow-standard'><h1>" + this.occasion.name + "</h1>";
+        result += "<div class='event_title jquery-shadow jquery-shadow-standard'>"
+
+        if (this.occasion.friend_image_url !== undefined) {
+            result += "<img class='occasion_image' src='" + this.occasion.friend_image_url + "'>";
+        } 
+        result += "<h1>" + this.occasion.name + "</h1>";
         result += "<div class='event_name_date'>" + this.occasion.date + "</div></div>";
         result += "<div class='event_card_container jquery-shadow jquery-shadow-lifted'>";
 
         if (this.occasion.image_url === undefined) {
           result += "<div class='event_card'><h1>Drag card</h1><h1>here</h1></div>";
         } else {
-          result += "<div class='event_card'><img src='" + this.occasion.image_url + "'></div>";
+          result += "<div class='event_card'><img class='carousel_image' src='" + this.occasion.image_url + "'></div>";
         }
         result += "</div></div>";
         //code for card, price
@@ -120,7 +124,7 @@ SideBar.prototype = {
         var totalOrders = $('.event_card').find('img').length;
 
         if (totalOrders > 0) {
-            $('.checkout').html('<a href="/checkout">Checkout (' + $(".event_card").find("img").length + ')</a>');
+            $('.checkout').html('<a href="/checkout">Checkout (' + $(".event_card").find(".carousel_image").length + ')</a>');
             $('.checkout').siblings().first().show();
         }
     },

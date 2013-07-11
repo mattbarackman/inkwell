@@ -15,6 +15,7 @@ class Order < ActiveRecord::Base
                   name: self.occasion.name.titleize
                   }
 
+    order_hash[:friend_image_url] = self.occasion.friend.image_url if self.occasion.friend.image_url
     order_hash[:image_url] = self.card.photos.first.data.url(:medium) if self.card && self.card.photos.first.data.url(:medium)
 
     order_hash
