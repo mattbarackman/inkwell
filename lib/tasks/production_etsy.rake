@@ -2,7 +2,7 @@ namespace :etsy do
   desc "get cards" 
   task :refresh_production => :environment do
 
-    shop_owners = ["jdeluce", "ParrottDesignStudio", "CatherineMcginniss", "papillonpress", "kissandpunch", "Benchpressed", "McBittersonsShop"]
+    shop_owners = ["jdeluce", "sarahparrott825", "CatherineMcginniss", "papillonpress", "kissandpunch", "Benchpressed", "McBittersonsShop"]
 
     p "#################################"
     p "#################################"
