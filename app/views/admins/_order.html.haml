@@ -22,9 +22,10 @@
                     = f.select("status", %w[purchased fulfilled], {}, { index: nil })#, :selected => order.status)
                     = f.submit
 
-          .small-4.columns
-            .right
-              =image_tag order.card.photos.first.data("medium")
+          - if order.card.photos.first
+            .small-4.columns
+              .right
+                =image_tag order.card.photos.first.data("medium") 
 
     - else 
       .order_partial.unfulfilled
