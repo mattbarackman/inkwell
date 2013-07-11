@@ -1,11 +1,18 @@
-shop_owners = ["jdeluce", "ParrottDesignStudio", "CatherineMcginniss", "papillonpress", "kissandpunch", "Benchpressed", "McBittersonsShop"]
-
-current_listings = []
-
 namespace :etsy do
   desc "get cards" 
   task :refresh_production => :environment do
+
+    shop_owners = ["jdeluce", "ParrottDesignStudio", "CatherineMcginniss", "papillonpress", "kissandpunch", "Benchpressed", "McBittersonsShop"]
+
+    p "#################################"
+    p "#################################"
+
+    current_listings = []
+
     shop_owners.each do |owner|
+      p "#################################"
+      p "#################################"
+      p owner
       shop = Etsy.user(owner).shop
       shop.listings.each do |listing|
         
@@ -48,9 +55,8 @@ namespace :etsy do
         end
       end
     end
-
     cards_in_db = Card.all.map {|card| card.listing_id}
-   
+    
     retired_cards = cards_in_db - current_listings
 
     retired_cards.each do |listing_id|
