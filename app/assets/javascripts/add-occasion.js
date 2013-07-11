@@ -1,6 +1,6 @@
 function OccasionForm() {
     this.occasion = $('#submit_form');
-    this.occasion.hide();
+    //this.occasion.hide();
     this.fancyBox();
     this.setAutocomplete();
 }
@@ -13,6 +13,10 @@ OccasionForm.prototype = {
       e.preventDefault();
       login.open({content: self.occasion.show(), width: '320', height: '257'});
       $('#login-content').css('height', '240');
+      $('#submit_form').on("ajax:success", null, this, 
+                           function(e) { sidebar.addOccasion(); });
+      $( "#occasion_date" ).datepicker();
+
     });
   },
 
@@ -26,5 +30,5 @@ OccasionForm.prototype = {
 };
 
 $(document).ready(function() {
-  $('#submit_form').hide();
+  //$('#submit_form').hide();
 });
