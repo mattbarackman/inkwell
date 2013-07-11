@@ -4,7 +4,7 @@ current_listings = []
 
 namespace :etsy do
   desc "get cards" 
-  task :production_refresh => :environment do
+  task :refresh_production => :environment do
     shop_owners.each do |owner|
       shop = Etsy.user(owner).shop
       shop.listings.each do |listing|
