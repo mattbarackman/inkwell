@@ -42,6 +42,11 @@ var login = (function(){
     $(window).unbind('resize.modal');
   };
 
+  method.softclose = function() {
+    $modal.hide();
+    $overlay.fadeOut();    
+  };
+
   // Generate the HTML and add it to the document
   $overlay = $('<div id="login-overlay"></div>');
   $modal = $('<div id="login-box"></div>');
@@ -107,4 +112,5 @@ $(document).ready(function(){
     e.preventDefault();
     login.open({content: signupForm, width: '320', height: '337'});
   });
+  
 });

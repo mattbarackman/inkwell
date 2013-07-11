@@ -101,6 +101,7 @@ var AddUser = {
   addFriend: function() {
     $.post('/friends/facebook', $(this).parent().serialize());
     $(this).parent().animate({opacity: "0.3"});
+  
   }
 }
 
