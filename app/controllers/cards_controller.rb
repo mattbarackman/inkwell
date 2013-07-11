@@ -13,7 +13,7 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     if @card.update_attributes params[:card]
-      redirect_to :back
+      render :nothing => true, :status => :ok
     else
       redirect_to :back
     end
@@ -22,7 +22,6 @@ class CardsController < ApplicationController
   def destroy
     card = Card.find(params[:id])
     card.destroy
-    #Do we want code here to delete the image from AWS?
-    redirect_to admin_path
+    render :nothing => true, :status => :ok
   end
 end

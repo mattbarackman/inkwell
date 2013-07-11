@@ -4,7 +4,7 @@
 
   .div{class: "row", id: "card-show-row"}
 
-    = form_for card do |f|
+    = form_for card, :remote => true do |f|
       = f.label :title
       = f.text_field :title
       = f.label :description
@@ -25,7 +25,7 @@
           %br
 
 
-  = form_for card do |f|
+  = form_for card, :remote => true, :class => "add_tag_form" do |f|
     = f.fields_for :cards_tags, [CardsTag.new] do |t|
       = t.collection_select :tag_id, Tag.all, :id, :name
     = f.submit
@@ -34,8 +34,8 @@
   Existing Tags:
   - card.tags.each do |tag|
     =tag.name 
-    =link_to "Delete Tag", cardstags_path(card: card, tag: tag), :confirm => "Are you sure?", :method => :delete
+    =link_to "Delete Tag", cardstags_path(card: card, tag: tag), :remote => true, :confirm => "Are you sure?", :method => :delete
   %br
   %br
-  = link_to "Delete Card", card, :confirm => "Are you sure?", :method => :delete
+  = link_to "Delete Card", card, :remote => true, :confirm => "Are you sure?", :method => :delete, :class => "delete_card_button"
   %br
