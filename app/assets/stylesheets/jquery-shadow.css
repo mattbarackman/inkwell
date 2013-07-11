@@ -24,7 +24,7 @@
 .jquery-shadow:after {
     content:"";
     position:absolute; 
-    z-index:-2;
+    z-index:-1000;
 }
 
 
