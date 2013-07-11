@@ -82,10 +82,6 @@ function SideBar() {
     this.refreshOrders();
 }
 
-function extractOrderData($partial) {
-    
-}
-
 SideBar.prototype = {
 
     refreshOrders: function() {
@@ -98,7 +94,7 @@ SideBar.prototype = {
                 that.queue.addItem( new Occasion(data.not_purchased_orders[i], i) );
             }
             that.render();
-            console.log(that);
+
             $('.jcarousel_test').jcarousel('reload');
         });
 
@@ -113,9 +109,11 @@ SideBar.prototype = {
 
     addOccasion: function() {
         $('#submit_form').find('input[type="text"]').val('');
+        console.log("Got Here!");
+        console.log(login);
+        $("#occasion_date").datepicker("destroy");
         login.softclose();
         this.refreshOrders();
-
     },
 
     renderCheckout: function() {

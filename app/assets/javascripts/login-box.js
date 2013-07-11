@@ -44,7 +44,7 @@ var login = (function(){
 
   method.softclose = function() {
     $modal.hide();
-    $overlay.fadeOut();    
+    $overlay.fadeOut();
   };
 
   // Generate the HTML and add it to the document
