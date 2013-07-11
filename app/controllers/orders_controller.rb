@@ -65,7 +65,9 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.card_id = params[:card_id].to_i if params[:card_id]
     order.save
-    render json: order, status: :ok
+
+    orders_in_cart = current_user.orders.select {|order| order.status == "in_cart" }.count 
+    render json: { :orders_in_cart => orders_in_cart, status: :ok }
   end
 
 end

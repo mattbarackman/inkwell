@@ -79,7 +79,7 @@ var AddUser = {
   init: function() {
 
     $('body').on('click', '.facebook-friend-picture', this.addFriend);
-    
+
     function allFriendData(html) {
       $.ajax({
         url: '/friends/facebook',

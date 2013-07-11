@@ -102,23 +102,18 @@ SideBar.prototype = {
 
             $('.jcarousel_test').jcarousel('reload');
             last_order_index = data.last_order_index;
+            if (addedOccasion === true) {
+                $('.jcarousel_test').jcarousel('scroll', last_order_index);
+            }
+            $('.jcarousel_test').jcarousel('reload');
 
         });
-
-        if (addedOccasion === true) {
-            setTimeout(function(e){
-                console.log(e);
-                $('.jcarousel_test').jcarousel('scroll', last_order_index);
-            }, 1000);
-        }
-
     },
 
     render: function() {
         this.cart.render();
         this.queue.render();
         this.makeDroppable();
-        this.renderCheckout();
     },
 
     addOccasion: function() {
@@ -130,11 +125,11 @@ SideBar.prototype = {
         this.refreshOrders(true);
     },
 
-    renderCheckout: function() {
+    renderCheckout: function(orders_in_cart) {
         var totalOrders = $('.event_card').find('img').length;
 
         if (totalOrders > 0) {
-            $('.checkout').html('<a href="/checkout">Checkout (' + $(".event_card").find('img').length + ')</a>');
+            $('.checkout').html('<a href="/checkout">Checkout (' + orders_in_cart + ')</a>');
             $('.checkout').siblings().first().show();
         }
     },
@@ -151,13 +146,15 @@ SideBar.prototype = {
                 var replacedImage = $(this).find('.event_card').html(newImage);
                 $(replacedImage).hide();
                 $(replacedImage).fadeIn();
-                sidebarOverLord.renderCheckout();
+                
 
                 var occasion = sidebarOverLord.queue.occasions[index];
                 var cardNumber = card.draggable.find('img').attr('class').split(' ')[0];
                 occasion.associateCard(cardNumber);
 
-                $.post("/orders/js", occasion.occasion);
+                $.post("/orders/js", occasion.occasion, function(data){
+                    sidebarOverLord.renderCheckout(data.orders_in_cart);
+                });
             }
         });
     }
