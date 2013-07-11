@@ -5,6 +5,7 @@
 
   %row
     %button{id: "add_occasion_button"} Add occasion
+    %button{class: "facebook-add-friends-link", id: "import_friends_button"} Import birthdays
   %row  
 
     - if current_user.orders_without_cards.empty? && current_user.orders_in_cart.empty?        
