@@ -60,6 +60,10 @@ end
 Tag.create(name: "anniversary")
 Tag.create(name: "birthday")
 Tag.create(name: "graduation")
+Tag.create(name: "holiday")
+Tag.create(name: "wedding")
+Tag.create(name: "new baby")
+Tag.create(name: "other")
 
 Card.all.each do |card|
   card.tags << Tag.all.sample
