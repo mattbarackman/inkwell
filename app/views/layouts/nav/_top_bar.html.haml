@@ -63,7 +63,7 @@
                   -if current_user.authenticated_with_facebook?
                     =link_to "Import Birthdays", '/friends/facebook', :class => 'facebook-add-friends-link'
                   -else
-                    =link_to "Import Birthdays", user_omniauth_authorize_path(:facebook)
+                    =link_to "Connect to Facebook", user_omniauth_authorize_path(:facebook)
                 %li
                   =link_to "Logout", destroy_user_session_path
           

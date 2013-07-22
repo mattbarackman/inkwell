@@ -2,7 +2,6 @@ class AuthenticationsController < Devise::RegistrationsController
 
   def all
     omniauth = request.env["omniauth.auth"]
-    # raise omniauth.to_yaml
     user = User.find_or_create_by_email(omniauth.info.email)
     user.password = Devise.friendly_token[0,20]
     user.save
@@ -18,6 +17,10 @@ class AuthenticationsController < Devise::RegistrationsController
       session["devise.user_attributes"] = user.attributes
       redirect_to new_user_registration_url
     end
+  end
+
+  def is_facebook?(omniauth)
+    omniauth.info.urls['Facebook'] ? true : false
   end
 
   alias_method :facebook, :all
