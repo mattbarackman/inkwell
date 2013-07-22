@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   validates_presence_of :email, :encrypted_password
+  validates :email, uniqueness: true
   validates_confirmation_of :password
 
   def password_required?
