@@ -4,6 +4,6 @@
 %ul.friends-list
   =render @friends
 = link_to "Add a friend", new_friend_path, class: "button round"
--if current_user.logged_in_with_facebook?
+-if current_user.authenticated_with_facebook?
   =link_to 'Add friends from Facebook', '/friends/facebook', :class => 'facebook-add-friends-link button round'
 
