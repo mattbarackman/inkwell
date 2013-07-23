@@ -25,10 +25,10 @@
   = csrf_meta_tag  
 %body
   = render :partial => "layouts/nav/top_bar"
-
   .main_container
     .row
       %div{class: "small-12 columns"}
+        = render :partial => "layouts/warning"
         = yield
 
   = render :partial => "layouts/footer"
